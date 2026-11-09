@@ -12,36 +12,63 @@ html.night-ink .wordmark { color: var(--ink); }
 .work .wrap { padding-top: clamp(90px, 16vh, 200px); padding-bottom: clamp(60px, 10vh, 120px); }
 .work-head { max-width: 60ch; margin-bottom: clamp(40px, 7vh, 80px); }
 .work-head .lede { margin-top: clamp(18px, 3vh, 30px); color: var(--soft); }
-/* Αστερισμός: σκόρπια κινητά σε 3 βάθη, parallax με το scroll (work.js) */
-.work-field { position: relative; aspect-ratio: 100 / 205; margin-top: clamp(10px, 3vh, 40px); }
-.work-card {
-  position: absolute; left: var(--x); top: var(--y); width: var(--w);
-  display: flex; flex-direction: column; gap: 5px; color: inherit; text-decoration: none;
-  transform: translate3d(0, var(--py, 0px), 0); will-change: transform;
-}
-.work-card.d2 { z-index: 3; } .work-card.d1 { z-index: 2; } .work-card.d0 { z-index: 1; }
-.work-shot {
-  display: block; aspect-ratio: 420 / 746; overflow: hidden; border-radius: 12%/6.8%;
-  background: rgba(255, 255, 255, 0.06); margin-bottom: 8px;
-  transition: transform 600ms cubic-bezier(0.23, 1, 0.32, 1), box-shadow 600ms ease, opacity 600ms ease, filter 600ms ease;
-}
-.work-card.d2 .work-shot { box-shadow: 0 0 0 1px rgba(232, 238, 247, 0.22), 0 0 60px -10px rgba(120, 170, 235, 0.35), 0 40px 80px -30px rgba(0, 0, 0, 0.8); }
-.work-card.d1 .work-shot { box-shadow: 0 0 0 1px rgba(232, 238, 247, 0.16), 0 0 40px -12px rgba(120, 170, 235, 0.25), 0 30px 60px -28px rgba(0, 0, 0, 0.8); opacity: 0.86; }
-.work-card.d0 .work-shot { box-shadow: 0 0 0 1px rgba(232, 238, 247, 0.12), 0 0 26px -10px rgba(120, 170, 235, 0.2); opacity: 0.6; filter: saturate(0.75); }
+/* ---------- Ταξίδι στις ιστοσελίδες (work.js): καρφωμένη σκηνή, πλανήτης, τα περασμένα γίνονται αστέρια ---------- */
+.work-field { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 30px 18px; padding: 40px var(--gutter); }   /* χωρίς JS / reduced motion */
+.work-card { display: flex; flex-direction: column; gap: 5px; color: inherit; text-decoration: none; }
+.work-shot { display: block; aspect-ratio: 420 / 746; overflow: hidden; border-radius: 12% / 6.8%; background: #0b1426; margin-bottom: 8px;
+  box-shadow: 0 0 0 1px rgba(232, 238, 247, 0.22), 0 0 70px -8px rgba(120, 170, 235, 0.45), 0 40px 90px -30px rgba(0, 0, 0, 0.9); }
 .work-shot img { width: 100%; height: 100%; object-fit: cover; object-position: top; display: block; }
-.work-card:hover { z-index: 6; }
-.work-card:hover .work-shot { transform: scale(1.06); opacity: 1; filter: none; box-shadow: 0 0 0 1px rgba(232, 238, 247, 0.45), 0 0 80px -6px rgba(140, 190, 245, 0.55), 0 40px 80px -30px rgba(0, 0, 0, 0.8); }
-.work-name { font-weight: 500; font-size: 0.92rem; letter-spacing: -0.01em; line-height: 1.25; transition: opacity 400ms ease; }
-.work-spec { font-size: 0.58rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--soft); line-height: 1.45; transition: opacity 400ms ease; }
-.work-card.d0 .work-name, .work-card.d0 .work-spec { opacity: 0.55; }
-.work-card.d0 .work-name { font-size: 0.8rem; }
-.work-card:hover .work-name, .work-card:hover .work-spec { opacity: 1; }
+.work-name { font-weight: 500; font-size: 0.92rem; } .work-spec { font-size: 0.58rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--soft); }
+.warp-copy h2 { font-size: clamp(2rem, 4.6vw, 4rem); }
+.warp-now, .warp-bar, .planet, .warp-sky { display: none; }
+
+.work.warp-on { padding-left: 0; padding-right: 0; }
+.warp-on .warp-run { position: relative; }
+.warp-on .warp-stage { position: sticky; top: 0; height: 100vh; height: 100svh; overflow: hidden; }
+.warp-on .work-field { display: block; position: absolute; inset: 0; padding: 0; }
+.warp-on .work-card { position: absolute; left: 0; top: 0; width: clamp(150px, 19vw, 300px); transform-origin: 50% 50%; will-change: transform, opacity; pointer-events: none; }
+.warp-on .work-card.now { pointer-events: auto; }
+.warp-on .work-card .work-name, .warp-on .work-card .work-spec { display: none; }
+.warp-on .work-shot { margin: 0; }
+
+.warp-on .warp-copy { position: absolute; left: var(--gutter); top: calc(var(--header-h, 76px) + 4vh); width: min(40vw, 560px); z-index: 50; pointer-events: none; }
+.warp-on .warp-copy a { pointer-events: auto; }
+.warp-lede { margin-top: 14px; color: var(--soft); transition: opacity 500ms ease; }
+.warp-on .warp-now { display: block; margin-top: clamp(40px, 12vh, 140px); }
+.warp-count { font-size: 0.75rem; letter-spacing: 0.18em; color: var(--soft); }
+.warp-count b { color: var(--ink); font-weight: 500; }
+.warp-name { font-size: clamp(2rem, 4.4vw, 4.2rem); line-height: 1.02; letter-spacing: -0.035em; font-weight: 600; margin-top: 14px;
+  text-shadow: 0 0 34px rgba(156, 192, 234, 0.35); transition: opacity 260ms ease, transform 260ms ease; }
+.warp-spec { margin-top: 14px; font-size: 0.7rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--soft); transition: opacity 260ms ease; }
+.warp-link { display: inline-block; margin-top: 26px; font-size: 0.68rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--hair); padding-bottom: 6px; }
+.warp-link:hover { border-color: var(--ink); }
+.warp-swap .warp-name, .warp-swap .warp-spec { opacity: 0; transform: translateY(10px); }
+
+/* πλανήτης στον ορίζοντα */
+.warp-on .planet { display: block; position: absolute; left: 50%; top: calc(76vh - var(--pp, 0) * 10vh); width: 170vmax; aspect-ratio: 1; border-radius: 50%;
+  transform: translateX(-50%); z-index: 1;
+  background:
+    radial-gradient(circle at 50% 0%, rgba(214, 232, 255, 0.95) 0%, rgba(120, 170, 235, 0.75) 2.2%, rgba(46, 92, 152, 0.9) 7%, #10264a 16%, #060f22 34%, #030814 60%);
+  box-shadow: 0 -1px 2px rgba(230, 242, 255, 0.9), 0 -10px 40px rgba(140, 190, 245, 0.55), 0 -60px 180px rgba(90, 145, 225, 0.35); }
+.planet i { position: absolute; inset: 0; border-radius: 50%; opacity: 0.35; mix-blend-mode: screen;
+  background: repeating-radial-gradient(circle at 46% 30%, transparent 0 18px, rgba(140, 190, 245, 0.10) 18px 20px, transparent 20px 46px);
+  animation: planet-spin 160s linear infinite; }
+@keyframes planet-spin { to { transform: rotate(360deg); } }
+.warp-sky { display: none; }
+.warp-on .warp-sky { display: block; position: absolute; inset: 0; z-index: 2; pointer-events: none; }
+.warp-star { position: absolute; left: 0; top: 0; width: 7px; height: 7px; margin: -3.5px 0 0 -3.5px; border-radius: 50%; background: #F4F8FF;
+  box-shadow: 0 0 8px 2px rgba(214, 232, 255, 1), 0 0 26px 8px rgba(120, 170, 235, 0.6); opacity: 0; animation: twinkle 3.2s ease-in-out infinite; }
+.warp-star::before, .warp-star::after { content: ''; position: absolute; left: 50%; top: 50%; width: 34px; height: 1px; margin: -0.5px 0 0 -17px; background: linear-gradient(90deg, transparent, rgba(232, 242, 255, 0.85), transparent); }
+.warp-star::after { transform: rotate(90deg); }
+@keyframes twinkle { 50% { filter: brightness(0.55); } }
+.warp-on .warp-bar { display: block; position: absolute; left: var(--gutter); right: var(--gutter); bottom: 28px; height: 1px; background: var(--hair); z-index: 50; }
+.warp-bar i { position: absolute; left: 0; top: 0; bottom: 0; width: calc(var(--prog, 0) * 100%); background: var(--ink); }
 @media (max-width: 767px) {
-  .work-field { aspect-ratio: auto; display: grid; grid-template-columns: 1fr 1fr; gap: 34px 18px; }
-  .work-card { position: relative; left: auto; top: auto; width: auto; }
-  .work-card:nth-child(even) { margin-top: 70px; }
-  .work-card.d0 .work-shot, .work-card.d1 .work-shot { opacity: 1; filter: none; }
-  .work-card.d0 .work-name, .work-card.d0 .work-spec { opacity: 1; }
+  .warp-on .warp-copy { width: auto; right: var(--gutter); top: calc(var(--header-h, 64px) + 2vh); }
+  .warp-on .warp-now { margin-top: 16px; }
+  .warp-name { font-size: clamp(1.6rem, 8vw, 2.4rem); }
+  .warp-lede { display: none; }
+  .warp-on .work-card { width: clamp(130px, 44vw, 220px); }
 }
 
 /* ---------- Κριτικές ---------- */
