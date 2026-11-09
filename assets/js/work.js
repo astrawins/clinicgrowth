@@ -6,6 +6,14 @@
   if (cta && heroCta && 'IntersectionObserver' in window) {
     new IntersectionObserver(function (en) { cta.classList.toggle('on', !en[0].isIntersecting && en[0].boundingClientRect.top < 0); }, { threshold: 0 }).observe(heroCta);
   } else if (cta) { cta.classList.add('on'); }
+  /* Κριτικές: ίδια ταχύτητα σε κάθε σειρά, ανεξάρτητα από το μήκος της */
+  var revRows = [].slice.call(document.querySelectorAll('.rev-row'));
+  var revSpeed = function () { revRows.forEach(function (r) { var set = r.querySelector('.rev-set'); if (set) r.querySelector('.rev-track').style.setProperty('--rev-dur', Math.max(30, set.offsetWidth / 55).toFixed(0) + 's'); }); };
+  revSpeed(); addEventListener('resize', revSpeed); addEventListener('load', revSpeed);
+  revRows.forEach(function (r) {
+    r.addEventListener('touchstart', function () { r.classList.add('paused'); }, { passive: true });
+    r.addEventListener('touchend', function () { setTimeout(function () { r.classList.remove('paused'); }, 1200); }, { passive: true });
+  });
   var sites = [].slice.call(document.querySelectorAll('.site'));
   if (!sites.length) return;
   /* «Δείτε περισσότερες δουλειές»: ανοίγει τα υπόλοιπα έργα */
