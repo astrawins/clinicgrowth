@@ -19,14 +19,14 @@ html.night-ink .wordmark { color: var(--ink); }
   box-shadow: 0 0 0 1px rgba(232, 238, 247, 0.22), 0 0 70px -8px rgba(120, 170, 235, 0.45), 0 40px 90px -30px rgba(0, 0, 0, 0.9); }
 .work-shot img { width: 100%; height: 100%; object-fit: cover; object-position: top; display: block; }
 .work-name { font-weight: 500; font-size: 0.92rem; } .work-spec { font-size: 0.58rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--soft); }
-.warp-copy h2 { font-size: clamp(2rem, 4.6vw, 4rem); }
-.warp-now, .warp-bar, .planet, .warp-sky { display: none; }
+.warp-copy h2 { font-size: clamp(1.8rem, 3.4vw, 3.2rem); }
+.warp-now, .warp-bar { display: none; }
 
 .work.warp-on { padding-left: 0; padding-right: 0; }
 .warp-on .warp-run { position: relative; }
 .warp-on .warp-stage { position: sticky; top: 0; height: 100vh; height: 100svh; overflow: hidden; }
 .warp-on .work-field { display: block; position: absolute; inset: 0; padding: 0; }
-.warp-on .work-card { position: absolute; left: 0; top: 0; width: clamp(150px, 19vw, 300px); transform-origin: 50% 50%; will-change: transform, opacity; pointer-events: none; }
+.warp-on .work-card { position: absolute; left: 0; top: 0; width: clamp(120px, 12.5vw, 220px); transform-origin: 50% 50%; will-change: transform, opacity; pointer-events: none; }
 .warp-on .work-card.now { pointer-events: auto; }
 .warp-on .work-card .work-name, .warp-on .work-card .work-spec { display: none; }
 .warp-on .work-shot { margin: 0; }
@@ -34,33 +34,36 @@ html.night-ink .wordmark { color: var(--ink); }
 .warp-on .warp-copy { position: absolute; left: var(--gutter); top: calc(var(--header-h, 76px) + 4vh); width: min(40vw, 560px); z-index: 50; pointer-events: none; }
 .warp-on .warp-copy a { pointer-events: auto; }
 .warp-lede { margin-top: 14px; color: var(--soft); transition: opacity 500ms ease; }
-.warp-on .warp-now { display: block; margin-top: clamp(40px, 12vh, 140px); }
+.warp-on .warp-now { display: block; margin-top: clamp(18px, 4vh, 44px); }
 .warp-count { font-size: 0.75rem; letter-spacing: 0.18em; color: var(--soft); }
 .warp-count b { color: var(--ink); font-weight: 500; }
-.warp-name { font-size: clamp(2rem, 4.4vw, 4.2rem); line-height: 1.02; letter-spacing: -0.035em; font-weight: 600; margin-top: 14px;
+.warp-name { font-size: clamp(1.7rem, 3.2vw, 3.2rem); line-height: 1.02; letter-spacing: -0.035em; font-weight: 600; margin-top: 14px;
   text-shadow: 0 0 34px rgba(156, 192, 234, 0.35); transition: opacity 260ms ease, transform 260ms ease; }
 .warp-spec { margin-top: 14px; font-size: 0.7rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--soft); transition: opacity 260ms ease; }
 .warp-link { display: inline-block; margin-top: 26px; font-size: 0.68rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--hair); padding-bottom: 6px; }
 .warp-link:hover { border-color: var(--ink); }
 .warp-swap .warp-name, .warp-swap .warp-spec { opacity: 0; transform: translateY(10px); }
 
-/* πλανήτης στον ορίζοντα */
-.warp-on .planet { display: block; position: absolute; left: 50%; top: calc(76vh - var(--pp, 0) * 10vh); width: 170vmax; aspect-ratio: 1; border-radius: 50%;
-  transform: translateX(-50%); z-index: 1;
+/* Κρόνος: πλανήτης στο κέντρο, δακτύλιος σε δύο μισά (πίσω / μπροστά από τον πλανήτη) */
+.ring, .globe { display: none; }
+.warp-on .globe { display: block; position: absolute; left: var(--cx); top: var(--cy); width: var(--gd); aspect-ratio: 1; border-radius: 50%;
+  transform: translate(-50%, -50%) rotate(var(--tilt)); z-index: 30; overflow: hidden;
   background:
-    radial-gradient(circle at 50% 0%, rgba(214, 232, 255, 0.95) 0%, rgba(120, 170, 235, 0.75) 2.2%, rgba(46, 92, 152, 0.9) 7%, #10264a 16%, #060f22 34%, #030814 60%);
-  box-shadow: 0 -1px 2px rgba(230, 242, 255, 0.9), 0 -10px 40px rgba(140, 190, 245, 0.55), 0 -60px 180px rgba(90, 145, 225, 0.35); }
-.planet i { position: absolute; inset: 0; border-radius: 50%; opacity: 0.35; mix-blend-mode: screen;
-  background: repeating-radial-gradient(circle at 46% 30%, transparent 0 18px, rgba(140, 190, 245, 0.10) 18px 20px, transparent 20px 46px);
-  animation: planet-spin 160s linear infinite; }
-@keyframes planet-spin { to { transform: rotate(360deg); } }
-.warp-sky { display: none; }
-.warp-on .warp-sky { display: block; position: absolute; inset: 0; z-index: 2; pointer-events: none; }
-.warp-star { position: absolute; left: 0; top: 0; width: 7px; height: 7px; margin: -3.5px 0 0 -3.5px; border-radius: 50%; background: #F4F8FF;
-  box-shadow: 0 0 8px 2px rgba(214, 232, 255, 1), 0 0 26px 8px rgba(120, 170, 235, 0.6); opacity: 0; animation: twinkle 3.2s ease-in-out infinite; }
-.warp-star::before, .warp-star::after { content: ''; position: absolute; left: 50%; top: 50%; width: 34px; height: 1px; margin: -0.5px 0 0 -17px; background: linear-gradient(90deg, transparent, rgba(232, 242, 255, 0.85), transparent); }
-.warp-star::after { transform: rotate(90deg); }
-@keyframes twinkle { 50% { filter: brightness(0.55); } }
+    radial-gradient(circle at 34% 30%, rgba(255, 255, 255, 0.55), transparent 42%),
+    radial-gradient(circle at 70% 78%, rgba(2, 6, 16, 0.85), transparent 60%),
+    repeating-linear-gradient(180deg, #9fbde3 0 6%, #7ea2cf 6% 9%, #b9d0ec 9% 15%, #6f93c2 15% 17%, #a7c3e6 17% 26%, #5d82b3 26% 28%);
+  box-shadow: inset -26px -20px 60px rgba(2, 8, 22, 0.75), inset 10px 8px 30px rgba(230, 242, 255, 0.35), 0 0 80px rgba(120, 170, 235, 0.35); }
+.globe i { position: absolute; inset: -20%; opacity: 0.25; mix-blend-mode: overlay;
+  background: repeating-linear-gradient(178deg, transparent 0 14px, rgba(255, 255, 255, 0.5) 14px 16px, transparent 16px 34px);
+  animation: bands 40s linear infinite; }
+@keyframes bands { to { transform: translateX(30%); } }
+.warp-on .ring { display: block; position: absolute; left: var(--cx); top: var(--cy); width: calc(var(--rx) * 2.1); aspect-ratio: 1; border-radius: 50%;
+  transform: translate(-50%, -50%) rotate(var(--tilt)) scaleY(var(--sq)); pointer-events: none;
+  background: radial-gradient(circle, transparent 0 30%, rgba(156, 192, 234, 0.10) 30.5%, rgba(190, 214, 245, 0.42) 34%, rgba(120, 160, 215, 0.18) 37%,
+    rgba(200, 222, 250, 0.5) 39%, rgba(150, 185, 230, 0.28) 42.5%, transparent 43.5%, rgba(150, 185, 230, 0.12) 45%, rgba(170, 200, 240, 0.08) 47.5%, transparent 48%); }
+.warp-on .ring-back { z-index: 20; clip-path: inset(0 0 50% 0); }
+.warp-on .ring-front { z-index: 32; clip-path: inset(50% 0 0 0); }
+
 .warp-on .warp-bar { display: block; position: absolute; left: var(--gutter); right: var(--gutter); bottom: 28px; height: 1px; background: var(--hair); z-index: 50; }
 .warp-bar i { position: absolute; left: 0; top: 0; bottom: 0; width: calc(var(--prog, 0) * 100%); background: var(--ink); }
 @media (max-width: 767px) {
@@ -68,7 +71,7 @@ html.night-ink .wordmark { color: var(--ink); }
   .warp-on .warp-now { margin-top: 16px; }
   .warp-name { font-size: clamp(1.6rem, 8vw, 2.4rem); }
   .warp-lede { display: none; }
-  .warp-on .work-card { width: clamp(130px, 44vw, 220px); }
+  .warp-on .work-card { width: clamp(84px, 24vw, 140px); }
 }
 
 /* ---------- Κριτικές ---------- */
