@@ -17,13 +17,24 @@
   var sites = [].slice.call(document.querySelectorAll('.site'));
   if (!sites.length) return;
   /* «Δείτε περισσότερες δουλειές»: ανοίγει τα υπόλοιπα έργα */
-  var moreBtn = document.getElementById('btn-more'), more = document.getElementById('more-sites');
-  if (moreBtn && more) moreBtn.addEventListener('click', function () {
-    var open = more.hidden; more.hidden = !open;
-    moreBtn.setAttribute('aria-expanded', String(open));
-    moreBtn.textContent = open ? 'Λιγότερες δουλειές ↑' : 'Δείτε περισσότερες δουλειές ↓';
-    if (open) { sites.forEach(fit); } else { document.getElementById('erga').scrollIntoView({ behavior: 'smooth' }); }
-  });
+  /* Καρουζέλ έργων: βέλη, μετρητής, σύρσιμο με ποντίκι */
+  var track = document.querySelector('.car-track');
+  if (track) {
+    var items = [].slice.call(track.querySelectorAll('.site')), countEl = document.querySelector('.car-count b');
+    var btnPrev = document.querySelector('.car-btn[data-car="-1"]'), btnNext = document.querySelector('.car-btn[data-car="1"]');
+    var idx = function () { var x = track.scrollLeft + 1, best = 0; items.forEach(function (it, i) { if (it.offsetLeft - items[0].offsetLeft <= x) best = i; }); return best; };
+    var update = function () { var i = idx(); if (countEl) countEl.textContent = i + 1; btnPrev.disabled = i === 0; btnNext.disabled = track.scrollLeft + track.clientWidth >= track.scrollWidth - 4; };
+    var go = function (d) { var i = Math.max(0, Math.min(items.length - 1, idx() + d)); track.scrollTo({ left: items[i].offsetLeft - items[0].offsetLeft, behavior: 'smooth' }); };
+    btnPrev.addEventListener('click', function () { go(-1); }); btnNext.addEventListener('click', function () { go(1); });
+    track.addEventListener('scroll', update, { passive: true }); update();
+    track.addEventListener('keydown', function (e) { if (e.key === 'ArrowRight') { go(1); e.preventDefault(); } if (e.key === 'ArrowLeft') { go(-1); e.preventDefault(); } });
+    /* σύρσιμο με ποντίκι στον υπολογιστή (τα κλικ πάνω σε κάρτα ανοίγουν κανονικά αν δεν έγινε σύρσιμο) */
+    var down = false, sx = 0, sl = 0, moved = false;
+    track.addEventListener('mousedown', function (e) { down = true; moved = false; sx = e.pageX; sl = track.scrollLeft; track.classList.add('dragging'); });
+    addEventListener('mousemove', function (e) { if (!down) return; var dx = e.pageX - sx; if (Math.abs(dx) > 6) moved = true; track.scrollLeft = sl - dx; });
+    addEventListener('mouseup', function () { if (!down) return; down = false; track.classList.remove('dragging'); });
+    track.addEventListener('click', function (e) { if (moved) { e.preventDefault(); moved = false; } }, true);
+  }
   var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
   var touch = !matchMedia('(hover: hover)').matches;
   /* κάθε οθόνη (υπολογιστής / κινητό) έχει δικό της --shift και --dur, ίδια ταχύτητα ~420px/s */

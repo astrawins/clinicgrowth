@@ -157,3 +157,22 @@ html.night-ink .cta-float:hover { background: #22476E; color: #F6F9FC; }
 /* σήμα cg στο header */
 .wordmark { display: inline-flex; align-items: center; gap: 10px; }
 .wordmark .mark { height: 26px; width: auto; display: block; filter: drop-shadow(0 1px 10px rgba(20, 32, 51, 0.28)); }
+
+/* ---------- Έργα: καρουζέλ ---------- */
+.work .wrap { max-width: none; padding-left: 0; padding-right: 0; }
+.work .wrap > .work-head { padding-left: var(--gutter); padding-right: var(--gutter); }
+.carousel { position: relative; }
+.car-track { display: flex; gap: clamp(20px, 2.6vw, 40px); overflow-x: auto; overscroll-behavior-x: contain; scroll-snap-type: x mandatory; scroll-behavior: smooth;
+  padding: 10px var(--gutter) 24px; scrollbar-width: none; -webkit-overflow-scrolling: touch; cursor: grab; }
+.car-track::-webkit-scrollbar { display: none; }
+.car-track.dragging { cursor: grabbing; scroll-snap-type: none; scroll-behavior: auto; }
+.car-track .site { flex: none; width: min(calc(50% - clamp(10px, 1.3vw, 20px)), 620px); scroll-snap-align: start; scroll-snap-stop: always; }
+.car-track .site .browser .screen { aspect-ratio: 16 / 9.4; }
+.car-nav { display: flex; align-items: center; gap: 14px; justify-content: flex-end; padding: 6px var(--gutter) 0; }
+.car-count { font-size: 0.68rem; letter-spacing: 0.16em; color: var(--soft); min-width: 72px; text-align: center; }
+.car-count b { color: var(--ink); font-weight: 500; }
+.car-btn { width: 52px; height: 52px; border-radius: 50%; border: 1px solid var(--hair); background: transparent; color: var(--ink); font-size: 18px; cursor: pointer; transition: background 180ms var(--ease-out), color 180ms var(--ease-out), border-color 180ms; }
+.car-btn:hover { background: var(--ink); color: var(--bg); border-color: var(--ink); }
+.car-btn[disabled] { opacity: 0.3; pointer-events: none; }
+@media (max-width: 900px) { .car-track .site { width: min(86vw, 520px); } }
+@media (max-width: 767px) { .car-track .site { width: 84vw; } .car-nav { justify-content: center; } }

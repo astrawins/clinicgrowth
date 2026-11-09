@@ -25,12 +25,12 @@
   <link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png">
   <link rel="preload" href="/assets/fonts/spline-sans-mono.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="/assets/css/main.css">
-  <link rel="stylesheet" href="/assets/css/cg.css?v=24">
+  <link rel="stylesheet" href="/assets/css/cg.css?v=25">
   <script src="/assets/js/cx.js"></script>
   <script src="/assets/js/lenis.min.js" defer></script>
   <script src="/assets/js/main.js" defer></script>
   <script src="/assets/js/constellation.js?v=2" defer></script>
-  <script src="/assets/js/work.js?v=15" defer></script>
+  <script src="/assets/js/work.js?v=16" defer></script>
   <script type="application/ld+json">{"@context": "https://schema.org", "@type": "ProfessionalService", "name": "clinicgrowth", "url": "https://clinicgrowth.gr/", "description": "Κατασκευή ιστοσελίδων για γιατρούς, κλινικές και αισθητικά κέντρα στην Ελλάδα.", "areaServed": "GR", "aggregateRating": {"@type": "AggregateRating", "ratingValue": "5.0", "reviewCount": "24"}}</script>
 </head>
 <body>
@@ -70,9 +70,10 @@
       <div class="wrap">
         <div class="work-head">
           <h2>Μερικές από τις δουλειές μας.</h2>
-          <p class="lede">Κάθε μία ολόκληρη, σε υπολογιστή και κινητό, όπως τη βλέπει ο ασθενής. Περάστε το ποντίκι ή κρατήστε πατημένο πάνω της για να κυλήσει μέχρι κάτω· πατήστε την για να την ανοίξετε.</p>
+          <p class="lede">Κάθε μία ολόκληρη, σε υπολογιστή και κινητό, όπως τη βλέπει ο ασθενής. Κυλήστε με τα βέλη ή με το δάχτυλο· περάστε το ποντίκι ή κρατήστε πατημένο πάνω της για να κατέβει μέχρι κάτω· πατήστε την για να την ανοίξετε.</p>
         </div>
-        <div class="sites sites-big">
+        <div class="carousel" id="sites-carousel">
+          <div class="car-track" tabindex="0" aria-label="Δουλειές μας, κυλήστε οριζόντια">
           <a class="site big" href="https://kmyrillas.gr/" target="_blank" rel="noopener">
             <span class="shots">
               <span class="browser">
@@ -129,9 +130,6 @@
             <span class="site-name">Δρ. Μ. Δήμου</span>
             <span class="site-spec mono">Οδοντίατρος · Σίνδος</span>
           </a>
-        </div>
-        <div class="sites-more" id="more-sites" hidden>
-          <div class="sites sites-big">
           <a class="site big" href="https://drmichaelrotas.gr/" target="_blank" rel="noopener">
             <span class="shots">
               <span class="browser">
@@ -188,13 +186,11 @@
             <span class="site-name">Beauty Lab by Elena Spyridaki</span>
             <span class="site-spec mono">Ινστιτούτο Αισθητικής · Σητεία</span>
           </a>
-          </div>
-          <div class="sites sites-grid">
-          <a class="site" href="https://drmountzouridi.gr" target="_blank" rel="noopener">
+          <a class="site big" href="https://drmountzouridi.gr" target="_blank" rel="noopener">
             <span class="shots">
               <span class="browser">
                 <span class="bar" aria-hidden="true"><i></i><i></i><i></i><b>drmountzouridi.gr</b></span>
-                <span class="screen"><img src="/assets/img/work/mountzouridi-720.webp" alt="Η αρχική σελίδα του drmountzouridi.gr σε υπολογιστή" width="720" loading="lazy" decoding="async"></span>
+                <span class="screen"><img src="/assets/img/work/mountzouridi-1200.webp" alt="Η αρχική σελίδα του drmountzouridi.gr σε υπολογιστή" width="1200" loading="lazy" decoding="async"></span>
               </span>
               <span class="phone">
                 <span class="notch" aria-hidden="true"></span>
@@ -204,11 +200,11 @@
             <span class="site-name">Δρ. Α. Μουντζουρίδη</span>
             <span class="site-spec mono">Γενικός &amp; Οικογενειακός Ιατρός · Πολίχνη</span>
           </a>
-          <a class="site" href="https://kardiologos-orestiada.gr" target="_blank" rel="noopener">
+          <a class="site big" href="https://kardiologos-orestiada.gr" target="_blank" rel="noopener">
             <span class="shots">
               <span class="browser">
                 <span class="bar" aria-hidden="true"><i></i><i></i><i></i><b>kardiologos-orestiada.gr</b></span>
-                <span class="screen"><img src="/assets/img/work/alexoudis-720.webp" alt="Η αρχική σελίδα του kardiologos-orestiada.gr σε υπολογιστή" width="720" loading="lazy" decoding="async"></span>
+                <span class="screen"><img src="/assets/img/work/alexoudis-1200.webp" alt="Η αρχική σελίδα του kardiologos-orestiada.gr σε υπολογιστή" width="1200" loading="lazy" decoding="async"></span>
               </span>
               <span class="phone">
                 <span class="notch" aria-hidden="true"></span>
@@ -218,11 +214,11 @@
             <span class="site-name">Α. Αλεξούδης</span>
             <span class="site-spec mono">Καρδιολόγος · Ορεστιάδα</span>
           </a>
-          <a class="site" href="https://www.dporthopedics.gr" target="_blank" rel="noopener">
+          <a class="site big" href="https://www.dporthopedics.gr" target="_blank" rel="noopener">
             <span class="shots">
               <span class="browser">
                 <span class="bar" aria-hidden="true"><i></i><i></i><i></i><b>dporthopedics.gr</b></span>
-                <span class="screen"><img src="/assets/img/work/dportho-720.webp" alt="Η αρχική σελίδα του dporthopedics.gr σε υπολογιστή" width="720" loading="lazy" decoding="async"></span>
+                <span class="screen"><img src="/assets/img/work/dportho-1200.webp" alt="Η αρχική σελίδα του dporthopedics.gr σε υπολογιστή" width="1200" loading="lazy" decoding="async"></span>
               </span>
               <span class="phone">
                 <span class="notch" aria-hidden="true"></span>
@@ -232,11 +228,11 @@
             <span class="site-name">Δρ. Α. Πατούσης</span>
             <span class="site-spec mono">Ορθοπαιδικός · Θεσσαλονίκη</span>
           </a>
-          <a class="site" href="https://www.meniakaranasiou.gr" target="_blank" rel="noopener">
+          <a class="site big" href="https://www.meniakaranasiou.gr" target="_blank" rel="noopener">
             <span class="shots">
               <span class="browser">
                 <span class="bar" aria-hidden="true"><i></i><i></i><i></i><b>meniakaranasiou.gr</b></span>
-                <span class="screen"><img src="/assets/img/work/karanasiou-720.webp" alt="Η αρχική σελίδα του meniakaranasiou.gr σε υπολογιστή" width="720" loading="lazy" decoding="async"></span>
+                <span class="screen"><img src="/assets/img/work/karanasiou-1200.webp" alt="Η αρχική σελίδα του meniakaranasiou.gr σε υπολογιστή" width="1200" loading="lazy" decoding="async"></span>
               </span>
               <span class="phone">
                 <span class="notch" aria-hidden="true"></span>
@@ -246,11 +242,11 @@
             <span class="site-name">Μ. Καρανάσιου</span>
             <span class="site-spec mono">Διαιτολόγος · Online</span>
           </a>
-          <a class="site" href="https://www.psychoptia.com/" target="_blank" rel="noopener">
+          <a class="site big" href="https://www.psychoptia.com/" target="_blank" rel="noopener">
             <span class="shots">
               <span class="browser">
                 <span class="bar" aria-hidden="true"><i></i><i></i><i></i><b>psychoptia.com</b></span>
-                <span class="screen"><img src="/assets/img/work/psychoptia-720.webp" alt="Η αρχική σελίδα του psychoptia.com σε υπολογιστή" width="720" loading="lazy" decoding="async"></span>
+                <span class="screen"><img src="/assets/img/work/psychoptia-1200.webp" alt="Η αρχική σελίδα του psychoptia.com σε υπολογιστή" width="1200" loading="lazy" decoding="async"></span>
               </span>
               <span class="phone">
                 <span class="notch" aria-hidden="true"></span>
@@ -260,11 +256,11 @@
             <span class="site-name">Χ. Σταματοπούλου</span>
             <span class="site-spec mono">Ψυχολόγος, MSc · Ηλιούπολη</span>
           </a>
-          <a class="site" href="https://biolabs.gr/" target="_blank" rel="noopener">
+          <a class="site big" href="https://biolabs.gr/" target="_blank" rel="noopener">
             <span class="shots">
               <span class="browser">
                 <span class="bar" aria-hidden="true"><i></i><i></i><i></i><b>biolabs.gr</b></span>
-                <span class="screen"><img src="/assets/img/work/biolab-720.webp" alt="Η αρχική σελίδα του biolabs.gr σε υπολογιστή" width="720" loading="lazy" decoding="async"></span>
+                <span class="screen"><img src="/assets/img/work/biolab-1200.webp" alt="Η αρχική σελίδα του biolabs.gr σε υπολογιστή" width="1200" loading="lazy" decoding="async"></span>
               </span>
               <span class="phone">
                 <span class="notch" aria-hidden="true"></span>
@@ -274,11 +270,11 @@
             <span class="site-name">BIOLAB</span>
             <span class="site-spec mono">Μικροβιολογικό Εργαστήριο · Σέρρες</span>
           </a>
-          <a class="site" href="https://droikonomidis.gr" target="_blank" rel="noopener">
+          <a class="site big" href="https://droikonomidis.gr" target="_blank" rel="noopener">
             <span class="shots">
               <span class="browser">
                 <span class="bar" aria-hidden="true"><i></i><i></i><i></i><b>droikonomidis.gr</b></span>
-                <span class="screen"><img src="/assets/img/work/oikonomidis-720.webp" alt="Η αρχική σελίδα του droikonomidis.gr σε υπολογιστή" width="720" loading="lazy" decoding="async"></span>
+                <span class="screen"><img src="/assets/img/work/oikonomidis-1200.webp" alt="Η αρχική σελίδα του droikonomidis.gr σε υπολογιστή" width="1200" loading="lazy" decoding="async"></span>
               </span>
               <span class="phone">
                 <span class="notch" aria-hidden="true"></span>
@@ -288,11 +284,11 @@
             <span class="site-name">Δρ. Α. Οικονομίδης</span>
             <span class="site-spec mono">Ορθοπαιδικός · Θεσσαλονίκη</span>
           </a>
-          <a class="site" href="https://www.ensofootclinic.gr/" target="_blank" rel="noopener">
+          <a class="site big" href="https://www.ensofootclinic.gr/" target="_blank" rel="noopener">
             <span class="shots">
               <span class="browser">
                 <span class="bar" aria-hidden="true"><i></i><i></i><i></i><b>ensofootclinic.gr</b></span>
-                <span class="screen"><img src="/assets/img/work/enso-720.webp" alt="Η αρχική σελίδα του ensofootclinic.gr σε υπολογιστή" width="720" loading="lazy" decoding="async"></span>
+                <span class="screen"><img src="/assets/img/work/enso-1200.webp" alt="Η αρχική σελίδα του ensofootclinic.gr σε υπολογιστή" width="1200" loading="lazy" decoding="async"></span>
               </span>
               <span class="phone">
                 <span class="notch" aria-hidden="true"></span>
@@ -302,11 +298,11 @@
             <span class="site-name">Ensō Foot Clinic</span>
             <span class="site-spec mono">Ποδολόγος · Θεσσαλονίκη &amp; Αθήνα</span>
           </a>
-          <a class="site" href="https://drpeitsidis.gr/" target="_blank" rel="noopener">
+          <a class="site big" href="https://drpeitsidis.gr/" target="_blank" rel="noopener">
             <span class="shots">
               <span class="browser">
                 <span class="bar" aria-hidden="true"><i></i><i></i><i></i><b>drpeitsidis.gr</b></span>
-                <span class="screen"><img src="/assets/img/work/peitsidis-720.webp" alt="Η αρχική σελίδα του drpeitsidis.gr σε υπολογιστή" width="720" loading="lazy" decoding="async"></span>
+                <span class="screen"><img src="/assets/img/work/peitsidis-1200.webp" alt="Η αρχική σελίδα του drpeitsidis.gr σε υπολογιστή" width="1200" loading="lazy" decoding="async"></span>
               </span>
               <span class="phone">
                 <span class="notch" aria-hidden="true"></span>
@@ -316,11 +312,11 @@
             <span class="site-name">Δρ. Ν. Πεϊτσίδης</span>
             <span class="site-spec mono">Μαιευτήρας-Γυναικολόγος · Θεσσαλονίκη</span>
           </a>
-          <a class="site" href="https://drtheodoulidis.gr/" target="_blank" rel="noopener">
+          <a class="site big" href="https://drtheodoulidis.gr/" target="_blank" rel="noopener">
             <span class="shots">
               <span class="browser">
                 <span class="bar" aria-hidden="true"><i></i><i></i><i></i><b>drtheodoulidis.gr</b></span>
-                <span class="screen"><img src="/assets/img/work/theodoulidis-720.webp" alt="Η αρχική σελίδα του drtheodoulidis.gr σε υπολογιστή" width="720" loading="lazy" decoding="async"></span>
+                <span class="screen"><img src="/assets/img/work/theodoulidis-1200.webp" alt="Η αρχική σελίδα του drtheodoulidis.gr σε υπολογιστή" width="1200" loading="lazy" decoding="async"></span>
               </span>
               <span class="phone">
                 <span class="notch" aria-hidden="true"></span>
@@ -330,11 +326,11 @@
             <span class="site-name">Δρ. Β. &amp; Ι. Θεοδουλίδης</span>
             <span class="site-spec mono">Μαιευτήρες-Γυναικολόγοι · Θεσσαλονίκη</span>
           </a>
-          <a class="site" href="https://gplasticsurgery.gr" target="_blank" rel="noopener">
+          <a class="site big" href="https://gplasticsurgery.gr" target="_blank" rel="noopener">
             <span class="shots">
               <span class="browser">
                 <span class="bar" aria-hidden="true"><i></i><i></i><i></i><b>gplasticsurgery.gr</b></span>
-                <span class="screen"><img src="/assets/img/work/gplastic-720.webp" alt="Η αρχική σελίδα του gplasticsurgery.gr σε υπολογιστή" width="720" loading="lazy" decoding="async"></span>
+                <span class="screen"><img src="/assets/img/work/gplastic-1200.webp" alt="Η αρχική σελίδα του gplasticsurgery.gr σε υπολογιστή" width="1200" loading="lazy" decoding="async"></span>
               </span>
               <span class="phone">
                 <span class="notch" aria-hidden="true"></span>
@@ -344,11 +340,11 @@
             <span class="site-name">Δρ. Γ. Πανταζή</span>
             <span class="site-spec mono">Πλαστικός Χειρουργός · Εύοσμος</span>
           </a>
-          <a class="site" href="https://www.smilecreationspeny.gr" target="_blank" rel="noopener">
+          <a class="site big" href="https://www.smilecreationspeny.gr" target="_blank" rel="noopener">
             <span class="shots">
               <span class="browser">
                 <span class="bar" aria-hidden="true"><i></i><i></i><i></i><b>smilecreationspeny.gr</b></span>
-                <span class="screen"><img src="/assets/img/work/smilecreations-720.webp" alt="Η αρχική σελίδα του smilecreationspeny.gr σε υπολογιστή" width="720" loading="lazy" decoding="async"></span>
+                <span class="screen"><img src="/assets/img/work/smilecreations-1200.webp" alt="Η αρχική σελίδα του smilecreationspeny.gr σε υπολογιστή" width="1200" loading="lazy" decoding="async"></span>
               </span>
               <span class="phone">
                 <span class="notch" aria-hidden="true"></span>
@@ -358,11 +354,11 @@
             <span class="site-name">Π. Αρβανιτίδου</span>
             <span class="site-spec mono">Οδοντίατρος · Ωραιόκαστρο</span>
           </a>
-          <a class="site" href="https://drvasilikifalaina.gr" target="_blank" rel="noopener">
+          <a class="site big" href="https://drvasilikifalaina.gr" target="_blank" rel="noopener">
             <span class="shots">
               <span class="browser">
                 <span class="bar" aria-hidden="true"><i></i><i></i><i></i><b>drvasilikifalaina.gr</b></span>
-                <span class="screen"><img src="/assets/img/work/falaina-720.webp" alt="Η αρχική σελίδα του drvasilikifalaina.gr σε υπολογιστή" width="720" loading="lazy" decoding="async"></span>
+                <span class="screen"><img src="/assets/img/work/falaina-1200.webp" alt="Η αρχική σελίδα του drvasilikifalaina.gr σε υπολογιστή" width="1200" loading="lazy" decoding="async"></span>
               </span>
               <span class="phone">
                 <span class="notch" aria-hidden="true"></span>
@@ -372,11 +368,11 @@
             <span class="site-name">Δρ. Β. Φαλαΐνα</span>
             <span class="site-spec mono">Παιδίατρος Νεογνολόγος · Μαρούσι</span>
           </a>
-          <a class="site" href="https://epafipsychology.gr" target="_blank" rel="noopener">
+          <a class="site big" href="https://epafipsychology.gr" target="_blank" rel="noopener">
             <span class="shots">
               <span class="browser">
                 <span class="bar" aria-hidden="true"><i></i><i></i><i></i><b>epafipsychology.gr</b></span>
-                <span class="screen"><img src="/assets/img/work/epafi-720.webp" alt="Η αρχική σελίδα του epafipsychology.gr σε υπολογιστή" width="720" loading="lazy" decoding="async"></span>
+                <span class="screen"><img src="/assets/img/work/epafi-1200.webp" alt="Η αρχική σελίδα του epafipsychology.gr σε υπολογιστή" width="1200" loading="lazy" decoding="async"></span>
               </span>
               <span class="phone">
                 <span class="notch" aria-hidden="true"></span>
@@ -386,11 +382,11 @@
             <span class="site-name">Γ. Σαρακίνη</span>
             <span class="site-spec mono">Ψυχολόγος, MSc · Ζάκυνθος</span>
           </a>
-          <a class="site" href="https://memoryandspeech.com" target="_blank" rel="noopener">
+          <a class="site big" href="https://memoryandspeech.com" target="_blank" rel="noopener">
             <span class="shots">
               <span class="browser">
                 <span class="bar" aria-hidden="true"><i></i><i></i><i></i><b>memoryandspeech.com</b></span>
-                <span class="screen"><img src="/assets/img/work/memoryspeech-720.webp" alt="Η αρχική σελίδα του memoryandspeech.com σε υπολογιστή" width="720" loading="lazy" decoding="async"></span>
+                <span class="screen"><img src="/assets/img/work/memoryspeech-1200.webp" alt="Η αρχική σελίδα του memoryandspeech.com σε υπολογιστή" width="1200" loading="lazy" decoding="async"></span>
               </span>
               <span class="phone">
                 <span class="notch" aria-hidden="true"></span>
@@ -400,11 +396,11 @@
             <span class="site-name">Δρ. Κ. Κωνσταντόπουλος</span>
             <span class="site-spec mono">Λογοθεραπεία · Νέα Μάκρη</span>
           </a>
-          <a class="site" href="https://www.careloft.gr" target="_blank" rel="noopener">
+          <a class="site big" href="https://www.careloft.gr" target="_blank" rel="noopener">
             <span class="shots">
               <span class="browser">
                 <span class="bar" aria-hidden="true"><i></i><i></i><i></i><b>careloft.gr</b></span>
-                <span class="screen"><img src="/assets/img/work/careloft-720.webp" alt="Η αρχική σελίδα του careloft.gr σε υπολογιστή" width="720" loading="lazy" decoding="async"></span>
+                <span class="screen"><img src="/assets/img/work/careloft-1200.webp" alt="Η αρχική σελίδα του careloft.gr σε υπολογιστή" width="1200" loading="lazy" decoding="async"></span>
               </span>
               <span class="phone">
                 <span class="notch" aria-hidden="true"></span>
@@ -414,11 +410,11 @@
             <span class="site-name">Δρ Π. Σιαπέρας</span>
             <span class="site-spec mono">Ψυχολόγος · Αγία Παρασκευή</span>
           </a>
-          <a class="site" href="https://menelaoslambropoulos.gr" target="_blank" rel="noopener">
+          <a class="site big" href="https://menelaoslambropoulos.gr" target="_blank" rel="noopener">
             <span class="shots">
               <span class="browser">
                 <span class="bar" aria-hidden="true"><i></i><i></i><i></i><b>menelaoslambropoulos.gr</b></span>
-                <span class="screen"><img src="/assets/img/work/lambropoulos-720.webp" alt="Η αρχική σελίδα του menelaoslambropoulos.gr σε υπολογιστή" width="720" loading="lazy" decoding="async"></span>
+                <span class="screen"><img src="/assets/img/work/lambropoulos-1200.webp" alt="Η αρχική σελίδα του menelaoslambropoulos.gr σε υπολογιστή" width="1200" loading="lazy" decoding="async"></span>
               </span>
               <span class="phone">
                 <span class="notch" aria-hidden="true"></span>
@@ -428,11 +424,11 @@
             <span class="site-name">Δρ. Μ. Λαμπρόπουλος</span>
             <span class="site-spec mono">Μαιευτήρας-Γυναικολόγος · Θεσσαλονίκη</span>
           </a>
-          <a class="site" href="https://www.gynaikologos-koumplis.com" target="_blank" rel="noopener">
+          <a class="site big" href="https://www.gynaikologos-koumplis.com" target="_blank" rel="noopener">
             <span class="shots">
               <span class="browser">
                 <span class="bar" aria-hidden="true"><i></i><i></i><i></i><b>gynaikologos-koumplis.com</b></span>
-                <span class="screen"><img src="/assets/img/work/koumplis-720.webp" alt="Η αρχική σελίδα του gynaikologos-koumplis.com σε υπολογιστή" width="720" loading="lazy" decoding="async"></span>
+                <span class="screen"><img src="/assets/img/work/koumplis-1200.webp" alt="Η αρχική σελίδα του gynaikologos-koumplis.com σε υπολογιστή" width="1200" loading="lazy" decoding="async"></span>
               </span>
               <span class="phone">
                 <span class="notch" aria-hidden="true"></span>
@@ -442,11 +438,11 @@
             <span class="site-name">Δρ. Μ. Κουμπλής</span>
             <span class="site-spec mono">Μαιευτήρας-Γυναικολόγος · Θεσσαλονίκη</span>
           </a>
-          <a class="site" href="https://drmantikos.gr" target="_blank" rel="noopener">
+          <a class="site big" href="https://drmantikos.gr" target="_blank" rel="noopener">
             <span class="shots">
               <span class="browser">
                 <span class="bar" aria-hidden="true"><i></i><i></i><i></i><b>drmantikos.gr</b></span>
-                <span class="screen"><img src="/assets/img/work/mantikos-720.webp" alt="Η αρχική σελίδα του drmantikos.gr σε υπολογιστή" width="720" loading="lazy" decoding="async"></span>
+                <span class="screen"><img src="/assets/img/work/mantikos-1200.webp" alt="Η αρχική σελίδα του drmantikos.gr σε υπολογιστή" width="1200" loading="lazy" decoding="async"></span>
               </span>
               <span class="phone">
                 <span class="notch" aria-hidden="true"></span>
@@ -456,11 +452,11 @@
             <span class="site-name">Δρ. Κ. Μαντικός</span>
             <span class="site-spec mono">Γενικός Ιατρός · Αθήνα</span>
           </a>
-          <a class="site" href="https://matsoukatidis.gr" target="_blank" rel="noopener">
+          <a class="site big" href="https://matsoukatidis.gr" target="_blank" rel="noopener">
             <span class="shots">
               <span class="browser">
                 <span class="bar" aria-hidden="true"><i></i><i></i><i></i><b>matsoukatidis.gr</b></span>
-                <span class="screen"><img src="/assets/img/work/matsoukatidis-720.webp" alt="Η αρχική σελίδα του matsoukatidis.gr σε υπολογιστή" width="720" loading="lazy" decoding="async"></span>
+                <span class="screen"><img src="/assets/img/work/matsoukatidis-1200.webp" alt="Η αρχική σελίδα του matsoukatidis.gr σε υπολογιστή" width="1200" loading="lazy" decoding="async"></span>
               </span>
               <span class="phone">
                 <span class="notch" aria-hidden="true"></span>
@@ -470,11 +466,11 @@
             <span class="site-name">Π. Ματσουκατίδης</span>
             <span class="site-spec mono">Μαιευτήρας-Γυναικολόγος · Δράμα</span>
           </a>
-          <a class="site" href="https://kalliopihealthsupport.gr" target="_blank" rel="noopener">
+          <a class="site big" href="https://kalliopihealthsupport.gr" target="_blank" rel="noopener">
             <span class="shots">
               <span class="browser">
                 <span class="bar" aria-hidden="true"><i></i><i></i><i></i><b>kalliopihealthsupport.gr</b></span>
-                <span class="screen"><img src="/assets/img/work/kalliopi-720.webp" alt="Η αρχική σελίδα του kalliopihealthsupport.gr σε υπολογιστή" width="720" loading="lazy" decoding="async"></span>
+                <span class="screen"><img src="/assets/img/work/kalliopi-1200.webp" alt="Η αρχική σελίδα του kalliopihealthsupport.gr σε υπολογιστή" width="1200" loading="lazy" decoding="async"></span>
               </span>
               <span class="phone">
                 <span class="notch" aria-hidden="true"></span>
@@ -484,11 +480,11 @@
             <span class="site-name">Κ. Κολοβού</span>
             <span class="site-spec mono">Νοσηλευτική Υποστήριξη · Γαλάτσι</span>
           </a>
-          <a class="site" href="https://georgiostsirakopoulos.gr" target="_blank" rel="noopener">
+          <a class="site big" href="https://georgiostsirakopoulos.gr" target="_blank" rel="noopener">
             <span class="shots">
               <span class="browser">
                 <span class="bar" aria-hidden="true"><i></i><i></i><i></i><b>georgiostsirakopoulos.gr</b></span>
-                <span class="screen"><img src="/assets/img/work/tsirakopoulos-720.webp" alt="Η αρχική σελίδα του georgiostsirakopoulos.gr σε υπολογιστή" width="720" loading="lazy" decoding="async"></span>
+                <span class="screen"><img src="/assets/img/work/tsirakopoulos-1200.webp" alt="Η αρχική σελίδα του georgiostsirakopoulos.gr σε υπολογιστή" width="1200" loading="lazy" decoding="async"></span>
               </span>
               <span class="phone">
                 <span class="notch" aria-hidden="true"></span>
@@ -498,11 +494,11 @@
             <span class="site-name">Γ. Τσιρακόπουλος</span>
             <span class="site-spec mono">Μαιευτήρας-Γυναικολόγος · Αθήνα</span>
           </a>
-          <a class="site" href="https://www.kourmpetimentalhealth.gr" target="_blank" rel="noopener">
+          <a class="site big" href="https://www.kourmpetimentalhealth.gr" target="_blank" rel="noopener">
             <span class="shots">
               <span class="browser">
                 <span class="bar" aria-hidden="true"><i></i><i></i><i></i><b>kourmpetimentalhealth.gr</b></span>
-                <span class="screen"><img src="/assets/img/work/kourmpeti-720.webp" alt="Η αρχική σελίδα του kourmpetimentalhealth.gr σε υπολογιστή" width="720" loading="lazy" decoding="async"></span>
+                <span class="screen"><img src="/assets/img/work/kourmpeti-1200.webp" alt="Η αρχική σελίδα του kourmpetimentalhealth.gr σε υπολογιστή" width="1200" loading="lazy" decoding="async"></span>
               </span>
               <span class="phone">
                 <span class="notch" aria-hidden="true"></span>
@@ -512,11 +508,11 @@
             <span class="site-name">Γ. Κουρμπέτη</span>
             <span class="site-spec mono">Ψυχολόγος, MSc · Θεσσαλονίκη</span>
           </a>
-          <a class="site" href="https://orthopedic-skiathos.gr" target="_blank" rel="noopener">
+          <a class="site big" href="https://orthopedic-skiathos.gr" target="_blank" rel="noopener">
             <span class="shots">
               <span class="browser">
                 <span class="bar" aria-hidden="true"><i></i><i></i><i></i><b>orthopedic-skiathos.gr</b></span>
-                <span class="screen"><img src="/assets/img/work/kontomanis-720.webp" alt="Η αρχική σελίδα του orthopedic-skiathos.gr σε υπολογιστή" width="720" loading="lazy" decoding="async"></span>
+                <span class="screen"><img src="/assets/img/work/kontomanis-1200.webp" alt="Η αρχική σελίδα του orthopedic-skiathos.gr σε υπολογιστή" width="1200" loading="lazy" decoding="async"></span>
               </span>
               <span class="phone">
                 <span class="notch" aria-hidden="true"></span>
@@ -527,8 +523,11 @@
             <span class="site-spec mono">Ορθοπαιδικός · Σκιάθος</span>
           </a>
           </div>
-        </div>
-        <p class="more-wrap"><button type="button" class="btn btn-ghost" id="btn-more" aria-controls="more-sites" aria-expanded="false">Δείτε περισσότερες δουλειές ↓</button></p>
+          <div class="car-nav">
+            <button type="button" class="car-btn" data-car="-1" aria-label="Προηγούμενη">←</button>
+            <span class="car-count mono"><b>1</b> / 32</span>
+            <button type="button" class="car-btn" data-car="1" aria-label="Επόμενη">→</button>
+          </div>
         </div>
       </div>
     </section>
@@ -599,78 +598,78 @@
             <div class="rev-track">
               <div class="rev-set">
           <figure class="review">
-            <blockquote>Χίλια μπράβο σε αυτά τα νέα παιδιά για το ήθος, την εργατικότητα, την συνέπεια και τον αγώνα να διακριθούν μέσα σε ένα δύσκολο και απαιτητικό χώρο! Είμαι σίγουρη ότι θα πετύχουν ειδικά αν διατηρήσουν την γνήσια φιλία τους! Εγώ πάντως θα τους συστήνω ανεπιφύλακτα!</blockquote>
-            <figcaption><span class="r-name">Πένυ Αρβανιτίδου</span><span class="r-spec mono">Οδοντίατρος · Ωραιόκαστρο</span></figcaption>
+            <blockquote>Εξαιρετική συνεργασία με την ομάδα της ClinicBrain! Επαγγελματισμός, άμεση εξυπηρέτηση και ένα πολύ όμορφο και λειτουργικό αποτέλεσμα. Ευχαριστώ ιδιαίτερα τον Αποστόλη για την άψογη συνεργασία. Τους προτείνω ανεπιφύλακτα!</blockquote>
+            <figcaption><span class="r-name">Δρ. Γλυκερία Πανταζή</span><span class="r-spec mono">Πλαστικός Χειρουργός · Εύοσμος</span></figcaption>
           </figure>
           <figure class="review">
             <blockquote>Έμεινα πολύ ευχαριστημένος από τη δουλειά τους, συνιστώ!!</blockquote>
             <figcaption><span class="r-name">Δρ. Αλέξανδρος Οικονομίδης</span><span class="r-spec mono">Ορθοπαιδικός · Θεσσαλονίκη</span></figcaption>
           </figure>
           <figure class="review">
-            <blockquote>Εξαιρετική ομάδας. Πολύ ευγενικοί, συνεργάσιμοι, υπομονετικοί. Έμεινα πάρα πολύ ευχαριστημένος. Τους συστήνω ανεπιφύλακτα. Αντιλήφθηκαν από την πρώτη στιγμής όλες τις ιδιαιτερότητες που είχαμε. Τις κάλυψαν και με το παραπάνω. Συγχαρητήρια. Τρομεροί επαγγελματίες</blockquote>
-            <figcaption><span class="r-name">Δρ. Μενέλαος Λαμπρόπουλος</span><span class="r-spec mono">Μαιευτήρας-Γυναικολόγος · Θεσσαλονίκη</span></figcaption>
-          </figure>
-          <figure class="review">
             <blockquote>Εξαιρετική δουλειά !</blockquote>
             <figcaption><span class="r-name">Δρ. Μαγδαληνή Δήμου</span><span class="r-spec mono">Οδοντίατρος · Σίνδος</span></figcaption>
-          </figure>
-          <figure class="review">
-            <blockquote>Εξαιρετικοί επαγγελματιες.Απολυτα ευχαριστημένος από την συνεργασία μας.Τους συνιστώ ανεπιφύλακτα.</blockquote>
-            <figcaption><span class="r-name">Φίλιππος Σακκάς</span><span class="r-spec mono">Χειρουργός Ουρολόγος</span></figcaption>
           </figure>
           <figure class="review">
             <blockquote>Τα παιδιά εξαιρετικά! Συνεπή και με προθυμία. ήδη τους έχω συστήσει σε συναδέλφους!</blockquote>
             <figcaption><span class="r-name">Anna Gerothanassi</span></figcaption>
           </figure>
           <figure class="review">
-            <blockquote>Εξαιρετική δουλειά και γρήγορα!!!ευχαριστώ για τη συνεργασία..</blockquote>
-            <figcaption><span class="r-name">Δρ. Αργυρώ Μουντζουρίδη</span><span class="r-spec mono">Γενικός &amp; Οικογενειακός Ιατρός · Πολίχνη</span></figcaption>
-          </figure>
-          <figure class="review">
             <blockquote>Είμαι πολύ ευχαριστημένη! Εξαιρετική συνεργασία και γνώση του αντικειμένου ! Μου δημιούργησαν ακριβώς την ιστοσελίδα που ήθελα ! Σας τοὺς συνιστώ ανεπιφύλακτα !</blockquote>
             <figcaption><span class="r-name">Καλλιόπη Κολοβού</span><span class="r-spec mono">Νοσηλευτική Υποστήριξη · Γαλάτσι</span></figcaption>
           </figure>
           <figure class="review">
-            <blockquote>Οι καλύτεροι επαγγελματιες που εχω γνωρίσει τα τελευταία χρονια. Κορυφαία συνεργασια. Άριστο επίπεδο και αποτέλεσμα.</blockquote>
-            <figcaption><span class="r-name">Δρ. Κωνσταντίνος Μαντικός</span><span class="r-spec mono">Γενικός Ιατρός · Αθήνα</span></figcaption>
+            <blockquote>Έχω να πω ότι από το πρώτο τηλέφωνο υπήρχε άψογη επικοινωνία -σαφή και γρήγορα βήματα .Αριστο αποτέλεσμα σας ευχαριστώ πολύ για την συνεργασία !</blockquote>
+            <figcaption><span class="r-name">Παναγιώτης Ματσουκατίδης</span><span class="r-spec mono">Μαιευτήρας-Γυναικολόγος · Δράμα</span></figcaption>
+          </figure>
+          <figure class="review">
+            <blockquote>Πολυ καλοι επαγγελματιες και κανουν αυτο ακριβως που υποσχονται. Σωστο και γρηγορο αποτελεσμα στην κατασκευη ιστοσελιδας, σωστη και ειλικρινης συμβουλη και καθοδηγηση σε ολη την διαρκεια της συνεργασιας. Πραγματικα εντυπωσιακο για τα ελληνικα δεδομενα. Συνιστωνται ανεπιφυλακτα !!</blockquote>
+            <figcaption><span class="r-name">Δρ. Ιωάννης Κοντομάνης</span><span class="r-spec mono">Ορθοπαιδικός · Σκιάθος</span></figcaption>
+          </figure>
+          <figure class="review">
+            <blockquote>Η καλύτερη επιλογή για έναν επαγγελματία . Άψογη συνεργασία ,ποιοτική δουλειά σε χρόνο ρεκόρ .Αν θέλετε μια ολοκληρωμένη προβολή της επιχείρησης σας η του γραφείου σας σας το συστήνω ανεπιφύλακτα .</blockquote>
+            <figcaption><span class="r-name">Geodhmarv Arva-sara</span><span class="r-spec mono">Παθολόγος</span></figcaption>
+          </figure>
+          <figure class="review">
+            <blockquote>Υπέροχη συνεργασία με απόλυτη επαγγελματική προσέγγιση απο ευγενεστατους και καταρτισμενους νέας γενιάς ανθρώπους...το αποτέλεσμα ήταν κορυφαίο !!! Ένα μεγάλο μπράβο στην ομάδα !!!</blockquote>
+            <figcaption><span class="r-name">Γεώργιος Τσιρακόπουλος</span><span class="r-spec mono">Μαιευτήρας-Γυναικολόγος · Αθήνα</span></figcaption>
           </figure>
               </div>
               <div class="rev-set">
           <figure class="review" aria-hidden="true">
-            <blockquote>Χίλια μπράβο σε αυτά τα νέα παιδιά για το ήθος, την εργατικότητα, την συνέπεια και τον αγώνα να διακριθούν μέσα σε ένα δύσκολο και απαιτητικό χώρο! Είμαι σίγουρη ότι θα πετύχουν ειδικά αν διατηρήσουν την γνήσια φιλία τους! Εγώ πάντως θα τους συστήνω ανεπιφύλακτα!</blockquote>
-            <figcaption><span class="r-name">Πένυ Αρβανιτίδου</span><span class="r-spec mono">Οδοντίατρος · Ωραιόκαστρο</span></figcaption>
+            <blockquote>Εξαιρετική συνεργασία με την ομάδα της ClinicBrain! Επαγγελματισμός, άμεση εξυπηρέτηση και ένα πολύ όμορφο και λειτουργικό αποτέλεσμα. Ευχαριστώ ιδιαίτερα τον Αποστόλη για την άψογη συνεργασία. Τους προτείνω ανεπιφύλακτα!</blockquote>
+            <figcaption><span class="r-name">Δρ. Γλυκερία Πανταζή</span><span class="r-spec mono">Πλαστικός Χειρουργός · Εύοσμος</span></figcaption>
           </figure>
           <figure class="review" aria-hidden="true">
             <blockquote>Έμεινα πολύ ευχαριστημένος από τη δουλειά τους, συνιστώ!!</blockquote>
             <figcaption><span class="r-name">Δρ. Αλέξανδρος Οικονομίδης</span><span class="r-spec mono">Ορθοπαιδικός · Θεσσαλονίκη</span></figcaption>
           </figure>
           <figure class="review" aria-hidden="true">
-            <blockquote>Εξαιρετική ομάδας. Πολύ ευγενικοί, συνεργάσιμοι, υπομονετικοί. Έμεινα πάρα πολύ ευχαριστημένος. Τους συστήνω ανεπιφύλακτα. Αντιλήφθηκαν από την πρώτη στιγμής όλες τις ιδιαιτερότητες που είχαμε. Τις κάλυψαν και με το παραπάνω. Συγχαρητήρια. Τρομεροί επαγγελματίες</blockquote>
-            <figcaption><span class="r-name">Δρ. Μενέλαος Λαμπρόπουλος</span><span class="r-spec mono">Μαιευτήρας-Γυναικολόγος · Θεσσαλονίκη</span></figcaption>
-          </figure>
-          <figure class="review" aria-hidden="true">
             <blockquote>Εξαιρετική δουλειά !</blockquote>
             <figcaption><span class="r-name">Δρ. Μαγδαληνή Δήμου</span><span class="r-spec mono">Οδοντίατρος · Σίνδος</span></figcaption>
-          </figure>
-          <figure class="review" aria-hidden="true">
-            <blockquote>Εξαιρετικοί επαγγελματιες.Απολυτα ευχαριστημένος από την συνεργασία μας.Τους συνιστώ ανεπιφύλακτα.</blockquote>
-            <figcaption><span class="r-name">Φίλιππος Σακκάς</span><span class="r-spec mono">Χειρουργός Ουρολόγος</span></figcaption>
           </figure>
           <figure class="review" aria-hidden="true">
             <blockquote>Τα παιδιά εξαιρετικά! Συνεπή και με προθυμία. ήδη τους έχω συστήσει σε συναδέλφους!</blockquote>
             <figcaption><span class="r-name">Anna Gerothanassi</span></figcaption>
           </figure>
           <figure class="review" aria-hidden="true">
-            <blockquote>Εξαιρετική δουλειά και γρήγορα!!!ευχαριστώ για τη συνεργασία..</blockquote>
-            <figcaption><span class="r-name">Δρ. Αργυρώ Μουντζουρίδη</span><span class="r-spec mono">Γενικός &amp; Οικογενειακός Ιατρός · Πολίχνη</span></figcaption>
-          </figure>
-          <figure class="review" aria-hidden="true">
             <blockquote>Είμαι πολύ ευχαριστημένη! Εξαιρετική συνεργασία και γνώση του αντικειμένου ! Μου δημιούργησαν ακριβώς την ιστοσελίδα που ήθελα ! Σας τοὺς συνιστώ ανεπιφύλακτα !</blockquote>
             <figcaption><span class="r-name">Καλλιόπη Κολοβού</span><span class="r-spec mono">Νοσηλευτική Υποστήριξη · Γαλάτσι</span></figcaption>
           </figure>
           <figure class="review" aria-hidden="true">
-            <blockquote>Οι καλύτεροι επαγγελματιες που εχω γνωρίσει τα τελευταία χρονια. Κορυφαία συνεργασια. Άριστο επίπεδο και αποτέλεσμα.</blockquote>
-            <figcaption><span class="r-name">Δρ. Κωνσταντίνος Μαντικός</span><span class="r-spec mono">Γενικός Ιατρός · Αθήνα</span></figcaption>
+            <blockquote>Έχω να πω ότι από το πρώτο τηλέφωνο υπήρχε άψογη επικοινωνία -σαφή και γρήγορα βήματα .Αριστο αποτέλεσμα σας ευχαριστώ πολύ για την συνεργασία !</blockquote>
+            <figcaption><span class="r-name">Παναγιώτης Ματσουκατίδης</span><span class="r-spec mono">Μαιευτήρας-Γυναικολόγος · Δράμα</span></figcaption>
+          </figure>
+          <figure class="review" aria-hidden="true">
+            <blockquote>Πολυ καλοι επαγγελματιες και κανουν αυτο ακριβως που υποσχονται. Σωστο και γρηγορο αποτελεσμα στην κατασκευη ιστοσελιδας, σωστη και ειλικρινης συμβουλη και καθοδηγηση σε ολη την διαρκεια της συνεργασιας. Πραγματικα εντυπωσιακο για τα ελληνικα δεδομενα. Συνιστωνται ανεπιφυλακτα !!</blockquote>
+            <figcaption><span class="r-name">Δρ. Ιωάννης Κοντομάνης</span><span class="r-spec mono">Ορθοπαιδικός · Σκιάθος</span></figcaption>
+          </figure>
+          <figure class="review" aria-hidden="true">
+            <blockquote>Η καλύτερη επιλογή για έναν επαγγελματία . Άψογη συνεργασία ,ποιοτική δουλειά σε χρόνο ρεκόρ .Αν θέλετε μια ολοκληρωμένη προβολή της επιχείρησης σας η του γραφείου σας σας το συστήνω ανεπιφύλακτα .</blockquote>
+            <figcaption><span class="r-name">Geodhmarv Arva-sara</span><span class="r-spec mono">Παθολόγος</span></figcaption>
+          </figure>
+          <figure class="review" aria-hidden="true">
+            <blockquote>Υπέροχη συνεργασία με απόλυτη επαγγελματική προσέγγιση απο ευγενεστατους και καταρτισμενους νέας γενιάς ανθρώπους...το αποτέλεσμα ήταν κορυφαίο !!! Ένα μεγάλο μπράβο στην ομάδα !!!</blockquote>
+            <figcaption><span class="r-name">Γεώργιος Τσιρακόπουλος</span><span class="r-spec mono">Μαιευτήρας-Γυναικολόγος · Αθήνα</span></figcaption>
           </figure>
               </div>
             </div>
@@ -679,36 +678,36 @@
             <div class="rev-track">
               <div class="rev-set">
           <figure class="review">
-            <blockquote>Έχω να πω ότι από το πρώτο τηλέφωνο υπήρχε άψογη επικοινωνία -σαφή και γρήγορα βήματα .Αριστο αποτέλεσμα σας ευχαριστώ πολύ για την συνεργασία !</blockquote>
-            <figcaption><span class="r-name">Παναγιώτης Ματσουκατίδης</span><span class="r-spec mono">Μαιευτήρας-Γυναικολόγος · Δράμα</span></figcaption>
+            <blockquote>Χίλια μπράβο σε αυτά τα νέα παιδιά για το ήθος, την εργατικότητα, την συνέπεια και τον αγώνα να διακριθούν μέσα σε ένα δύσκολο και απαιτητικό χώρο! Είμαι σίγουρη ότι θα πετύχουν ειδικά αν διατηρήσουν την γνήσια φιλία τους! Εγώ πάντως θα τους συστήνω ανεπιφύλακτα!</blockquote>
+            <figcaption><span class="r-name">Πένυ Αρβανιτίδου</span><span class="r-spec mono">Οδοντίατρος · Ωραιόκαστρο</span></figcaption>
+          </figure>
+          <figure class="review">
+            <blockquote>Εξαιρετική ομάδας. Πολύ ευγενικοί, συνεργάσιμοι, υπομονετικοί. Έμεινα πάρα πολύ ευχαριστημένος. Τους συστήνω ανεπιφύλακτα. Αντιλήφθηκαν από την πρώτη στιγμής όλες τις ιδιαιτερότητες που είχαμε. Τις κάλυψαν και με το παραπάνω. Συγχαρητήρια. Τρομεροί επαγγελματίες</blockquote>
+            <figcaption><span class="r-name">Δρ. Μενέλαος Λαμπρόπουλος</span><span class="r-spec mono">Μαιευτήρας-Γυναικολόγος · Θεσσαλονίκη</span></figcaption>
+          </figure>
+          <figure class="review">
+            <blockquote>Εξαιρετικοί επαγγελματιες.Απολυτα ευχαριστημένος από την συνεργασία μας.Τους συνιστώ ανεπιφύλακτα.</blockquote>
+            <figcaption><span class="r-name">Φίλιππος Σακκάς</span><span class="r-spec mono">Χειρουργός Ουρολόγος</span></figcaption>
+          </figure>
+          <figure class="review">
+            <blockquote>Εξαιρετική δουλειά και γρήγορα!!!ευχαριστώ για τη συνεργασία..</blockquote>
+            <figcaption><span class="r-name">Δρ. Αργυρώ Μουντζουρίδη</span><span class="r-spec mono">Γενικός &amp; Οικογενειακός Ιατρός · Πολίχνη</span></figcaption>
+          </figure>
+          <figure class="review">
+            <blockquote>Οι καλύτεροι επαγγελματιες που εχω γνωρίσει τα τελευταία χρονια. Κορυφαία συνεργασια. Άριστο επίπεδο και αποτέλεσμα.</blockquote>
+            <figcaption><span class="r-name">Δρ. Κωνσταντίνος Μαντικός</span><span class="r-spec mono">Γενικός Ιατρός · Αθήνα</span></figcaption>
           </figure>
           <figure class="review">
             <blockquote>Εξαιρετικοί σε όλα, τους συστήνω χωρίς καμία επιφύλαξη</blockquote>
             <figcaption><span class="r-name">Dr. Georgios Eleftheriou</span><span class="r-spec mono">Γενικός Γραμματέας Πανελληνίου Ιατρικού Συλλόγου</span></figcaption>
           </figure>
           <figure class="review">
-            <blockquote>Πολυ καλοι επαγγελματιες και κανουν αυτο ακριβως που υποσχονται. Σωστο και γρηγορο αποτελεσμα στην κατασκευη ιστοσελιδας, σωστη και ειλικρινης συμβουλη και καθοδηγηση σε ολη την διαρκεια της συνεργασιας. Πραγματικα εντυπωσιακο για τα ελληνικα δεδομενα. Συνιστωνται ανεπιφυλακτα !!</blockquote>
-            <figcaption><span class="r-name">Δρ. Ιωάννης Κοντομάνης</span><span class="r-spec mono">Ορθοπαιδικός · Σκιάθος</span></figcaption>
-          </figure>
-          <figure class="review">
             <blockquote>Άψογη συνεργασία, πρόθυμη ομάδα να ακούσει τις επιθυμίες μας, άμεση ανταπόκριση, ανταγωνιστικές τιμές.</blockquote>
             <figcaption><span class="r-name">Γιάννης Θ. Τράπαλης</span><span class="r-spec mono">DENTALL Οδοντιατρείο · Γαλάτσι</span></figcaption>
           </figure>
           <figure class="review">
-            <blockquote>Η καλύτερη επιλογή για έναν επαγγελματία . Άψογη συνεργασία ,ποιοτική δουλειά σε χρόνο ρεκόρ .Αν θέλετε μια ολοκληρωμένη προβολή της επιχείρησης σας η του γραφείου σας σας το συστήνω ανεπιφύλακτα .</blockquote>
-            <figcaption><span class="r-name">Geodhmarv Arva-sara</span><span class="r-spec mono">Παθολόγος</span></figcaption>
-          </figure>
-          <figure class="review">
             <blockquote>Επαγγελματισμός, συνέπεια, αμεσότητα, άψογο αποτέλεσμα. Τους συστήνω!</blockquote>
             <figcaption><span class="r-name">Μένια Καρανάσιου</span><span class="r-spec mono">Διαιτολόγος · Online</span></figcaption>
-          </figure>
-          <figure class="review">
-            <blockquote>Υπέροχη συνεργασία με απόλυτη επαγγελματική προσέγγιση απο ευγενεστατους και καταρτισμενους νέας γενιάς ανθρώπους...το αποτέλεσμα ήταν κορυφαίο !!! Ένα μεγάλο μπράβο στην ομάδα !!!</blockquote>
-            <figcaption><span class="r-name">Γεώργιος Τσιρακόπουλος</span><span class="r-spec mono">Μαιευτήρας-Γυναικολόγος · Αθήνα</span></figcaption>
-          </figure>
-          <figure class="review">
-            <blockquote>Εξαιρετική συνεργασία με την ομάδα της ClinicBrain! Επαγγελματισμός, άμεση εξυπηρέτηση και ένα πολύ όμορφο και λειτουργικό αποτέλεσμα. Ευχαριστώ ιδιαίτερα τον Αποστόλη για την άψογη συνεργασία. Τους προτείνω ανεπιφύλακτα!</blockquote>
-            <figcaption><span class="r-name">Δρ. Γλυκερία Πανταζή</span><span class="r-spec mono">Πλαστικός Χειρουργός · Εύοσμος</span></figcaption>
           </figure>
           <figure class="review">
             <blockquote>Άψογη συνεργασία. Συνέπεια.</blockquote>
@@ -717,36 +716,36 @@
               </div>
               <div class="rev-set">
           <figure class="review" aria-hidden="true">
-            <blockquote>Έχω να πω ότι από το πρώτο τηλέφωνο υπήρχε άψογη επικοινωνία -σαφή και γρήγορα βήματα .Αριστο αποτέλεσμα σας ευχαριστώ πολύ για την συνεργασία !</blockquote>
-            <figcaption><span class="r-name">Παναγιώτης Ματσουκατίδης</span><span class="r-spec mono">Μαιευτήρας-Γυναικολόγος · Δράμα</span></figcaption>
+            <blockquote>Χίλια μπράβο σε αυτά τα νέα παιδιά για το ήθος, την εργατικότητα, την συνέπεια και τον αγώνα να διακριθούν μέσα σε ένα δύσκολο και απαιτητικό χώρο! Είμαι σίγουρη ότι θα πετύχουν ειδικά αν διατηρήσουν την γνήσια φιλία τους! Εγώ πάντως θα τους συστήνω ανεπιφύλακτα!</blockquote>
+            <figcaption><span class="r-name">Πένυ Αρβανιτίδου</span><span class="r-spec mono">Οδοντίατρος · Ωραιόκαστρο</span></figcaption>
+          </figure>
+          <figure class="review" aria-hidden="true">
+            <blockquote>Εξαιρετική ομάδας. Πολύ ευγενικοί, συνεργάσιμοι, υπομονετικοί. Έμεινα πάρα πολύ ευχαριστημένος. Τους συστήνω ανεπιφύλακτα. Αντιλήφθηκαν από την πρώτη στιγμής όλες τις ιδιαιτερότητες που είχαμε. Τις κάλυψαν και με το παραπάνω. Συγχαρητήρια. Τρομεροί επαγγελματίες</blockquote>
+            <figcaption><span class="r-name">Δρ. Μενέλαος Λαμπρόπουλος</span><span class="r-spec mono">Μαιευτήρας-Γυναικολόγος · Θεσσαλονίκη</span></figcaption>
+          </figure>
+          <figure class="review" aria-hidden="true">
+            <blockquote>Εξαιρετικοί επαγγελματιες.Απολυτα ευχαριστημένος από την συνεργασία μας.Τους συνιστώ ανεπιφύλακτα.</blockquote>
+            <figcaption><span class="r-name">Φίλιππος Σακκάς</span><span class="r-spec mono">Χειρουργός Ουρολόγος</span></figcaption>
+          </figure>
+          <figure class="review" aria-hidden="true">
+            <blockquote>Εξαιρετική δουλειά και γρήγορα!!!ευχαριστώ για τη συνεργασία..</blockquote>
+            <figcaption><span class="r-name">Δρ. Αργυρώ Μουντζουρίδη</span><span class="r-spec mono">Γενικός &amp; Οικογενειακός Ιατρός · Πολίχνη</span></figcaption>
+          </figure>
+          <figure class="review" aria-hidden="true">
+            <blockquote>Οι καλύτεροι επαγγελματιες που εχω γνωρίσει τα τελευταία χρονια. Κορυφαία συνεργασια. Άριστο επίπεδο και αποτέλεσμα.</blockquote>
+            <figcaption><span class="r-name">Δρ. Κωνσταντίνος Μαντικός</span><span class="r-spec mono">Γενικός Ιατρός · Αθήνα</span></figcaption>
           </figure>
           <figure class="review" aria-hidden="true">
             <blockquote>Εξαιρετικοί σε όλα, τους συστήνω χωρίς καμία επιφύλαξη</blockquote>
             <figcaption><span class="r-name">Dr. Georgios Eleftheriou</span><span class="r-spec mono">Γενικός Γραμματέας Πανελληνίου Ιατρικού Συλλόγου</span></figcaption>
           </figure>
           <figure class="review" aria-hidden="true">
-            <blockquote>Πολυ καλοι επαγγελματιες και κανουν αυτο ακριβως που υποσχονται. Σωστο και γρηγορο αποτελεσμα στην κατασκευη ιστοσελιδας, σωστη και ειλικρινης συμβουλη και καθοδηγηση σε ολη την διαρκεια της συνεργασιας. Πραγματικα εντυπωσιακο για τα ελληνικα δεδομενα. Συνιστωνται ανεπιφυλακτα !!</blockquote>
-            <figcaption><span class="r-name">Δρ. Ιωάννης Κοντομάνης</span><span class="r-spec mono">Ορθοπαιδικός · Σκιάθος</span></figcaption>
-          </figure>
-          <figure class="review" aria-hidden="true">
             <blockquote>Άψογη συνεργασία, πρόθυμη ομάδα να ακούσει τις επιθυμίες μας, άμεση ανταπόκριση, ανταγωνιστικές τιμές.</blockquote>
             <figcaption><span class="r-name">Γιάννης Θ. Τράπαλης</span><span class="r-spec mono">DENTALL Οδοντιατρείο · Γαλάτσι</span></figcaption>
           </figure>
           <figure class="review" aria-hidden="true">
-            <blockquote>Η καλύτερη επιλογή για έναν επαγγελματία . Άψογη συνεργασία ,ποιοτική δουλειά σε χρόνο ρεκόρ .Αν θέλετε μια ολοκληρωμένη προβολή της επιχείρησης σας η του γραφείου σας σας το συστήνω ανεπιφύλακτα .</blockquote>
-            <figcaption><span class="r-name">Geodhmarv Arva-sara</span><span class="r-spec mono">Παθολόγος</span></figcaption>
-          </figure>
-          <figure class="review" aria-hidden="true">
             <blockquote>Επαγγελματισμός, συνέπεια, αμεσότητα, άψογο αποτέλεσμα. Τους συστήνω!</blockquote>
             <figcaption><span class="r-name">Μένια Καρανάσιου</span><span class="r-spec mono">Διαιτολόγος · Online</span></figcaption>
-          </figure>
-          <figure class="review" aria-hidden="true">
-            <blockquote>Υπέροχη συνεργασία με απόλυτη επαγγελματική προσέγγιση απο ευγενεστατους και καταρτισμενους νέας γενιάς ανθρώπους...το αποτέλεσμα ήταν κορυφαίο !!! Ένα μεγάλο μπράβο στην ομάδα !!!</blockquote>
-            <figcaption><span class="r-name">Γεώργιος Τσιρακόπουλος</span><span class="r-spec mono">Μαιευτήρας-Γυναικολόγος · Αθήνα</span></figcaption>
-          </figure>
-          <figure class="review" aria-hidden="true">
-            <blockquote>Εξαιρετική συνεργασία με την ομάδα της ClinicBrain! Επαγγελματισμός, άμεση εξυπηρέτηση και ένα πολύ όμορφο και λειτουργικό αποτέλεσμα. Ευχαριστώ ιδιαίτερα τον Αποστόλη για την άψογη συνεργασία. Τους προτείνω ανεπιφύλακτα!</blockquote>
-            <figcaption><span class="r-name">Δρ. Γλυκερία Πανταζή</span><span class="r-spec mono">Πλαστικός Χειρουργός · Εύοσμος</span></figcaption>
           </figure>
           <figure class="review" aria-hidden="true">
             <blockquote>Άψογη συνεργασία. Συνέπεια.</blockquote>
@@ -804,13 +803,16 @@
   <footer class="frame-bottom">
     <div class="cells">
       <span class="cell">© 2026 clinicgrowth</span>
-      <span class="cell"><a href="#erga">Δουλειές μας</a></span>
-      <span class="cell"><a href="#kritikes">Κριτικές</a></span>
+      <span class="cell"><a href="/#erga">Δουλειές μας</a></span>
+      <span class="cell"><a href="/#kritikes">Κριτικές</a></span>
       <span class="cell"><a href="/kleiste-klisi/">Κλείστε κλήση</a></span>
       <span class="cell grow"></span>
+      <span class="cell"><a href="/aporrito/">Απόρρητο</a></span>
+      <span class="cell"><a href="/oroi/">Όροι</a></span>
+      <span class="cell"><a href="/cookies/">Cookies</a></span>
     </div>
     <div class="fine">
-      <span>clinicgrowth · Ιστοσελίδες για γιατρούς, κλινικές &amp; αισθητικά κέντρα</span>
+      <span>clinicgrowth · Ιστοσελίδες για γιατρούς, κλινικές &amp; αισθητικά κέντρα · ASTRA MARKETING Ι.Κ.Ε. · <a href="mailto:hello@astramarketing.gr">hello@astramarketing.gr</a></span>
       <span>clinicgrowth.gr</span>
     </div>
   </footer>
