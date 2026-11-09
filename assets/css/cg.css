@@ -83,3 +83,9 @@ html.night-ink .wordmark { color: var(--ink); }
 /* «Ένας κλάδος, σε βάθος»: περισσότερος αέρας από κάτω, για να προλαβαίνει να σχηματιστεί η ράβδος από τα αστέρια */
 .statement .wrap { padding-bottom: clamp(220px, 45vh, 520px); }
 .statement h2 { max-width: 16ch; }
+
+/* πρώτα 4 έργα, τα υπόλοιπα με κουμπί */
+.sites-more { margin-top: clamp(36px, 5vw, 72px); }
+.sites-more .sites-big { margin-bottom: clamp(48px, 7vw, 96px); }
+.more-wrap { display: flex; justify-content: center; margin-top: clamp(40px, 6vw, 72px); }
+.more-wrap .btn-ghost { cursor: pointer; }

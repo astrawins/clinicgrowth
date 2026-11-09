@@ -3,6 +3,14 @@
 (function () {
   var sites = [].slice.call(document.querySelectorAll('.site'));
   if (!sites.length) return;
+  /* «Δείτε περισσότερες δουλειές»: ανοίγει τα υπόλοιπα έργα */
+  var moreBtn = document.getElementById('btn-more'), more = document.getElementById('more-sites');
+  if (moreBtn && more) moreBtn.addEventListener('click', function () {
+    var open = more.hidden; more.hidden = !open;
+    moreBtn.setAttribute('aria-expanded', String(open));
+    moreBtn.textContent = open ? 'Λιγότερες δουλειές ↑' : 'Δείτε περισσότερες δουλειές ↓';
+    if (open) { sites.forEach(fit); } else { document.getElementById('erga').scrollIntoView({ behavior: 'smooth' }); }
+  });
   var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
   var touch = !matchMedia('(hover: hover)').matches;
   /* κάθε οθόνη (υπολογιστής / κινητό) έχει δικό της --shift και --dur, ίδια ταχύτητα ~420px/s */
