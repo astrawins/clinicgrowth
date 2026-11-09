@@ -1,6 +1,11 @@
 /* Έργα: υπολογίζει για κάθε πλαίσιο πόσο πρέπει να κυλήσει η εικόνα (ολόκληρη αρχική) και σε πόση ώρα.
    Σε συσκευές χωρίς ποντίκι η κύλιση παίζει μόνη της όσο το πλαίσιο είναι ορατό. */
 (function () {
+  /* Μόνιμο «Κλείστε κλήση»: ανάβει όταν το κουμπί του hero βγει από την οθόνη */
+  var cta = document.querySelector('.cta-float'), heroCta = document.querySelector('.hero-cta');
+  if (cta && heroCta && 'IntersectionObserver' in window) {
+    new IntersectionObserver(function (en) { cta.classList.toggle('on', !en[0].isIntersecting && en[0].boundingClientRect.top < 0); }, { threshold: 0 }).observe(heroCta);
+  } else if (cta) { cta.classList.add('on'); }
   var sites = [].slice.call(document.querySelectorAll('.site'));
   if (!sites.length) return;
   /* «Δείτε περισσότερες δουλειές»: ανοίγει τα υπόλοιπα έργα */

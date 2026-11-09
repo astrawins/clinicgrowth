@@ -121,3 +121,22 @@ html.night-ink .wordmark { color: var(--ink); }
 .proof-card figcaption { font-size: 0.92rem; line-height: 1.5; color: var(--soft); }
 .proof-fine { margin-top: clamp(22px, 3vh, 34px); font-size: 0.62rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--soft); opacity: 0.8; }
 @media (max-width: 900px) { .proof-grid { grid-template-columns: 1fr; } }
+
+/* ---------- Μόνιμο CTA: εμφανίζεται μόλις φύγει από την οθόνη το κουμπί του hero ---------- */
+.cta-float {
+  position: fixed; right: clamp(16px, 2.5vw, 32px); bottom: clamp(16px, 2.5vw, 32px); z-index: 90;
+  display: inline-flex; align-items: center; gap: 10px; padding: 16px 26px; border-radius: 999px;
+  background: var(--ink); color: var(--bg); text-decoration: none;
+  font-family: var(--mono); font-size: 0.72rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; white-space: nowrap;
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.12) inset, 0 18px 50px -16px rgba(0, 0, 0, 0.7), 0 0 50px -14px rgba(120, 170, 235, 0.45);
+  opacity: 0; transform: translateY(16px); pointer-events: none;
+  transition: opacity 420ms var(--ease-out), transform 420ms var(--ease-out), background 180ms var(--ease-out), color 180ms var(--ease-out);
+}
+.cta-float.on { opacity: 1; transform: none; pointer-events: auto; }
+.cta-float:hover { background: #F6F9FC; color: #142033; }
+html.night-ink .cta-float { background: #F6F9FC; color: #142033; }
+html.night-ink .cta-float:hover { background: #22476E; color: #F6F9FC; }
+@media (max-width: 767px) {
+  .cta-float { right: 16px; left: 16px; bottom: calc(14px + env(safe-area-inset-bottom, 0px)); justify-content: center; padding: 17px 20px; font-size: 0.74rem; }
+  .frame-bottom { padding-bottom: 90px; }
+}
