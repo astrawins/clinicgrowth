@@ -106,3 +106,18 @@ html.night-ink .wordmark { color: var(--ink); }
 .phone-video .screen { position: absolute; left: 3.2%; top: 3.2%; width: 93.6%; height: 93.6%; border-radius: 9.5% / 4.4%; object-fit: cover; object-position: top; background: #f5f0ea; display: block; }
 .phone-video .notch { top: 5.2%; }
 @media (max-width: 900px) { .feature-grid { grid-template-columns: 1fr; } .feature-media { order: -1; } .phone-video { width: min(78vw, 300px); } }
+
+/* ---------- SEO & GEO: αποδείξεις κατάταξης ---------- */
+.proof .wrap { padding-top: clamp(70px, 12vh, 150px); padding-bottom: clamp(60px, 10vh, 120px); }
+.proof h2 { max-width: 16ch; }
+.proof .lede { margin-top: clamp(18px, 3vh, 30px); color: var(--soft); max-width: 60ch; }
+.proof-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(18px, 2.4vw, 36px); margin-top: clamp(36px, 6vh, 64px); }
+.proof-card { margin: 0; display: flex; flex-direction: column; gap: 12px; }
+.proof-tag { font-size: 0.66rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--soft); }
+.proof-tag b { color: var(--ink); font-weight: 600; }
+.proof-shot { display: block; border-radius: 10px; overflow: hidden; background: #0b1426;
+  box-shadow: 0 0 0 1px rgba(232, 238, 247, 0.16), 0 30px 70px -28px rgba(0, 0, 0, 0.9), 0 0 60px -20px rgba(120, 170, 235, 0.25); }
+.proof-shot img { display: block; width: 100%; height: auto; }
+.proof-card figcaption { font-size: 0.92rem; line-height: 1.5; color: var(--soft); }
+.proof-fine { margin-top: clamp(22px, 3vh, 34px); font-size: 0.62rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--soft); opacity: 0.8; }
+@media (max-width: 900px) { .proof-grid { grid-template-columns: 1fr; } }
