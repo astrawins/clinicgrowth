@@ -124,14 +124,23 @@
     return s;
   }
 
+  /* Ράβδος του Ασκληπιού (σήμα του Ιπποκράτη) σε κουτί 24×24 — ίδιο σύστημα με το αστέρι */
+  var SERPENT = new Path2D('M9 21.2C9 19.6 15 19.4 15 17.6C15 15.8 9 15.6 9 13.8C9 12 15 11.8 15 10C15 8.2 9 8 9 6.2C9 4.6 13.2 4.3 14 3.7');
+  function drawRod(g) {
+    g.lineWidth = 1.6; g.lineCap = 'round'; g.lineJoin = 'round'; g.strokeStyle = '#000'; g.fillStyle = '#000';
+    g.stroke(SERPENT);
+    g.beginPath(); g.arc(14.3, 3.3, 1.25, 0, 6.2832); g.fill();
+    g.beginPath(); g.roundRect ? g.roundRect(11.3, 2.4, 1.4, 20.6, 0.7) : g.rect(11.3, 2.4, 1.4, 20.6); g.fill();
+    g.beginPath(); g.arc(12, 2.3, 1.05, 0, 6.2832); g.fill();
+  }
   function starPoints(S, outlineFrac, limit) {
     var c = document.createElement('canvas'); c.width = c.height = Math.ceil(S);
-    var g = c.getContext('2d'), p = new Path2D(STAR_PATH);
-    g.scale(S / 24, S / 24);
-    g.lineWidth = 2.6 / (S / 24); g.strokeStyle = '#000'; g.stroke(p);
+    var g = c.getContext('2d');
+    /* λεπτή εκδοχή (περίγραμμα) + κανονική (γέμισμα), για υφή σκόνης και όχι πλέγματος */
+    g.scale(S / 24, S / 24); g.save(); g.translate(0.15, 0.15); drawRod(g); g.restore();
     var outline = sample(c, 2, Math.round(limit * outlineFrac));
     g.setTransform(1, 0, 0, 1, 0, 0); g.clearRect(0, 0, c.width, c.height);
-    g.scale(S / 24, S / 24); g.fillStyle = '#000'; g.fill(p);
+    g.scale(S / 24, S / 24); drawRod(g);
     var fill = sample(c, 3, Math.round(limit * (1 - outlineFrac)));
     var all = outline.concat(fill);
     for (var q = 0; q < all.length; q++) all[q] -= S / 2;
@@ -191,7 +200,7 @@
     sections = [];
     var wide = W >= 900;
 
-    /* Statement: the astra star drawn in stars */
+    /* Statement: η ράβδος του Ασκληπιού σχηματισμένη από αστέρια */
     var st = document.querySelector('.statement .wrap');
     if (st) {
       var R = docRect(st);
@@ -200,7 +209,7 @@
       var cx = wide ? R.right - S * 0.55 : R.right - S * 0.42;
       var cy = wide ? R.top + R.height * 0.58 : R.top + S * 0.05;
       var sh = makeShape(pts, cx, cy, { top: R.top - H * 0.15, bottom: R.bottom + H * 0.1, alpha: wide ? 1 : 0.6 });
-      sh.update = function (t) { this.rot = Math.sin(t / 5200) * 0.12; this.scale = 1 + Math.sin(t / 1900) * 0.025; };
+      sh.update = function (t) { this.rot = Math.sin(t / 5200) * 0.08; this.scale = 1 + Math.sin(t / 1900) * 0.025; };
       sections.push(sh);
     }
 
@@ -313,7 +322,7 @@
       var pts2 = starPoints(S2, 0.38, mobile ? 640 : 1500);
       var cs2 = makeShape(pts2, wide ? CR.right - S2 * 0.62 : CR.right - S2 * 0.4, wide ? CR.top + CR.height * 0.5 : CR.top + S2 * 0.15,
         { top: CR.top - H * 0.35, bottom: CR.bottom + H, alpha: wide ? 1 : 0.55 });
-      cs2.update = function (t) { this.scale = 1 + Math.sin(t / 1100) * 0.05; this.rot = t / 30000; };
+      cs2.update = function (t) { this.scale = 1 + Math.sin(t / 1100) * 0.04; this.rot = Math.sin(t / 6000) * 0.1; };
       sections.push(cs2);
     }
   }
