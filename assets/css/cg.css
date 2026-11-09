@@ -18,19 +18,26 @@ html.night-ink .wordmark { color: var(--ink); }
 .work-head .lede { margin-top: clamp(18px, 3vh, 30px); color: var(--soft); }
 .sites { display: grid; gap: clamp(36px, 5vw, 72px) clamp(20px, 2.6vw, 40px); }
 .sites-big { grid-template-columns: repeat(2, minmax(0, 1fr)); margin-bottom: clamp(48px, 7vw, 96px); }
-.sites-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.sites-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 .site { display: flex; flex-direction: column; gap: 6px; color: inherit; text-decoration: none; min-width: 0; }
+.shots { display: grid; grid-template-columns: minmax(0, 1fr) 21.5%; gap: 2.5%; align-items: stretch; margin-bottom: 14px; }
 .browser {
-  display: block; border-radius: 10px; overflow: hidden; background: #0b1426; margin-bottom: 12px;
+  display: block; border-radius: 10px; overflow: hidden; background: #0b1426; min-width: 0;
   box-shadow: 0 0 0 1px rgba(232, 238, 247, 0.16), 0 30px 70px -28px rgba(0, 0, 0, 0.9), 0 0 60px -20px rgba(120, 170, 235, 0.25);
   transition: transform 600ms cubic-bezier(0.23, 1, 0.32, 1), box-shadow 600ms ease;
 }
-.site:hover .browser { transform: translateY(-6px); box-shadow: 0 0 0 1px rgba(232, 238, 247, 0.3), 0 40px 80px -28px rgba(0, 0, 0, 0.9), 0 0 90px -16px rgba(120, 170, 235, 0.45); }
+.site:hover .browser, .site:hover .phone { transform: translateY(-6px); box-shadow: 0 0 0 1px rgba(232, 238, 247, 0.3), 0 40px 80px -28px rgba(0, 0, 0, 0.9), 0 0 90px -16px rgba(120, 170, 235, 0.45); }
 .bar { display: flex; align-items: center; gap: 6px; height: 30px; padding: 0 12px; background: #141f36; border-bottom: 1px solid rgba(232, 238, 247, 0.08); }
 .bar i { width: 9px; height: 9px; border-radius: 50%; background: rgba(232, 238, 247, 0.22); }
 .bar b { margin-left: auto; margin-right: auto; font-family: var(--mono); font-weight: 400; font-size: 10.5px; letter-spacing: 0.04em; color: rgba(232, 238, 247, 0.55); background: rgba(0, 0, 0, 0.25); padding: 3px 12px; border-radius: 99px; max-width: 70%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .screen { display: block; position: relative; aspect-ratio: 16 / 10; overflow: hidden; background: #fff; }
-.big .screen { aspect-ratio: 16 / 9.4; }
+.big .browser .screen { aspect-ratio: 16 / 9.4; }
+/* κινητό: ίδιο ύψος με τον υπολογιστή, κόβεται ό,τι περισσεύει */
+.phone { position: relative; display: block; border-radius: 11% / 5.2%; background: #0b1426; padding: 3.2%; min-width: 0; overflow: hidden;
+  box-shadow: 0 0 0 1px rgba(232, 238, 247, 0.22), inset 0 0 0 2px rgba(232, 238, 247, 0.08), 0 30px 70px -28px rgba(0, 0, 0, 0.9);
+  transition: transform 600ms cubic-bezier(0.23, 1, 0.32, 1), box-shadow 600ms ease; }
+.phone .screen { position: absolute; inset: 3.2%; border-radius: 9% / 4.2%; aspect-ratio: auto; height: auto; }
+.phone .notch { position: absolute; left: 50%; top: 5.5%; width: 34%; height: 2.6%; transform: translateX(-50%); border-radius: 99px; background: #0b1426; z-index: 2; }
 .screen img { display: block; width: 100%; height: auto; transform: translateY(0); transition: transform 900ms cubic-bezier(0.23, 1, 0.32, 1); will-change: transform; }
 /* hover: κύλιση μέχρι το τέλος της σελίδας (--shift / --dur από work.js) */
 @media (hover: hover) {
@@ -42,10 +49,11 @@ html.night-ink .wordmark { color: var(--ink); }
 .site-name { font-weight: 500; font-size: 1.05rem; letter-spacing: -0.015em; line-height: 1.25; }
 .big .site-name { font-size: clamp(1.3rem, 1.9vw, 1.7rem); letter-spacing: -0.025em; }
 .site-spec { font-size: 0.62rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--soft); line-height: 1.5; }
-@media (max-width: 1100px) { .sites-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 1100px) { .sites-grid { grid-template-columns: 1fr; } }
 @media (max-width: 767px) {
   .sites-big, .sites-grid { grid-template-columns: 1fr; gap: 40px; }
-  .screen, .big .screen { aspect-ratio: 16 / 11; }
+  .browser .screen, .big .browser .screen { aspect-ratio: 16 / 11; }
+  .shots { grid-template-columns: minmax(0, 1fr) 24%; }
   .bar { height: 26px; } .bar b { font-size: 9.5px; }
 }
 

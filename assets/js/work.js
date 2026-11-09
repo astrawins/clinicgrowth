@@ -5,16 +5,18 @@
   if (!sites.length) return;
   var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
   var touch = !matchMedia('(hover: hover)').matches;
-  function fit(site) {
-    var img = site.querySelector('.screen img'), scr = site.querySelector('.screen');
-    if (!img.naturalWidth) return;
+  /* κάθε οθόνη (υπολογιστής / κινητό) έχει δικό της --shift και --dur, ίδια ταχύτητα ~420px/s */
+  function fitScreen(scr) {
+    var img = scr.querySelector('img'); if (!img.naturalWidth) return;
     var h = scr.clientWidth * img.naturalHeight / img.naturalWidth, shift = Math.max(0, h - scr.clientHeight);
-    site.style.setProperty('--shift', shift.toFixed(0) + 'px');
-    site.style.setProperty('--dur', Math.max(2.5, Math.min(14, shift / 420)).toFixed(1) + 's');   /* ~420px/s */
+    scr.style.setProperty('--shift', shift.toFixed(0) + 'px');
+    scr.style.setProperty('--dur', Math.max(2.5, Math.min(16, shift / 420)).toFixed(1) + 's');
   }
+  function fit(site) { [].forEach.call(site.querySelectorAll('.screen'), fitScreen); }
   sites.forEach(function (site) {
-    var img = site.querySelector('.screen img');
-    if (img.complete) fit(site); else img.addEventListener('load', function () { fit(site); });
+    [].forEach.call(site.querySelectorAll('.screen img'), function (img) {
+      if (img.complete) fitScreen(img.parentNode); else img.addEventListener('load', function () { fitScreen(img.parentNode); });
+    });
   });
   addEventListener('resize', function () { sites.forEach(fit); });
   if (touch && !reduce && 'IntersectionObserver' in window) {
