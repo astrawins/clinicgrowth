@@ -1,0 +1,797 @@
+/* astra — the page is simply there. Only navigation and the form need script. */
+(function () {
+  /* Tilt parallax source (phones with orientation events, no permission prompt) */
+  var gyx = 0, gyy = 0;
+  window.addEventListener('deviceorientation', function (e) {
+    if (e.gamma == null || e.beta == null) return;
+    gyx = Math.max(-1, Math.min(1, e.gamma / 28));
+    gyy = Math.max(-1, Math.min(1, (e.beta - 50) / 28));
+  });
+
+  /* Lenis smooth scrolling (skipped under reduced motion; touch stays native) */
+  if (window.Lenis && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    var lenis = new Lenis({ lerp: 0.095, smoothWheel: true });
+    var lenisRaf = function (t) { lenis.raf(t); requestAnimationFrame(lenisRaf); };
+    requestAnimationFrame(lenisRaf);
+  }
+
+  /* Loading screen: logo among stars, then the site */
+  var root = document.documentElement;
+  if (root.classList.contains('astra-loading')) {
+    var loader = document.querySelector('.loader');
+    setTimeout(function () {
+      if (loader) loader.classList.add('leaving');
+      /* the brightest loader star travels to its post in the hero */
+      var lStar = loader && loader.querySelector('.loader-stage svg:nth-of-type(1)');
+      var hStar = document.querySelector('.hero-star');
+      if (lStar && hStar && window.Animation) {
+        var r1 = lStar.getBoundingClientRect();
+        var r2 = hStar.getBoundingClientRect();
+        if (r1.width && r2.width) {
+          hStar.classList.add('flown');
+          hStar.style.visibility = 'hidden';
+          lStar.style.visibility = 'hidden';
+          var flyer = lStar.cloneNode(true);
+          flyer.style.cssText = 'position:fixed;left:' + r1.left + 'px;top:' + r1.top +
+            'px;width:' + r1.width + 'px;height:' + r1.height + 'px;z-index:120;color:#FEFEFE;visibility:visible;' +
+            'filter:drop-shadow(0 8px 18px rgba(20,40,70,0.35));';
+          document.body.appendChild(flyer);
+          flyer.animate([
+            { transform: 'translate(0,0) scale(1)' },
+            { transform: 'translate(' + (r2.left - r1.left) + 'px,' + (r2.top - r1.top) + 'px) ' +
+              'scale(' + (r2.width / r1.width) + ')' }
+          ], { duration: 820, easing: 'cubic-bezier(0.22, 1, 0.36, 1)', fill: 'forwards' })
+            .finished.then(function () {
+              hStar.style.visibility = '';
+              flyer.remove();
+            }).catch(function () { hStar.style.visibility = ''; flyer.remove(); });
+        }
+      }
+      setTimeout(function () {
+        root.classList.remove('astra-loading');
+        root.classList.add('astra-done');
+        try { sessionStorage.setItem('astra-seen', '1'); } catch (e) {}
+        if (window.__astraField) window.__astraField();
+      }, 400);
+    }, 1900);
+  }
+
+
+  /* Starfield: hyperspace arrival, cursor constellations, shooting stars.
+     Decorative only: skipped under reduced motion, paused off-screen. */
+  var field = document.querySelector('canvas.starfield');
+  var noMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (field && !noMotion && field.getContext) {
+    var fx = field.getContext('2d');
+    var dpr = Math.min(window.devicePixelRatio || 1, 1.5);
+    var mobileF = window.matchMedia('(max-width: 767px)').matches;
+    var COUNT = mobileF ? 70 : 160;
+    var WARP = 1100;
+    var W2, H2, CX, CY, maxR;
+    var stars = [];
+    var mx = -9999, my = -9999, pmx = -9999, pmy = -9999;
+    var t0 = null, raf = 0, live = false, inView = true;
+    var nextShoot = 0, shot = null;
+
+    var glow = document.createElement('canvas');
+    glow.width = glow.height = 32;
+    var gx = glow.getContext('2d');
+    var grad = gx.createRadialGradient(16, 16, 0, 16, 16, 16);
+    grad.addColorStop(0, 'rgba(255,255,255,1)');
+    grad.addColorStop(0.35, 'rgba(255,255,255,0.5)');
+    grad.addColorStop(1, 'rgba(255,255,255,0)');
+    gx.fillStyle = grad;
+    gx.fillRect(0, 0, 32, 32);
+
+    function sizeField() {
+      var r = field.parentElement.getBoundingClientRect();
+      W2 = r.width; H2 = r.height;
+      CX = W2 * 0.5; CY = H2 * 0.44;
+      maxR = Math.hypot(W2, H2) * 0.55;
+      field.width = Math.round(W2 * dpr);
+      field.height = Math.round(H2 * dpr);
+      fx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    }
+
+    function seed() {
+      stars.length = 0;
+      for (var i = 0; i < COUNT; i++) {
+        stars.push({
+          a: Math.random() * Math.PI * 2,
+          d: Math.pow(Math.random(), 0.6),
+          x: 0, y: 0,
+          z: 0.35 + Math.random() * 0.65,
+          r: 0.6 + Math.random() * 1.7,
+          tw: Math.random() * Math.PI * 2,
+          ts: 0.4 + Math.random() * 1.2,
+          vx: 0.10 + Math.random() * 0.22,
+          brand: Math.random() < 0.05,
+          bronze: Math.random() < 0.12
+        });
+      }
+    }
+
+    function starPath(x, y, s) {
+      fx.beginPath();
+      fx.moveTo(x, y - s);
+      fx.quadraticCurveTo(x + s * 0.14, y - s * 0.14, x + s, y);
+      fx.quadraticCurveTo(x + s * 0.14, y + s * 0.14, x, y + s);
+      fx.quadraticCurveTo(x - s * 0.14, y + s * 0.14, x - s, y);
+      fx.quadraticCurveTo(x - s * 0.14, y - s * 0.14, x, y - s);
+      fx.closePath();
+    }
+
+    /* Once per session, the sky gathers into the brand star, then lets go */
+    var CONST = { phase: 0, t0: 0, armAt: 0, done: false, alpha: 0, members: [], pts: [] };
+    function constTick(t, k) {
+      if (k < 1) return;
+      if (!CONST.phase) {
+        if (CONST.done) return;
+        try { if (sessionStorage.getItem('astra-const')) { CONST.done = true; return; } } catch (e) {}
+        if (!CONST.armAt) { CONST.armAt = t + 1700; return; }
+        if (t < CONST.armAt) return;
+        var ccx = W2 * 0.74, ccy = H2 * 0.40, R = Math.min(W2 * 0.085, 100);
+        CONST.pts = [];
+        for (var q = 0; q < 8; q++) {
+          var ang = q * Math.PI / 4 - Math.PI / 2;
+          var rr = (q % 2 === 0) ? R : R * 0.30;
+          CONST.pts.push({ x: ccx + Math.cos(ang) * rr, y: ccy + Math.sin(ang) * rr });
+        }
+        CONST.members = [];
+        var used = {};
+        for (var qi = 0; qi < 8; qi++) {
+          var best = -1, bd = 1e18;
+          for (var si = 0; si < stars.length; si++) {
+            if (used[si] || stars[si].brand) continue;
+            var ddx = stars[si].x - CONST.pts[qi].x, ddy = stars[si].y - CONST.pts[qi].y;
+            var dd = ddx * ddx + ddy * ddy;
+            if (dd < bd) { bd = dd; best = si; }
+          }
+          used[best] = 1;
+          var st = stars[best];
+          st.locked = true; st.homeX = st.x; st.homeY = st.y;
+          CONST.members.push(st);
+        }
+        CONST.phase = 1; CONST.t0 = t; CONST.done = true;
+        try { sessionStorage.setItem('astra-const', '1'); } catch (e) {}
+      }
+      var e2 = t - CONST.t0;
+      var GATHER = 1000, HOLD = 1900, RELEASE = 1000;
+      var pgr;
+      if (e2 < GATHER) pgr = 1 - Math.pow(1 - e2 / GATHER, 3);
+      else if (e2 < GATHER + HOLD) pgr = 1;
+      else if (e2 < GATHER + HOLD + RELEASE) {
+        var rl = (e2 - GATHER - HOLD) / RELEASE;
+        pgr = 1 - (rl < 0.5 ? 2 * rl * rl : 1 - Math.pow(-2 * rl + 2, 2) / 2);
+      } else {
+        for (var mi = 0; mi < CONST.members.length; mi++) CONST.members[mi].locked = false;
+        CONST.members = []; CONST.phase = 0;
+        return;
+      }
+      CONST.alpha = e2 < GATHER ? Math.max(0, (e2 - 380) / 620)
+        : e2 < GATHER + HOLD ? 1
+        : Math.max(0, 1 - (e2 - GATHER - HOLD) / 480);
+      for (var m2 = 0; m2 < CONST.members.length; m2++) {
+        var st2 = CONST.members[m2], pt = CONST.pts[m2];
+        st2.cxp = st2.homeX + (pt.x - st2.homeX) * pgr;
+        st2.cyp = st2.homeY + (pt.y - st2.homeY) * pgr;
+      }
+    }
+    function drawConstLines() {
+      if (!CONST.members.length || !CONST.alpha) return;
+      fx.strokeStyle = 'rgba(254,254,254,' + (0.55 * CONST.alpha).toFixed(3) + ')';
+      fx.lineWidth = 1;
+      fx.beginPath();
+      for (var li = 0; li < CONST.members.length; li++) {
+        var ms = CONST.members[li];
+        if (li === 0) fx.moveTo(ms.dpx, ms.dpy); else fx.lineTo(ms.dpx, ms.dpy);
+      }
+      fx.closePath();
+      fx.stroke();
+    }
+
+    function frame(t) {
+      if (!live) return;
+      if (t0 === null) t0 = t;
+      var el = t - t0;
+      var k = Math.min(el / WARP, 1);
+      var easeK = 1 - Math.pow(1 - k, 3);
+      fx.clearRect(0, 0, W2, H2);
+
+      pmx += (mx - pmx) * 0.06;
+      pmy += (my - pmy) * 0.06;
+      var offx = pmx > -999 ? (pmx - CX) : 0;
+      var offy = pmy > -999 ? (pmy - CY) : 0;
+      if (mobileF) { offx = gyx * 520; offy = gyy * 380; }
+      constTick(t, k);
+
+      var i, s;
+      for (i = 0; i < stars.length; i++) {
+        s = stars[i];
+        var target = (0.05 + s.d * 0.95) * maxR;
+        if (k < 1) {
+          var head = target * easeK + maxR * 0.02;
+          var tailK = Math.max(k - 0.10, 0);
+          var tail = target * (1 - Math.pow(1 - tailK, 3)) + maxR * 0.02;
+          var x1 = CX + Math.cos(s.a) * tail, y1 = CY + Math.sin(s.a) * tail;
+          var x2 = CX + Math.cos(s.a) * head, y2 = CY + Math.sin(s.a) * head;
+          fx.strokeStyle = 'rgba(254,254,254,' + (0.55 * s.z * (0.4 + 0.6 * (1 - k))) + ')';
+          fx.lineWidth = s.z * 1.5;
+          fx.beginPath(); fx.moveTo(x1, y1); fx.lineTo(x2, y2); fx.stroke();
+          s.x = x2; s.y = y2;
+        } else {
+          if (!s.locked) {
+            s.x += s.vx * s.z * (mobileF ? 0.05 : 0.09);
+            if (s.x > W2 + 24) s.x = -24;
+            if (s.x < -25) s.x = W2 + 23;
+          }
+          var tw = 0.55 + 0.45 * Math.sin(t / 1000 * s.ts + s.tw);
+          var bx = s.locked ? s.cxp : s.x;
+          var by = s.locked ? s.cyp : s.y;
+          var px = bx + offx * s.z * 0.035;
+          var py = by + offy * s.z * 0.035;
+          if (s.locked) { s.dpx = px; s.dpy = py; }
+          var al = (0.22 + 0.55 * tw) * s.z;
+          if (s.brand) {
+            fx.fillStyle = s.bronze ? 'rgba(47,93,140,' + al + ')' : 'rgba(254,254,254,' + (al * 0.95) + ')';
+            starPath(px, py, 3 + s.r * 2.4);
+            fx.fill();
+          } else {
+            fx.globalAlpha = al * (s.bronze ? 0.75 : 1);
+            var d6 = s.r * 6;
+            fx.drawImage(glow, px - d6 / 2, py - d6 / 2, d6, d6);
+            fx.globalAlpha = 1;
+          }
+          s.cx = px; s.cy = py;
+        }
+      }
+
+      if (CONST.phase) drawConstLines();
+
+      /* Constellations gather around the visitor's cursor */
+      if (k >= 1 && mx > -999 && !mobileF) {
+        var near = [];
+        for (i = 0; i < stars.length; i++) {
+          s = stars[i];
+          var dx = s.cx - pmx, dy = s.cy - pmy;
+          var dd = dx * dx + dy * dy;
+          if (dd < 24025) near.push(s);
+        }
+        for (i = 0; i < near.length && i < 26; i++) {
+          for (var j = i + 1; j < near.length && j < 26; j++) {
+            var ddx = near[i].cx - near[j].cx, ddy = near[i].cy - near[j].cy;
+            var dist2 = Math.hypot(ddx, ddy);
+            if (dist2 < 112) {
+              fx.strokeStyle = 'rgba(20,32,51,' + (0.30 * (1 - dist2 / 112)) + ')';
+              fx.lineWidth = 1;
+              fx.beginPath();
+              fx.moveTo(near[i].cx, near[i].cy);
+              fx.lineTo(near[j].cx, near[j].cy);
+              fx.stroke();
+            }
+          }
+        }
+      }
+
+      /* A shooting star every few seconds */
+      if (k >= 1) {
+        if (!shot && t > nextShoot) {
+          var ang = Math.PI * (0.12 + Math.random() * 0.14);
+          shot = {
+            x: W2 * (0.15 + Math.random() * 0.7),
+            y: H2 * (0.06 + Math.random() * 0.25),
+            dx: Math.cos(ang) * (Math.random() < 0.5 ? 1 : -1),
+            dy: Math.sin(ang),
+            born: t
+          };
+        }
+        if (shot) {
+          var sk = (t - shot.born) / 800;
+          if (sk >= 1) {
+            shot = null;
+            nextShoot = t + 5200 + Math.random() * 5200;
+          } else {
+            var run = 230 * sk;
+            var hx = shot.x + shot.dx * run, hy = shot.y + shot.dy * run;
+            var tx = hx - shot.dx * 130, ty = hy - shot.dy * 130;
+            var fade = sk < 0.2 ? sk / 0.2 : (1 - sk) / 0.8;
+            var lg = fx.createLinearGradient(tx, ty, hx, hy);
+            lg.addColorStop(0, 'rgba(254,254,254,0)');
+            lg.addColorStop(1, 'rgba(254,254,254,' + (0.8 * fade) + ')');
+            fx.strokeStyle = lg;
+            fx.lineWidth = 1.6;
+            fx.beginPath(); fx.moveTo(tx, ty); fx.lineTo(hx, hy); fx.stroke();
+            fx.fillStyle = 'rgba(254,254,254,' + fade + ')';
+            starPath(hx, hy, 4);
+            fx.fill();
+          }
+        }
+      }
+
+      raf = requestAnimationFrame(frame);
+    }
+
+    function play() {
+      if (live || !inView || document.hidden) return;
+      live = true;
+      raf = requestAnimationFrame(frame);
+    }
+    function halt() {
+      live = false;
+      if (raf) cancelAnimationFrame(raf);
+    }
+
+    sizeField();
+    seed();
+    window.addEventListener('resize', function () { sizeField(); });
+    window.addEventListener('mousemove', function (e) {
+      var r = field.getBoundingClientRect();
+      mx = e.clientX - r.left;
+      my = e.clientY - r.top;
+    });
+    document.addEventListener('visibilitychange', function () {
+      if (document.hidden) halt(); else play();
+    });
+    if ('IntersectionObserver' in window) {
+      new IntersectionObserver(function (en) {
+        inView = en[0].isIntersecting;
+        if (inView) play(); else halt();
+      }).observe(field);
+    }
+    window.__astraField = play;
+    if (!root.classList.contains('astra-loading')) play();
+  }
+
+  /* Scroll reveals: pop into place, staggered per section */
+  var canPop = !window.matchMedia('(prefers-reduced-motion: reduce)').matches && 'IntersectionObserver' in window;
+  if (canPop) {
+    var popSel = [
+      '.statement .wrap > *',
+      '.protocol-head > *',
+      '.station',
+      '.services-head > *',
+      '.svc',
+      '.close-flood .wrap > *',
+      '.page-head nav', '.page-head h1', '.page-head .lede',
+      '.band h2', '.band .prose', '.band .muted',
+      '.steps .step',
+      '.inclusions li',
+      '.posts .post',
+      '.form-grid form', '.form-grid h2'
+    ].join(',');
+    var seen = [];
+    var counts = {};
+    document.querySelectorAll(popSel).forEach(function (el) {
+      if (el.closest('.hero') || el.classList.contains('pop')) return;
+      var sec = el.closest('section') || document.body;
+      var ix = seen.indexOf(sec);
+      if (ix === -1) { seen.push(sec); ix = seen.length - 1; counts[ix] = 0; }
+      el.classList.add('pop');
+      el.style.setProperty('--pd', (Math.min(counts[ix], 7) * 75) + 'ms');
+      counts[ix]++;
+    });
+    var popIO = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (!e.isIntersecting) return;
+        e.target.classList.add('in');
+        popIO.unobserve(e.target);
+      });
+    }, { threshold: 0.15, rootMargin: '0px 0px -50px 0px' });
+    document.querySelectorAll('.pop').forEach(function (el) { popIO.observe(el); });
+  }
+
+
+  /* Services in orbit around an invisible planet (falls back to the list) */
+  var svcSection = document.querySelector('.services');
+  var svcLinks = svcSection ? [].slice.call(svcSection.querySelectorAll('.svc')) : [];
+  var orbitOK = svcSection && svcLinks.length === 3 &&
+    !window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (orbitOK) {
+    var wrapEl = svcSection.querySelector('.wrap');
+    var scene = document.createElement('div');
+    scene.className = 'orbit-scene';
+    scene.innerHTML =
+      '<svg class="orbit-star" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0C12.9 7.4 16.6 11.1 24 12c-7.4.9-11.1 4.6-12 12-.9-7.4-4.6-11.1-12-12 7.4-.9 11.1-4.6 12-12Z"/></svg>' +
+      '<svg class="orbit-star" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0C12.9 7.4 16.6 11.1 24 12c-7.4.9-11.1 4.6-12 12-.9-7.4-4.6-11.1-12-12 7.4-.9 11.1-4.6 12-12Z"/></svg>' +
+      '<svg class="orbit-star" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0C12.9 7.4 16.6 11.1 24 12c-7.4.9-11.1 4.6-12 12-.9-7.4-4.6-11.1-12-12 7.4-.9 11.1-4.6 12-12Z"/></svg>';
+    wrapEl.appendChild(scene);
+    svcLinks.forEach(function (a) { a.classList.remove('pop'); a.classList.add('in'); scene.appendChild(a); });
+    svcSection.classList.add('orbiting');
+
+    var RX, RY, CXo, CYo;
+    function sizeOrbit() {
+      var r = scene.getBoundingClientRect();
+      var mob = r.width < 640;
+      if (mob) {
+        /* geometry tuned so side chips can never collide: RX*sqrt(3) > chip width */
+        RX = Math.max(r.width / 2 - 90, 96);
+        RY = r.height * 0.26;
+      } else {
+        RX = Math.min(r.width * 0.44, 470);
+        RY = r.height * 0.17;
+      }
+      CXo = r.width / 2;
+      CYo = r.height * (mob ? 0.44 : 0.47);
+    }
+
+    var angle = -Math.PI / 2;
+    var speed = (Math.PI * 2) / 22000;
+    var curSpeed = speed;
+    var target = speed;
+    var lastT = null, orbitRaf = 0, orbitLive = false, orbitInView = true;
+
+    function orbitFrame(t) {
+      if (!orbitLive) return;
+      if (lastT === null) lastT = t;
+      var dt = Math.min(t - lastT, 50);
+      lastT = t;
+      curSpeed += (target - curSpeed) * 0.06;
+      angle += curSpeed * dt;
+      for (var i = 0; i < 3; i++) {
+        var a = angle + i * (Math.PI * 2 / 3);
+        var x = CXo + Math.cos(a) * RX;
+        var y = CYo + Math.sin(a) * RY;
+        var depth = (Math.sin(a) + 1) / 2;
+        var sc = 0.58 + 0.48 * depth;
+        var el = svcLinks[i];
+        el.style.transform = 'translate(-50%, -50%) translate(' + x + 'px,' + y + 'px) scale(' + sc + ')';
+        el.style.opacity = (0.38 + 0.62 * depth).toFixed(3);
+        el.style.zIndex = depth > 0.52 ? 20 : 6;
+        el.classList.toggle('front', depth > 0.86);
+      }
+      orbitRaf = requestAnimationFrame(orbitFrame);
+    }
+    function orbitPlay() {
+      if (orbitLive || !orbitInView || document.hidden) return;
+      orbitLive = true; lastT = null;
+      orbitRaf = requestAnimationFrame(orbitFrame);
+    }
+    function orbitHalt() {
+      orbitLive = false;
+      if (orbitRaf) cancelAnimationFrame(orbitRaf);
+    }
+
+    scene.addEventListener('mouseenter', function () { target = 0; });
+    scene.addEventListener('mouseleave', function () { target = speed; });
+    window.addEventListener('resize', sizeOrbit);
+    document.addEventListener('visibilitychange', function () {
+      if (document.hidden) orbitHalt(); else orbitPlay();
+    });
+    if ('IntersectionObserver' in window) {
+      new IntersectionObserver(function (en) {
+        orbitInView = en[0].isIntersecting;
+        if (orbitInView) orbitPlay(); else orbitHalt();
+      }, { rootMargin: '80px' }).observe(scene);
+    }
+    sizeOrbit();
+    orbitPlay();
+  }
+
+  /* Space crossing: scrolling to the services turns the site into night sky */
+  var svcZone = document.querySelector('.services') || document.querySelector('.space-zone');
+  var deck404 = document.querySelector('.notfound');
+  var spaceOK = (svcZone || deck404) && !window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (spaceOK) {
+    var sky = document.createElement('canvas');
+    sky.id = 'spacefield';
+    sky.setAttribute('aria-hidden', 'true');
+    document.body.appendChild(sky);
+    var kx = sky.getContext('2d');
+    var kdpr = Math.min(window.devicePixelRatio || 1, 1.5);
+    var KW, KH, dust = [];
+    var skyLive = false, skyRaf = 0;
+    var themeTimer = 0;
+
+    function skySize() {
+      KW = window.innerWidth; KH = window.innerHeight;
+      sky.width = Math.round(KW * kdpr);
+      sky.height = Math.round(KH * kdpr);
+      kx.setTransform(kdpr, 0, 0, kdpr, 0, 0);
+    }
+    function skySeed() {
+      dust.length = 0;
+      var n = KW < 768 ? 110 : 230;
+      for (var i = 0; i < n; i++) {
+        dust.push({
+          x: Math.random() * KW,
+          y: Math.random() * KH,
+          z: 0.3 + Math.random() * 0.7,
+          r: 0.5 + Math.random() * 1.5,
+          tw: Math.random() * Math.PI * 2,
+          ts: 0.3 + Math.random() * 1.1,
+          gold: Math.random() < 0.16,
+          brand: Math.random() < 0.03
+        });
+      }
+    }
+    function skyStar(x, y, s) {
+      kx.beginPath();
+      kx.moveTo(x, y - s);
+      kx.quadraticCurveTo(x + s * 0.14, y - s * 0.14, x + s, y);
+      kx.quadraticCurveTo(x + s * 0.14, y + s * 0.14, x, y + s);
+      kx.quadraticCurveTo(x - s * 0.14, y + s * 0.14, x - s, y);
+      kx.quadraticCurveTo(x - s * 0.14, y - s * 0.14, x, y - s);
+      kx.closePath();
+    }
+    var shipOX = 0, shipOY = 0;   /* 404 flight parallax */
+    var closeBtn = document.querySelector('.close-flood .btn');
+    var cbDoc = null;
+    function cacheCloseBtn() {
+      if (!closeBtn) return;
+      var br = closeBtn.getBoundingClientRect();
+      cbDoc = { x: br.left + br.width / 2 + window.scrollX, y: br.top + br.height / 2 + window.scrollY };
+    }
+    cacheCloseBtn();
+    window.addEventListener('load', cacheCloseBtn);
+    window.addEventListener('resize', function () { setTimeout(cacheCloseBtn, 150); });
+    function skyFrame(t) {
+      if (!skyLive) return;
+      kx.clearRect(0, 0, KW, KH);
+      var bc = null;
+      if (cbDoc) {
+        var bcy = cbDoc.y - window.scrollY;
+        if (bcy > -80 && bcy < KH + 80) bc = { x: cbDoc.x - window.scrollX, y: bcy };
+      }
+      for (var i = 0; i < dust.length; i++) {
+        var s = dust[i];
+        s.x += 0.012 * s.z;
+        if (s.x > KW + 8) s.x = -8;
+        var tw = 0.5 + 0.5 * Math.sin(t / 1000 * s.ts + s.tw);
+        var al = (0.25 + 0.6 * tw) * s.z;
+        var px = s.x + gyx * 26 * s.z - shipOX * 0.4 * s.z;
+        var py = s.y + gyy * 20 * s.z - shipOY * 0.4 * s.z;
+        if (bc) {
+          var gdx = bc.x - px, gdy = bc.y - py;
+          var gd = Math.hypot(gdx, gdy);
+          if (gd < 260 && gd > 1) {
+            var pull = (1 - gd / 260) * 11 * s.z;
+            px += gdx / gd * pull;
+            py += gdy / gd * pull;
+          }
+        }
+        var scale = 1;
+        if (s.born) {
+          var age = t - s.born;
+          if (age < 900) {
+            var bp = age / 900;
+            scale = 0.4 + 0.75 * (1 - Math.pow(1 - bp, 3));
+            kx.strokeStyle = 'rgba(254,254,254,' + (0.45 * (1 - bp)).toFixed(3) + ')';
+            kx.lineWidth = 1;
+            kx.beginPath();
+            kx.arc(px, py, 5 + bp * 26, 0, 6.2832);
+            kx.stroke();
+          } else { s.born = 0; }
+        }
+        if (s.brand) {
+          kx.fillStyle = 'rgba(254,254,254,' + (al * 0.9) + ')';
+          skyStar(px, py, (3.4 + s.r * 2) * scale);
+          kx.fill();
+        } else {
+          kx.fillStyle = s.gold
+            ? 'rgba(150,190,240,' + (al * 0.85) + ')'
+            : 'rgba(236,242,250,' + al + ')';
+          kx.beginPath();
+          kx.arc(px, py, s.r * scale, 0, 6.2832);
+          kx.fill();
+        }
+      }
+      skyRaf = requestAnimationFrame(skyFrame);
+    }
+    function skyPlay() {
+      if (skyLive || document.hidden || !(root.classList.contains('space') || root.classList.contains('dusk'))) return;
+      skyLive = true;
+      skyRaf = requestAnimationFrame(skyFrame);
+    }
+    function skyHalt() {
+      skyLive = false;
+      if (skyRaf) cancelAnimationFrame(skyRaf);
+    }
+    var forceSpace = location.search.indexOf('forcespace') !== -1;
+    function setSpace(on) {
+      if (forceSpace) on = true;
+      if (root.classList.contains('space') === on) return;
+      root.classList.add('theme-anim');
+      root.classList.toggle('space', on);
+      clearTimeout(themeTimer);
+      themeTimer = setTimeout(function () { root.classList.remove('theme-anim'); }, 1000);
+      if (on) skyPlay(); else setTimeout(function () { if (!root.classList.contains('dusk')) skyHalt(); }, 1000);
+    }
+
+    document.addEventListener('click', function (e) {
+      if (!root.classList.contains('space')) return;
+      if (e.target.closest('a, button, input, textarea, select, label')) return;
+      dust.push({
+        x: e.clientX, y: e.clientY, z: 0.9,
+        r: 1.2 + Math.random() * 0.8,
+        tw: Math.random() * 6.28, ts: 0.8,
+        gold: false, brand: true, born: performance.now()
+      });
+    });
+
+    skySize();
+    skySeed();
+    if (forceSpace) { root.classList.add('space'); skyPlay(); }
+    window.addEventListener('resize', function () { skySize(); skySeed(); });
+    document.addEventListener('visibilitychange', function () {
+      if (document.hidden) skyHalt(); else skyPlay();
+    });
+
+    if (svcZone) {
+      /* Day → sunset → night, scrubbed continuously by scroll */
+      var grad = document.createElement('div');
+      grad.id = 'skygrad';
+      grad.setAttribute('aria-hidden', 'true');
+      document.body.insertBefore(grad, document.body.firstChild);
+      root.classList.add('skyfade');
+      sky.style.transition = 'none';
+      var BG = [0.863, 0.894, 0.933];            /* clinicgrowth: κλινικό μπλε */
+      var DUSK_T = [0.204, 0.314, 0.478], DUSK_B = [0.561, 0.663, 0.788];
+      var NIGHT_T = [0.012, 0.024, 0.07], NIGHT_B = [0.03, 0.06, 0.14];
+      var mix3 = function (a, b, t) { return [a[0] + (b[0] - a[0]) * t, a[1] + (b[1] - a[1]) * t, a[2] + (b[2] - a[2]) * t]; };
+      var ss = function (e0, e1, x) { x = Math.max(0, Math.min(1, (x - e0) / (e1 - e0))); return x * x * (3 - 2 * x); };
+      var rgb = function (c) { return 'rgb(' + Math.round(c[0] * 255) + ',' + Math.round(c[1] * 255) + ',' + Math.round(c[2] * 255) + ')'; };
+      var nCur = -1, nGoal = 0, gRaf = 0;
+      var nightGoal = function () {
+        if (forceSpace) return 1;
+        var vh = window.innerHeight, top = svcZone.getBoundingClientRect().top;
+        return Math.max(0, Math.min(1, (1.7 * vh - top) / (1.08 * vh)));
+      };
+      var paintSky = function (n) {
+        var d = ss(0, 0.5, n), k = ss(0.38, 1, n);
+        var top = mix3(mix3(BG, DUSK_T, d), NIGHT_T, k);
+        var bot = mix3(mix3(BG, DUSK_B, d), NIGHT_B, k);
+        var glow = (d * (1 - k) * 0.55 + k * 0.10).toFixed(3);
+        grad.style.background =
+          'radial-gradient(130% 60% at 50% 118%, rgba(120,170,235,' + glow + '), transparent 66%),' +
+          'linear-gradient(to bottom,' + rgb(top) + ',' + rgb(bot) + ')';
+        sky.style.opacity = ss(0.3, 1, n).toFixed(3);
+        var dusk = n > 0.25;
+        root.classList.toggle('dusk', dusk);
+        if (dusk) skyPlay(); else if (!root.classList.contains('space')) skyHalt();
+        root.classList.toggle('night-ink', n > 0.45);
+        setSpace(n > 0.82);
+      };
+      var skyTick = function () {
+        nCur += (nGoal - nCur) * 0.14;
+        if (Math.abs(nGoal - nCur) < 0.002) nCur = nGoal;
+        paintSky(nCur);
+        gRaf = nCur !== nGoal ? requestAnimationFrame(skyTick) : 0;
+      };
+      var skyScroll = function () {
+        nGoal = nightGoal();
+        if (nCur < 0) { nCur = nGoal; paintSky(nCur); return; }
+        if (!gRaf) gRaf = requestAnimationFrame(skyTick);
+      };
+      window.addEventListener('scroll', skyScroll, { passive: true });
+      window.addEventListener('resize', skyScroll);
+      skyScroll();
+    } else if (deck404) {
+      root.classList.add('space');
+      skyPlay();
+      var ship = document.createElement('div');
+      ship.className = 'ship';
+      ship.innerHTML = '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0C12.9 7.4 16.6 11.1 24 12c-7.4.9-11.1 4.6-12 12-.9-7.4-4.6-11.1-12-12 7.4-.9 11.1-4.6 12-12Z"/></svg>';
+      document.body.appendChild(ship);
+      var sx = window.innerWidth * 0.72, sy = window.innerHeight * 0.3, vx = 0, vy = 0;
+      var keys = {};
+      document.addEventListener('keydown', function (e) {
+        if (['ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight'].indexOf(e.key) !== -1) {
+          keys[e.key] = true;
+          e.preventDefault();
+        }
+      });
+      document.addEventListener('keyup', function (e) { keys[e.key] = false; });
+      document.addEventListener('pointermove', function (e) {
+        if (e.pointerType === 'touch' || e.buttons) { sx = e.clientX; sy = e.clientY; }
+      });
+      (function shipLoop() {
+        vx += (keys.ArrowRight ? 0.5 : 0) - (keys.ArrowLeft ? 0.5 : 0);
+        vy += (keys.ArrowDown ? 0.5 : 0) - (keys.ArrowUp ? 0.5 : 0);
+        vx *= 0.94; vy *= 0.94;
+        sx = Math.max(20, Math.min(window.innerWidth - 20, sx + vx));
+        sy = Math.max(20, Math.min(window.innerHeight - 20, sy + vy));
+        shipOX += vx; shipOY += vy;
+        ship.style.transform = 'translate(' + (sx - 20) + 'px,' + (sy - 20) + 'px) rotate(' + (vx * 3).toFixed(1) + 'deg)';
+        requestAnimationFrame(shipLoop);
+      })();
+      var hint = document.querySelector('.fly-hint');
+      if (hint && window.matchMedia('(hover: hover) and (pointer: fine)').matches) hint.hidden = false;
+    }
+  }
+
+  /* Magnetic primary buttons (rAF-batched, zero layout reads per mousemove) */
+  if (window.matchMedia('(hover: hover) and (pointer: fine)').matches &&
+      !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    var magnets = [].slice.call(document.querySelectorAll('.btn, .btn-ink'));
+    if (magnets.length) {
+      var magCache = [];
+      var magMX = -9999, magMY = -9999, magRaf = 0;
+      function magMeasure() {
+        magCache = magnets.map(function (b) {
+          var r = b.getBoundingClientRect();
+          return { el: b, x: r.left + r.width / 2 + window.scrollX, y: r.top + r.height / 2 + window.scrollY, on: false };
+        });
+      }
+      function magFrame() {
+        magRaf = 0;
+        var vx = magMX + window.scrollX, vy = magMY + window.scrollY;
+        for (var i = 0; i < magCache.length; i++) {
+          var m = magCache[i];
+          var dx = vx - m.x, dy = vy - m.y;
+          var d = Math.hypot(dx, dy);
+          if (d < 150) {
+            var pull = 1 - d / 150;
+            m.el.style.transform = 'translate(' + (dx * 0.22 * pull).toFixed(1) + 'px,' + (dy * 0.22 * pull).toFixed(1) + 'px)';
+            m.on = true;
+          } else if (m.on) {
+            m.el.style.transform = '';
+            m.on = false;
+          }
+        }
+      }
+      window.addEventListener('mousemove', function (e) {
+        magMX = e.clientX; magMY = e.clientY;
+        if (!magRaf) magRaf = requestAnimationFrame(magFrame);
+      }, { passive: true });
+      var magResize = 0;
+      window.addEventListener('resize', function () {
+        clearTimeout(magResize);
+        magResize = setTimeout(magMeasure, 150);
+      });
+      window.addEventListener('load', magMeasure);
+      magMeasure();
+    }
+  }
+
+  /* Mobile nav */
+  var btn = document.querySelector('.menu-btn');
+  var nav = document.querySelector('.nav-cells');
+  if (btn && nav) {
+    btn.addEventListener('click', function () {
+      var open = nav.classList.toggle('open');
+      btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+  }
+
+  /* Hero CTA: the star settles while the visitor aims at the action */
+  var cta = document.querySelector('.hero-cta .btn');
+  var star = document.querySelector('.hero-star');
+  if (cta && star) {
+    cta.addEventListener('mouseenter', function () { star.classList.add('still'); });
+    cta.addEventListener('mouseleave', function () { star.classList.remove('still'); });
+  }
+
+  /* Contact form: inline validation + fetch submit */
+  var form = document.querySelector('form[data-contact]');
+  if (form) {
+    var status = form.querySelector('.form-status');
+    form.addEventListener('submit', function (ev) {
+      var invalid = false;
+      form.querySelectorAll('[required]').forEach(function (input) {
+        var field = input.closest('.field');
+        var bad = input.type === 'checkbox' ? !input.checked : (!input.value.trim() || (input.type === 'email' && !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(input.value)));
+        field.classList.toggle('invalid', bad);
+        if (bad) invalid = true;
+      });
+      if (invalid) { ev.preventDefault(); return; }
+
+      var EL = (document.documentElement.lang || '').toLowerCase().indexOf('el') === 0;
+      var action = form.getAttribute('action') || '';
+      if (action.indexOf('REPLACE') !== -1) return; /* endpoint not configured: normal POST shows provider error */
+      ev.preventDefault();
+      var data = new FormData(form);
+      fetch(action, { method: 'POST', body: data, headers: { Accept: 'application/json' } })
+        .then(function (r) {
+          if (r.ok) {
+            form.reset();
+            status.textContent = EL ? 'Το λάβαμε. Απαντάμε μέσα σε μία εργάσιμη ημέρα.' : 'Received. We reply within one working day.';
+            status.className = 'form-status ok';
+          } else { throw new Error('bad'); }
+        })
+        .catch(function () {
+          status.textContent = EL ? 'Κάτι πήγε στραβά. Στείλτε μας email: hello@astramarketing.gr' : 'Something failed on the way. Email us instead: hello@astramarketing.gr';
+          status.className = 'form-status fail';
+        });
+    });
+  }
+})();

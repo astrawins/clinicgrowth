@@ -1,0 +1,45 @@
+/* clinicgrowth — μόνο ό,τι δεν υπάρχει στο design system του astra: wordmark, έργα, κριτικές */
+.wordmark {
+  font-family: var(--sans, 'Archivo'), 'Helvetica Neue', Arial, sans-serif;
+  font-weight: 700; font-size: 1.32rem; letter-spacing: -0.035em;
+  font-variation-settings: 'wdth' 118;
+  color: #FEFEFE; text-decoration: none; line-height: 1;
+  text-shadow: 0 1px 14px rgba(20, 32, 51, 0.22);
+}
+html.night-ink .wordmark { color: var(--ink); }
+
+/* ---------- Έργα ---------- */
+.work .wrap { padding-top: clamp(90px, 16vh, 200px); padding-bottom: clamp(60px, 10vh, 120px); }
+.work-head { max-width: 60ch; margin-bottom: clamp(40px, 7vh, 80px); }
+.work-head .lede { margin-top: clamp(18px, 3vh, 30px); color: var(--soft); }
+.work-grid { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: clamp(28px, 3.4vw, 52px) clamp(14px, 1.6vw, 26px); }
+.work-card { display: flex; flex-direction: column; gap: 6px; color: inherit; text-decoration: none; }
+.work-shot {
+  display: block; aspect-ratio: 420 / 746; overflow: hidden; border-radius: 14px;
+  background: rgba(255, 255, 255, 0.06);
+  box-shadow: 0 0 0 1px rgba(242, 233, 218, 0.14), 0 22px 50px -24px rgba(0, 0, 0, 0.7);
+  transition: transform 500ms cubic-bezier(0.23, 1, 0.32, 1), box-shadow 500ms ease;
+  margin-bottom: 8px;
+}
+.work-shot img { width: 100%; height: 100%; object-fit: cover; object-position: top; display: block; transition: transform 1600ms cubic-bezier(0.23, 1, 0.32, 1); }
+.work-card:hover .work-shot { transform: translateY(-6px); box-shadow: 0 0 0 1px rgba(242, 233, 218, 0.32), 0 30px 60px -22px rgba(255, 220, 180, 0.28); }
+.work-card:hover .work-shot img { transform: scale(1.035); }
+.work-name { font-weight: 500; font-size: 0.98rem; letter-spacing: -0.01em; line-height: 1.25; }
+.work-spec { font-size: 0.62rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--soft); line-height: 1.5; }
+@media (max-width: 1100px) { .work-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
+@media (max-width: 767px) { .work-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+
+/* ---------- Κριτικές ---------- */
+.reviews .wrap { padding-top: clamp(60px, 10vh, 120px); padding-bottom: clamp(60px, 10vh, 120px); }
+.reviews-head { display: flex; align-items: end; justify-content: space-between; gap: 24px; flex-wrap: wrap; margin-bottom: clamp(36px, 6vh, 70px); }
+.rating { display: inline-flex; align-items: center; gap: 12px; color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--hair); padding-bottom: 8px; }
+.rating .stars { color: #9CC0EA; letter-spacing: 0.12em; font-size: 1.05rem; }
+.rating .mono { font-size: 0.6875rem; letter-spacing: 0.14em; text-transform: uppercase; }
+.rating:hover { border-color: var(--ink); }
+.review-cols { columns: 3 280px; column-gap: clamp(28px, 3.4vw, 56px); }
+.review { break-inside: avoid; margin: 0 0 clamp(30px, 4.5vh, 46px); padding-top: 18px; border-top: 1px solid var(--hair); }
+.review blockquote { margin: 0; font-size: 1.02rem; line-height: 1.62; color: var(--ink); }
+.review blockquote::before { content: '«'; } .review blockquote::after { content: '»'; }
+.review figcaption { margin-top: 14px; display: flex; flex-direction: column; gap: 3px; }
+.r-name { font-weight: 500; font-size: 0.95rem; }
+.r-spec { font-size: 0.62rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--soft); }
