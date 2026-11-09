@@ -12,66 +12,41 @@ html.night-ink .wordmark { color: var(--ink); }
 .work .wrap { padding-top: clamp(90px, 16vh, 200px); padding-bottom: clamp(60px, 10vh, 120px); }
 .work-head { max-width: 60ch; margin-bottom: clamp(40px, 7vh, 80px); }
 .work-head .lede { margin-top: clamp(18px, 3vh, 30px); color: var(--soft); }
-/* ---------- Ταξίδι στις ιστοσελίδες (work.js): καρφωμένη σκηνή, πλανήτης, τα περασμένα γίνονται αστέρια ---------- */
-.work-field { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 30px 18px; padding: 40px var(--gutter); }   /* χωρίς JS / reduced motion */
-.work-card { display: flex; flex-direction: column; gap: 5px; color: inherit; text-decoration: none; }
-.work-shot { display: block; aspect-ratio: 420 / 746; overflow: hidden; border-radius: 12% / 6.8%; background: #0b1426; margin-bottom: 8px;
-  box-shadow: 0 0 0 1px rgba(232, 238, 247, 0.22), 0 0 70px -8px rgba(120, 170, 235, 0.45), 0 40px 90px -30px rgba(0, 0, 0, 0.9); }
-.work-shot img { width: 100%; height: 100%; object-fit: cover; object-position: top; display: block; }
-.work-name { font-weight: 500; font-size: 0.92rem; } .work-spec { font-size: 0.58rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--soft); }
-.warp-copy h2 { font-size: clamp(1.8rem, 3.4vw, 3.2rem); }
-.warp-now, .warp-bar { display: none; }
-
-.work.warp-on { padding-left: 0; padding-right: 0; }
-.warp-on .warp-run { position: relative; }
-.warp-on .warp-stage { position: sticky; top: 0; height: 100vh; height: 100svh; overflow: hidden; }
-.warp-on .work-field { display: block; position: absolute; inset: 0; padding: 0; }
-.warp-on .work-card { position: absolute; left: 0; top: 0; width: clamp(120px, 12.5vw, 220px); transform-origin: 50% 50%; will-change: transform, opacity; pointer-events: none; }
-.warp-on .work-card.now { pointer-events: auto; }
-.warp-on .work-card .work-name, .warp-on .work-card .work-spec { display: none; }
-.warp-on .work-shot { margin: 0; }
-
-.warp-on .warp-copy { position: absolute; left: var(--gutter); top: calc(var(--header-h, 76px) + 4vh); width: min(40vw, 560px); z-index: 50; pointer-events: none; }
-.warp-on .warp-copy a { pointer-events: auto; }
-.warp-lede { margin-top: 14px; color: var(--soft); transition: opacity 500ms ease; }
-.warp-on .warp-now { display: block; margin-top: clamp(18px, 4vh, 44px); }
-.warp-count { font-size: 0.75rem; letter-spacing: 0.18em; color: var(--soft); }
-.warp-count b { color: var(--ink); font-weight: 500; }
-.warp-name { font-size: clamp(1.7rem, 3.2vw, 3.2rem); line-height: 1.02; letter-spacing: -0.035em; font-weight: 600; margin-top: 14px;
-  text-shadow: 0 0 34px rgba(156, 192, 234, 0.35); transition: opacity 260ms ease, transform 260ms ease; }
-.warp-spec { margin-top: 14px; font-size: 0.7rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--soft); transition: opacity 260ms ease; }
-.warp-link { display: inline-block; margin-top: 26px; font-size: 0.68rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--hair); padding-bottom: 6px; }
-.warp-link:hover { border-color: var(--ink); }
-.warp-swap .warp-name, .warp-swap .warp-spec { opacity: 0; transform: translateY(10px); }
-
-/* Κρόνος: πλανήτης στο κέντρο, δακτύλιος σε δύο μισά (πίσω / μπροστά από τον πλανήτη) */
-.ring, .globe { display: none; }
-.warp-on .globe { display: block; position: absolute; left: var(--cx); top: var(--cy); width: var(--gd); aspect-ratio: 1; border-radius: 50%;
-  transform: translate(-50%, -50%) rotate(var(--tilt)); z-index: 30; overflow: hidden;
-  background:
-    radial-gradient(circle at 34% 30%, rgba(255, 255, 255, 0.55), transparent 42%),
-    radial-gradient(circle at 70% 78%, rgba(2, 6, 16, 0.85), transparent 60%),
-    repeating-linear-gradient(180deg, #9fbde3 0 6%, #7ea2cf 6% 9%, #b9d0ec 9% 15%, #6f93c2 15% 17%, #a7c3e6 17% 26%, #5d82b3 26% 28%);
-  box-shadow: inset -26px -20px 60px rgba(2, 8, 22, 0.75), inset 10px 8px 30px rgba(230, 242, 255, 0.35), 0 0 80px rgba(120, 170, 235, 0.35); }
-.globe i { position: absolute; inset: -20%; opacity: 0.25; mix-blend-mode: overlay;
-  background: repeating-linear-gradient(178deg, transparent 0 14px, rgba(255, 255, 255, 0.5) 14px 16px, transparent 16px 34px);
-  animation: bands 40s linear infinite; }
-@keyframes bands { to { transform: translateX(30%); } }
-.warp-on .ring { display: block; position: absolute; left: var(--cx); top: var(--cy); width: calc(var(--rx) * 2.1); aspect-ratio: 1; border-radius: 50%;
-  transform: translate(-50%, -50%) rotate(var(--tilt)) scaleY(var(--sq)); pointer-events: none;
-  background: radial-gradient(circle, transparent 0 30%, rgba(156, 192, 234, 0.10) 30.5%, rgba(190, 214, 245, 0.42) 34%, rgba(120, 160, 215, 0.18) 37%,
-    rgba(200, 222, 250, 0.5) 39%, rgba(150, 185, 230, 0.28) 42.5%, transparent 43.5%, rgba(150, 185, 230, 0.12) 45%, rgba(170, 200, 240, 0.08) 47.5%, transparent 48%); }
-.warp-on .ring-back { z-index: 20; clip-path: inset(0 0 50% 0); }
-.warp-on .ring-front { z-index: 32; clip-path: inset(50% 0 0 0); }
-
-.warp-on .warp-bar { display: block; position: absolute; left: var(--gutter); right: var(--gutter); bottom: 28px; height: 1px; background: var(--hair); z-index: 50; }
-.warp-bar i { position: absolute; left: 0; top: 0; bottom: 0; width: calc(var(--prog, 0) * 100%); background: var(--ink); }
+/* ---------- Έργα: κάθε ιστοσελίδα σε πλαίσιο browser, η αρχική κυλάει μέσα του ---------- */
+.work .wrap { padding-top: clamp(90px, 16vh, 200px); padding-bottom: clamp(60px, 10vh, 120px); }
+.work-head { max-width: 62ch; margin-bottom: clamp(40px, 7vh, 80px); }
+.work-head .lede { margin-top: clamp(18px, 3vh, 30px); color: var(--soft); }
+.sites { display: grid; gap: clamp(36px, 5vw, 72px) clamp(20px, 2.6vw, 40px); }
+.sites-big { grid-template-columns: repeat(2, minmax(0, 1fr)); margin-bottom: clamp(48px, 7vw, 96px); }
+.sites-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.site { display: flex; flex-direction: column; gap: 6px; color: inherit; text-decoration: none; min-width: 0; }
+.browser {
+  display: block; border-radius: 10px; overflow: hidden; background: #0b1426; margin-bottom: 12px;
+  box-shadow: 0 0 0 1px rgba(232, 238, 247, 0.16), 0 30px 70px -28px rgba(0, 0, 0, 0.9), 0 0 60px -20px rgba(120, 170, 235, 0.25);
+  transition: transform 600ms cubic-bezier(0.23, 1, 0.32, 1), box-shadow 600ms ease;
+}
+.site:hover .browser { transform: translateY(-6px); box-shadow: 0 0 0 1px rgba(232, 238, 247, 0.3), 0 40px 80px -28px rgba(0, 0, 0, 0.9), 0 0 90px -16px rgba(120, 170, 235, 0.45); }
+.bar { display: flex; align-items: center; gap: 6px; height: 30px; padding: 0 12px; background: #141f36; border-bottom: 1px solid rgba(232, 238, 247, 0.08); }
+.bar i { width: 9px; height: 9px; border-radius: 50%; background: rgba(232, 238, 247, 0.22); }
+.bar b { margin-left: auto; margin-right: auto; font-family: var(--mono); font-weight: 400; font-size: 10.5px; letter-spacing: 0.04em; color: rgba(232, 238, 247, 0.55); background: rgba(0, 0, 0, 0.25); padding: 3px 12px; border-radius: 99px; max-width: 70%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.screen { display: block; position: relative; aspect-ratio: 16 / 10; overflow: hidden; background: #fff; }
+.big .screen { aspect-ratio: 16 / 9.4; }
+.screen img { display: block; width: 100%; height: auto; transform: translateY(0); transition: transform 900ms cubic-bezier(0.23, 1, 0.32, 1); will-change: transform; }
+/* hover: κύλιση μέχρι το τέλος της σελίδας (--shift / --dur από work.js) */
+@media (hover: hover) {
+  .site:hover .screen img { transform: translateY(calc(-1 * var(--shift, 0px))); transition: transform var(--dur, 6s) linear; }
+}
+/* χωρίς ποντίκι (κινητά): κυλάει μόνη της όσο είναι στην οθόνη */
+.site.auto .screen img { animation: page-scroll var(--dur, 6s) ease-in-out infinite alternate; }
+@keyframes page-scroll { 0%, 12% { transform: translateY(0); } 88%, 100% { transform: translateY(calc(-1 * var(--shift, 0px))); } }
+.site-name { font-weight: 500; font-size: 1.05rem; letter-spacing: -0.015em; line-height: 1.25; }
+.big .site-name { font-size: clamp(1.3rem, 1.9vw, 1.7rem); letter-spacing: -0.025em; }
+.site-spec { font-size: 0.62rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--soft); line-height: 1.5; }
+@media (max-width: 1100px) { .sites-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 @media (max-width: 767px) {
-  .warp-on .warp-copy { width: auto; right: var(--gutter); top: calc(var(--header-h, 64px) + 2vh); }
-  .warp-on .warp-now { margin-top: 16px; }
-  .warp-name { font-size: clamp(1.6rem, 8vw, 2.4rem); }
-  .warp-lede { display: none; }
-  .warp-on .work-card { width: clamp(84px, 24vw, 140px); }
+  .sites-big, .sites-grid { grid-template-columns: 1fr; gap: 40px; }
+  .screen, .big .screen { aspect-ratio: 16 / 11; }
+  .bar { height: 26px; } .bar b { font-size: 9.5px; }
 }
 
 /* ---------- Κριτικές ---------- */
