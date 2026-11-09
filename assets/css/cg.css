@@ -89,3 +89,20 @@ html.night-ink .wordmark { color: var(--ink); }
 .sites-more .sites-big { margin-bottom: clamp(48px, 7vw, 96px); }
 .more-wrap { display: flex; justify-content: center; margin-top: clamp(40px, 6vw, 72px); }
 .more-wrap .btn-ghost { cursor: pointer; }
+
+/* ---------- Ενότητα online κράτησης (Beauty Lab) ---------- */
+.feature .wrap { padding-top: clamp(70px, 12vh, 150px); padding-bottom: clamp(60px, 10vh, 120px); }
+.feature-grid { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr); gap: clamp(36px, 6vw, 96px); align-items: center; }
+.feature-kicker { font-size: 0.6875rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--soft); margin-bottom: 22px; }
+.feature-copy h2 { max-width: 14ch; }
+.feature-copy .lede { margin-top: clamp(18px, 3vh, 30px); color: var(--soft); max-width: 54ch; }
+.feature-list { list-style: none; padding: 0; margin: clamp(24px, 4vh, 40px) 0 0; display: grid; gap: 12px; max-width: 54ch; }
+.feature-list li { position: relative; padding-left: 26px; line-height: 1.55; }
+.feature-list li::before { content: ''; position: absolute; left: 0; top: 0.62em; width: 10px; height: 10px; border-radius: 50%; background: #9CC0EA; box-shadow: 0 0 14px rgba(156, 192, 234, 0.8); }
+.feature-cta { margin-top: clamp(26px, 4vh, 40px); }
+.feature-media { display: flex; justify-content: center; }
+.phone-video { width: min(100%, 340px); aspect-ratio: 390 / 844; padding: 3.2%; border-radius: 12% / 5.6%; overflow: visible;
+  box-shadow: 0 0 0 1px rgba(232, 238, 247, 0.26), inset 0 0 0 2px rgba(232, 238, 247, 0.08), 0 50px 110px -40px rgba(0, 0, 0, 0.95), 0 0 120px -30px rgba(120, 170, 235, 0.45); }
+.phone-video .screen { position: absolute; left: 3.2%; top: 3.2%; width: 93.6%; height: 93.6%; border-radius: 9.5% / 4.4%; object-fit: cover; object-position: top; background: #f5f0ea; display: block; }
+.phone-video .notch { top: 5.2%; }
+@media (max-width: 900px) { .feature-grid { grid-template-columns: 1fr; } .feature-media { order: -1; } .phone-video { width: min(78vw, 300px); } }
