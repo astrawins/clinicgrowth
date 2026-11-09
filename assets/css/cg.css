@@ -43,9 +43,9 @@ html.night-ink .wordmark { color: var(--ink); }
 @media (hover: hover) {
   .site:hover .screen img { transform: translateY(calc(-1 * var(--shift, 0px))); transition: transform var(--dur, 6s) linear; }
 }
-/* χωρίς ποντίκι (κινητά): κυλάει μόνη της όσο είναι στην οθόνη */
-.site.auto .screen img { animation: page-scroll var(--dur, 6s) ease-in-out infinite alternate; }
-@keyframes page-scroll { 0%, 12% { transform: translateY(0); } 88%, 100% { transform: translateY(calc(-1 * var(--shift, 0px))); } }
+/* κινητά: κυλάει όσο κρατάς το δάχτυλο πάνω της (work.js βάζει .touching) */
+.site.touching .screen img { transform: translateY(calc(-1 * var(--shift, 0px))); transition: transform var(--dur, 6s) linear; }
+.site { -webkit-touch-callout: none; -webkit-user-select: none; user-select: none; }
 .site-name { font-weight: 500; font-size: 1.05rem; letter-spacing: -0.015em; line-height: 1.25; }
 .big .site-name { font-size: clamp(1.3rem, 1.9vw, 1.7rem); letter-spacing: -0.025em; }
 .site-spec { font-size: 0.62rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--soft); line-height: 1.5; }

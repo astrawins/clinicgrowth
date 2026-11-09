@@ -19,8 +19,23 @@
     });
   });
   addEventListener('resize', function () { sites.forEach(fit); });
-  if (touch && !reduce && 'IntersectionObserver' in window) {
-    var io = new IntersectionObserver(function (en) { en.forEach(function (e) { e.target.classList.toggle('auto', e.isIntersecting); }); }, { threshold: 0.35 });
-    sites.forEach(function (s) { io.observe(s); });
+  /* κινητά: κυλάει μόνο όσο κρατάς το δάχτυλο πάνω της (press & hold)· γρήγορο πάτημα = ανοίγει το site */
+  if (touch && !reduce) {
+    sites.forEach(function (site) {
+      var timer = 0, held = false, x0 = 0, y0 = 0;
+      var stop = function () { clearTimeout(timer); timer = 0; site.classList.remove('touching'); };
+      site.addEventListener('touchstart', function (e) {
+        var t = e.touches[0]; x0 = t.clientX; y0 = t.clientY; held = false;
+        timer = setTimeout(function () { held = true; site.classList.add('touching'); }, 180);
+      }, { passive: true });
+      site.addEventListener('touchmove', function (e) {
+        var t = e.touches[0];
+        if (Math.abs(t.clientX - x0) > 8 || Math.abs(t.clientY - y0) > 8) stop();   /* ο χρήστης σκρολάρει τη σελίδα */
+      }, { passive: true });
+      site.addEventListener('touchend', function (e) { stop(); if (held) { e.preventDefault(); } }, { passive: false });
+      site.addEventListener('touchcancel', stop, { passive: true });
+      site.addEventListener('click', function (e) { if (held) { e.preventDefault(); held = false; } });
+      site.addEventListener('contextmenu', function (e) { if (held) e.preventDefault(); });
+    });
   }
 })();
