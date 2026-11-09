@@ -140,3 +140,7 @@ html.night-ink .cta-float:hover { background: #22476E; color: #F6F9FC; }
   .cta-float { right: 16px; left: 16px; bottom: calc(14px + env(safe-area-inset-bottom, 0px)); justify-content: center; padding: 17px 20px; font-size: 0.74rem; }
   .frame-bottom { padding-bottom: 90px; }
 }
+
+/* σήμα cg στο header */
+.wordmark { display: inline-flex; align-items: center; gap: 10px; }
+.wordmark .mark { height: 26px; width: auto; display: block; filter: drop-shadow(0 1px 10px rgba(20, 32, 51, 0.28)); }
