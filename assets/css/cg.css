@@ -79,3 +79,7 @@ html.night-ink .wordmark { color: var(--ink); }
 .hero .hero-cta { display: flex; flex-wrap: wrap; gap: 12px; }
 .btn-ghost { background: transparent; color: var(--ink); box-shadow: inset 0 0 0 1px var(--hair); }
 .btn-ghost:hover { background: var(--ink); color: var(--bg); box-shadow: none; }
+
+/* «Ένας κλάδος, σε βάθος»: περισσότερος αέρας από κάτω, για να προλαβαίνει να σχηματιστεί η ράβδος από τα αστέρια */
+.statement .wrap { padding-bottom: clamp(220px, 45vh, 520px); }
+.statement h2 { max-width: 16ch; }
