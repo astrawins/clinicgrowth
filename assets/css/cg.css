@@ -71,3 +71,6 @@ html.night-ink .wordmark { color: var(--ink); }
 .review figcaption { margin-top: 14px; display: flex; flex-direction: column; gap: 3px; }
 .r-name { font-weight: 500; font-size: 0.95rem; }
 .r-spec { font-size: 0.62rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--soft); }
+
+/* μεγαλύτερος τίτλος hero: λίγο μικρότερα γράμματα για να χωρά σε 3 γραμμές */
+.hero h1 { max-width: 15ch; font-size: clamp(2.6rem, 7.2vw, 6.6rem); }
