@@ -1,0 +1,43 @@
+/* Φόρμες clinicgrowth: ίδιο σύστημα, σκούρο φόντο, λεπτές γραμμές */
+.formsec .wrap { max-width: 860px; padding-top: clamp(30px, 5vh, 60px); padding-bottom: clamp(80px, 12vh, 150px); }
+.cgform fieldset { border: 0; padding: 0; margin: 0 0 clamp(40px, 6vh, 64px); }
+.cgform legend { color: var(--ink); font-size: clamp(1.3rem, 2.2vw, 1.7rem); font-weight: 500; letter-spacing: -0.02em; margin-bottom: 22px; padding: 0; display: flex; align-items: center; gap: 14px; }
+.cgform legend .mono { font-size: 0.72rem; letter-spacing: 0.16em; color: var(--bg); background: var(--ink); width: 30px; height: 30px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; }
+.fld { margin-bottom: 18px; }
+.fld label, .consent { display: block; font-size: 0.9rem; color: var(--soft); margin-bottom: 8px; }
+.fld label b, .consent b { color: #9CC0EA; font-weight: 500; }
+.fld input, .fld select, .fld textarea {
+  width: 100%; box-sizing: border-box; font: inherit; color: var(--ink); background: rgba(232, 238, 247, 0.05);
+  border: 1px solid rgba(232, 238, 247, 0.16); border-radius: 10px; padding: 13px 15px; outline: none;
+  transition: border-color 160ms var(--ease-out), background 160ms var(--ease-out);
+}
+.fld input::placeholder, .fld textarea::placeholder { color: rgba(183, 196, 216, 0.55); }
+.fld input:focus, .fld select:focus, .fld textarea:focus { border-color: #9CC0EA; background: rgba(232, 238, 247, 0.08); }
+.fld select { appearance: none; -webkit-appearance: none; background-image: linear-gradient(45deg, transparent 50%, var(--soft) 50%), linear-gradient(135deg, var(--soft) 50%, transparent 50%); background-position: calc(100% - 20px) 50%, calc(100% - 14px) 50%; background-size: 6px 6px; background-repeat: no-repeat; }
+.fld select option { color: #142033; }
+.fld textarea { resize: vertical; min-height: 90px; }
+.fld small { display: block; margin-top: 7px; font-size: 0.78rem; color: var(--soft); opacity: 0.85; line-height: 1.45; }
+.fld.invalid input, .fld.invalid select, .fld.invalid textarea { border-color: #E08578; }
+.row2 { display: grid; grid-template-columns: 1fr 1fr; gap: 0 18px; }
+.radios { display: flex; gap: 26px; }
+.radios label { display: inline-flex; align-items: center; gap: 8px; color: var(--ink); font-size: 1rem; margin: 0; }
+.radios input, .consent input { width: 18px; height: 18px; accent-color: #9CC0EA; }
+.drop { display: flex; flex-direction: column; align-items: center; gap: 6px; text-align: center; padding: 26px 18px; border: 1px dashed rgba(232, 238, 247, 0.28); border-radius: 12px; cursor: pointer; color: var(--ink); background: rgba(232, 238, 247, 0.03); transition: border-color 160ms, background 160ms; }
+.drop:hover, .drop.over { border-color: #9CC0EA; background: rgba(156, 192, 234, 0.08); }
+.drop input { position: absolute; width: 1px; height: 1px; opacity: 0; }
+.drop .drop-i { font-size: 1.6rem; color: #9CC0EA; }
+.drop small { color: var(--soft); font-size: 0.78rem; }
+.files { list-style: none; margin: 10px 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; }
+.files li { display: inline-flex; align-items: center; gap: 8px; font-size: 0.78rem; color: var(--ink); background: rgba(232, 238, 247, 0.08); border-radius: 99px; padding: 5px 12px; }
+.files li img { width: 26px; height: 26px; object-fit: cover; border-radius: 6px; }
+.files li button { border: 0; background: none; color: var(--soft); cursor: pointer; font-size: 1rem; line-height: 1; padding: 0 2px; }
+.consent { margin-top: 10px; display: flex; gap: 10px; align-items: flex-start; line-height: 1.5; }
+.consent a { color: var(--ink); }
+.hp { position: absolute; left: -9999px; }
+.submitrow { display: flex; align-items: center; gap: 20px; flex-wrap: wrap; }
+.submitrow .btn { cursor: pointer; }
+.status { font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--soft); }
+.status.err { color: #E08578; }
+.thanks h2 { font-size: clamp(2rem, 4vw, 3.4rem); }
+.thanks .lede { margin: 20px 0 30px; color: var(--soft); max-width: 54ch; }
+@media (max-width: 640px) { .row2 { grid-template-columns: 1fr; } }

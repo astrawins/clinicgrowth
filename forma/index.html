@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Φόρμα νέας ιστοσελίδας | clinicgrowth</title>
+  <meta name="description" content="Στείλτε μας τα στοιχεία του ιατρείου, της κλινικής ή του κέντρου σας και ξεκινάμε την ιστοσελίδα σας.">
+  <link rel="canonical" href="https://clinicgrowth.gr/forma/">
+  <meta name="theme-color" content="#050A18">
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="icon" href="/assets/img/icon-512.png" type="image/png" sizes="512x512">
+  <link rel="icon" href="/assets/img/favicon-32.png" sizes="32x32" type="image/png">
+  <link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png">
+  <link rel="preload" href="/assets/fonts/spline-sans-mono.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/assets/css/main.css">
+  <link rel="stylesheet" href="/assets/css/cg.css?v=28">
+  <link rel="stylesheet" href="/assets/css/forms.css?v=1">
+  <script src="/assets/js/main.js?v=2" defer></script>
+  <script src="/assets/js/forms.js?v=1" defer></script>
+</head>
+<body>
+
+  <header class="frame-top">
+    <div class="cell brand-cell">
+      <a href="/" aria-label="clinicgrowth, αρχική" class="wordmark"><img class="mark" src="/assets/img/mark-white.png" alt="" width="54" height="40">clinicgrowth</a>
+    </div>
+    <button class="menu-btn" aria-expanded="false" aria-controls="site-nav">
+      Μενού
+      <svg width="16" height="10" viewBox="0 0 16 10" fill="none" aria-hidden="true"><path d="M0 1h16M0 9h16" stroke="currentColor" stroke-width="1.5"/></svg>
+    </button>
+    <nav class="nav-cells" id="site-nav" aria-label="Κύριο μενού">
+      <a href="/#erga">Δουλειές μας</a>
+      <a href="/#kritikes">Κριτικές</a>
+    </nav>
+    <a class="cta-cell" href="/kleiste-klisi/">Κλείστε κλήση</a>
+  </header>
+
+  <main>
+    <section class="page-head shell">
+      <div class="wrap">
+        <p class="mono feature-kicker">Καλώς ήρθατε</p>
+        <h1>Ας φτιάξουμε την ιστοσελίδα σας.</h1>
+        <p class="lede">Συμπληρώστε όσα ξέρετε· ό,τι λείπει το βρίσκουμε μαζί στην κλήση. Θέλει περίπου 10 λεπτά. Μόλις το στείλετε, ξεκινάμε.</p>
+      </div>
+    </section>
+
+    <section class="band shell formsec">
+      <div class="wrap">
+        <form id="intake" class="cgform" novalidate data-endpoint="https://forms.clinicgrowth.gr/api/intake">
+          <input type="text" name="website" tabindex="-1" autocomplete="off" class="hp" aria-hidden="true">
+
+          <fieldset><legend><span class="mono">A</span> Στοιχεία ιατρείου</legend>
+          <div class="fld"><label for="clinic">Όνομα ιατρείου / κλινικής / brand <b>*</b></label><input id="clinic" name="clinic" type="text" placeholder="π.χ. Ιατρείο Παπαδοπούλου, Dental Clinic, Beauty Lab" required></div>
+          <div class="fld"><label for="specialty">Ειδικότητα <b>*</b></label><select id="specialty" name="specialty" required><option value="">— επιλέξτε —</option><option>Οδοντίατρος</option><option>Μαιευτήρας-Γυναικολόγος</option><option>Ορθοπαιδικός</option><option>Καρδιολόγος</option><option>Δερματολόγος</option><option>Παιδίατρος</option><option>Γενικός / Οικογενειακός Ιατρός</option><option>Παθολόγος</option><option>Ψυχολόγος / Ψυχίατρος</option><option>Πλαστικός Χειρουργός</option><option>Διαιτολόγος</option><option>Φυσικοθεραπευτής</option><option>Λογοθεραπευτής</option><option>Ποδολόγος</option><option>Μικροβιολογικό / Διαγνωστικό</option><option>Κλινική / Πολυϊατρείο</option><option>Κέντρο Αισθητικής</option><option>Άλλο</option></select></div>
+          <div class="fld"><label for="specialtyOther">Αν «Άλλο», ποια;</label><input id="specialtyOther" name="specialtyOther" type="text" placeholder="Γράψτε εδώ την ειδικότητά σας"></div>
+          <div class="fld"><label for="fullName">Ονοματεπώνυμο & τίτλος <b>*</b></label><input id="fullName" name="fullName" type="text" placeholder="π.χ. Δρ. Μαρία Παπαδοπούλου, MD, MSc" required></div>
+          <div class="fld"><label for="bio">Σύντομο βιογραφικό / προσόντα <b>*</b></label><textarea id="bio" name="bio" rows="5" placeholder="Σπουδές, εξειδικεύσεις, χρόνια εμπειρίας, πού έχετε εργαστεί…" required></textarea></div>
+          <div class="fld"><label for="slogan">Σλόγκαν / βασικό μήνυμα</label><input id="slogan" name="slogan" type="text" placeholder="προαιρετικό — π.χ. «Φροντίδα με επιστήμη και ευαισθησία»"></div>
+          </fieldset>
+
+          <fieldset><legend><span class="mono">B</span> Υπηρεσίες</legend>
+          <div class="fld"><label for="services">Υπηρεσίες / θεραπείες <b>*</b></label><textarea id="services" name="services" rows="6" placeholder="Μία ανά γραμμή — π.χ.
+Προληπτικός έλεγχος
+Υπέρηχος 3D/4D
+Λαπαροσκοπική χειρουργική" required></textarea><small>Μία ανά γραμμή. Κάθε υπηρεσία γίνεται δική της σελίδα, ώστε να σας βρίσκουν όσοι την ψάχνουν.</small></div>
+          <div class="fld"><label for="serviceDesc">Σύντομη περιγραφή ανά υπηρεσία</label><textarea id="serviceDesc" name="serviceDesc" rows="5" placeholder="προαιρετικό — αν θέλετε να πείτε κάτι συγκεκριμένο για κάποιες"></textarea></div>
+          <div class="fld"><label for="pricing">Τιμές / πακέτα που θέλετε να φαίνονται</label><textarea id="pricing" name="pricing" rows="3" placeholder="προαιρετικό — μόνο αν επιτρέπεται από τον σύλλογό σας και το θέλετε"></textarea></div>
+          </fieldset>
+
+          <fieldset><legend><span class="mono">C</span> Επικοινωνία &amp; τοποθεσία</legend>
+            <div class="row2">
+          <div class="fld"><label for="phone">Τηλέφωνο <b>*</b></label><input id="phone" name="phone" type="tel" placeholder="210 … / 69…" required></div>
+          <div class="fld"><label for="email">Email <b>*</b></label><input id="email" name="email" type="email" placeholder="για ραντεβού και επικοινωνία" required></div>
+            </div>
+          <div class="fld"><label for="address">Διεύθυνση ιατρείου <b>*</b></label><input id="address" name="address" type="text" placeholder="Οδός, αριθμός, περιοχή, Τ.Κ., πόλη" required></div>
+          <div class="fld"><label for="hours">Ωράριο λειτουργίας <b>*</b></label><textarea id="hours" name="hours" rows="3" placeholder="π.χ. Δευτ.–Παρ. 09:00–14:00 & 17:00–21:00, Σάββατο κατόπιν ραντεβού" required></textarea></div>
+          <div class="fld"><label for="social">Social media</label><input id="social" name="social" type="text" placeholder="Instagram, Facebook, LinkedIn, TikTok… (προαιρετικό)"></div>
+          <div class="fld"><label for="gbp">Google Business Profile</label><input id="gbp" name="gbp" type="url" placeholder="σύνδεσμος αν υπάρχει (προαιρετικό)"></div>
+          </fieldset>
+
+          <fieldset><legend><span class="mono">D</span> Ραντεβού</legend>
+          <div class="fld"><label for="bookingMode">Πώς θέλετε να κλείνονται τα ραντεβού; <b>*</b></label><select id="bookingMode" name="bookingMode" required><option value="">— επιλέξτε —</option><option>Online κράτηση μέσα στην ιστοσελίδα (ώρες από το ημερολόγιό μου)</option><option>Φόρμα αιτήματος + τηλέφωνο</option><option>Μόνο τηλέφωνο / Viber</option><option>Δεν ξέρω, θα το πούμε στην κλήση</option></select></div>
+          <div class="fld"><label for="availability">Διαθεσιμότητα για ραντεβού <b>*</b></label><textarea id="availability" name="availability" rows="4" placeholder="Ημέρες και ώρες που δέχεστε ραντεβού, διάρκεια επίσκεψης, τι χρειάζεται πριν (π.χ. 3 ώρες νωρίτερα)" required></textarea></div>
+          <div class="fld"><label for="calendarEmail">Email / ημερολόγιο Google για συγχρονισμό</label><input id="calendarEmail" name="calendarEmail" type="email" placeholder="το Google account που κρατάτε το πρόγραμμα (προαιρετικό)"></div>
+          </fieldset>
+
+          <fieldset><legend><span class="mono">E</span> Οπτικό υλικό</legend>
+            <div class="fld"><label>Λογότυπο</label>
+              <label class="drop" for="logo"><input id="logo" name="logo" type="file" accept="image/*,.pdf,.svg"><span class="drop-i">◇</span><span>Κάντε κλικ ή σύρετε εδώ το λογότυπό σας</span><small>PNG/SVG με διαφάνεια κατά προτίμηση. Αν δεν έχετε, σας φτιάχνουμε εμείς.</small></label>
+              <ul class="files" data-for="logo"></ul></div>
+            <div class="fld"><label>Φωτογραφίες ιατρείου / ιατρού</label>
+              <label class="drop" for="photos"><input id="photos" name="photos" type="file" accept="image/*" multiple><span class="drop-i">▣</span><span>Κάντε κλικ ή σύρετε εδώ φωτογραφίες</span><small>Χώρος, εξεταστήρια, εξοπλισμός, εσείς. Όσες θέλετε· τις σμικρύνουμε αυτόματα πριν σταλούν.</small></label>
+              <ul class="files" data-for="photos"></ul></div>
+          <div class="fld"><label for="videoLink">Βίντεο</label><input id="videoLink" name="videoLink" type="url" placeholder="σύνδεσμος (Google Drive, WeTransfer, YouTube) — προαιρετικό"></div>
+          <div class="fld"><label for="colors">Προτίμηση χρωμάτων / ύφους</label><input id="colors" name="colors" type="text" placeholder="προαιρετικό — π.χ. «μπλε-λευκό, λιτό», ή σύνδεσμοι σε ιστοσελίδες που σας αρέσουν"></div>
+          <div class="fld"><label for="testimonials">Κριτικές / λόγια ασθενών</label><textarea id="testimonials" name="testimonials" rows="4" placeholder="προαιρετικό — ή ο σύνδεσμος των κριτικών σας στο Google"></textarea></div>
+          </fieldset>
+
+          <fieldset><legend><span class="mono">F</span> Domain</legend>
+            <div class="fld"><label>Έχετε ήδη domain ή ιστοσελίδα; <b>*</b></label>
+              <div class="radios"><label><input type="radio" name="domainStatus" value="Ναι" required> Ναι</label><label><input type="radio" name="domainStatus" value="Όχι"> Όχι</label></div></div>
+          <div class="fld"><label for="domain">Domain (υπάρχον ή αυτό που θα θέλατε)</label><input id="domain" name="domain" type="text" placeholder="π.χ. www.iatreio.gr"></div>
+          <div class="fld"><label for="registrar">Πού είναι κατοχυρωμένο;</label><input id="registrar" name="registrar" type="text" placeholder="π.χ. Papaki, GoDaddy, Pointer — αν το ξέρετε"></div>
+          </fieldset>
+
+          <fieldset><legend><span class="mono">G</span> Άλλες πληροφορίες</legend>
+          <div class="fld"><label for="extraInfo">Κάτι άλλο που πρέπει να ξέρουμε;</label><textarea id="extraInfo" name="extraInfo" rows="4" placeholder="Ό,τι θέλετε — ιδιαιτερότητες, γλώσσες (π.χ. και αγγλικά), προθεσμίες…"></textarea></div>
+          <div class="fld"><label for="contactEmail">Το email σας για την επιβεβαίωση <b>*</b></label><input id="contactEmail" name="contactEmail" type="email" placeholder="θα σας στείλουμε αντίγραφο της φόρμας" required></div>
+            <label class="consent"><input type="checkbox" name="consent" required> Συμφωνώ να χρησιμοποιηθούν τα στοιχεία και το υλικό για την κατασκευή της ιστοσελίδας μου, όπως περιγράφεται στην <a href="/aporrito/" target="_blank">Πολιτική απορρήτου</a>. <b>*</b></label>
+          </fieldset>
+
+          <div class="submitrow">
+            <button type="submit" class="btn">Αποστολή — ξεκινάμε</button>
+            <span class="status mono" id="status" aria-live="polite"></span>
+          </div>
+        </form>
+
+        <div class="thanks" id="thanks" hidden>
+          <h2>Ευχαριστούμε!</h2>
+          <p class="lede">Πήραμε τα στοιχεία σας και ξεκινάμε. Θα λάβετε αντίγραφο στο email σας και θα επικοινωνήσουμε μόλις υπάρχει κάτι να δείτε.</p>
+          <p><a class="btn btn-ghost" href="/">Πίσω στην αρχική</a></p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="frame-bottom">
+    <div class="cells">
+      <span class="cell">© 2026 clinicgrowth</span>
+      <span class="cell"><a href="/#erga">Δουλειές μας</a></span>
+      <span class="cell"><a href="/#kritikes">Κριτικές</a></span>
+      <span class="cell"><a href="/kleiste-klisi/">Κλείστε κλήση</a></span>
+      <span class="cell grow"></span>
+      <span class="cell"><a href="/aporrito/">Απόρρητο</a></span>
+      <span class="cell"><a href="/oroi/">Όροι</a></span>
+      <span class="cell"><a href="/cookies/">Cookies</a></span>
+    </div>
+    <div class="fine">
+      <span>clinicgrowth · Ιστοσελίδες για γιατρούς, κλινικές &amp; αισθητικά κέντρα · ASTRA MARKETING Ι.Κ.Ε. · <a href="mailto:info@astramarketing.gr">info@astramarketing.gr</a></span>
+      <span>clinicgrowth.gr</span>
+    </div>
+  </footer>
+</body>
+</html>
