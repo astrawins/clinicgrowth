@@ -176,3 +176,13 @@ html.night-ink .cta-float:hover { background: #22476E; color: #F6F9FC; }
 .car-btn[disabled] { opacity: 0.3; pointer-events: none; }
 @media (max-width: 900px) { .car-track .site { width: min(86vw, 520px); } }
 @media (max-width: 767px) { .car-track .site { width: 84vw; } .car-nav { justify-content: center; } }
+
+/* ---------- Πάντα νύχτα + πιο σφιχτές αποστάσεις ανάμεσα στις ενότητες ---------- */
+html.space .statement, html.space .protocol { opacity: 1; }
+html { background: #050A18; }
+.statement .wrap { padding-top: clamp(70px, 10vh, 130px); padding-bottom: clamp(90px, 14vh, 170px); }
+.work .wrap, .feature .wrap, .proof .wrap, .reviews .wrap { padding-top: clamp(48px, 7vh, 90px); padding-bottom: clamp(48px, 7vh, 90px); }
+.work-head, .reviews-head { margin-bottom: clamp(26px, 4vh, 48px); }
+.proof-grid { margin-top: clamp(26px, 4vh, 44px); }
+.close-flood { margin-top: 0; }
+.close-flood .wrap { padding-top: clamp(80px, 12vh, 150px); padding-bottom: clamp(90px, 14vh, 170px); }

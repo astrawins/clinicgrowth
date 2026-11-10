@@ -586,7 +586,7 @@
       skyLive = false;
       if (skyRaf) cancelAnimationFrame(skyRaf);
     }
-    var forceSpace = location.search.indexOf('forcespace') !== -1;
+    var forceSpace = true; /* clinicgrowth: πάντα νύχτα, χωρίς μετάβαση μέρα→νύχτα */
     function setSpace(on) {
       if (forceSpace) on = true;
       if (root.classList.contains('space') === on) return;
