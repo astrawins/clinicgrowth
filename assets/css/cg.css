@@ -186,3 +186,5 @@ html { background: #050A18; }
 .proof-grid { margin-top: clamp(26px, 4vh, 44px); }
 .close-flood { margin-top: 0; }
 .close-flood .wrap { padding-top: clamp(80px, 12vh, 150px); padding-bottom: clamp(90px, 14vh, 170px); }
+
+.proof-tag sup { font-size: 0.72em; vertical-align: super; letter-spacing: 0.04em; margin-left: 1px; }
