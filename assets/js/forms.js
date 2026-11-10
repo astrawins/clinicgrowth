@@ -78,9 +78,24 @@
     var files = {};
     for (var name in picked) { files[name] = []; for (var i = 0; i < picked[name].length; i++) { status.textContent = 'Σμίκρυνση ' + (i + 1) + '/' + picked[name].length + '…'; files[name].push(await shrink(picked[name][i])); } }
     status.textContent = 'Αποστολή…';
+    var base = form.dataset.endpoint.replace(/\/api\/.*$/, '');
     try {
-      var r = await fetch(form.dataset.endpoint, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ fields: fields, files: files }) });
-      if (!r.ok) throw new Error('HTTP ' + r.status);
+      if (form.id === 'intake') {
+        var r1 = await fetch(base + '/api/intake', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ fields: fields }) });
+        if (!r1.ok) throw new Error('intake ' + r1.status);
+        var j1 = await r1.json(); var counts = {};
+        for (var kind in files) { counts[kind] = files[kind].length; for (var q = 0; q < files[kind].length; q++) {
+          status.textContent = 'Ανέβασμα ' + (q + 1) + '/' + files[kind].length + '…';
+          var ru = await fetch(base + '/api/upload', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ id: j1.id, kind: kind, file: files[kind][q] }) });
+          if (!ru.ok) throw new Error('upload ' + ru.status);
+        } }
+        var r3 = await fetch(base + '/api/finish', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ id: j1.id, slug: j1.slug, fields: fields, counts: counts }) });
+        if (!r3.ok) throw new Error('finish ' + r3.status);
+      } else {
+        var qs = new URLSearchParams(location.search);
+        var r = await fetch(base + '/api/changes', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ slug: qs.get('p'), token: qs.get('t'), text: fields.text, name: fields.name, email: fields.email }) });
+        if (!r.ok) throw new Error('changes ' + r.status);
+      }
       form.hidden = true; document.getElementById('thanks').hidden = false; window.scrollTo({ top: 0, behavior: 'smooth' });
     } catch (err) {
       btn.disabled = false; status.classList.add('err');
