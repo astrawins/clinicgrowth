@@ -188,3 +188,12 @@ html { background: #050A18; }
 .close-flood .wrap { padding-top: clamp(80px, 12vh, 150px); padding-bottom: clamp(90px, 14vh, 170px); }
 
 .proof-tag sup { font-size: 0.72em; vertical-align: super; letter-spacing: 0.04em; margin-left: 1px; }
+
+/* κινητό: header χωρίς το σήμα, μικρότερο όνομα, για να χωράνε Μενού + Κλείστε κλήση */
+@media (max-width: 767px) {
+  .wordmark .mark { display: none; }
+  .wordmark { font-size: 1.1rem; }
+  .frame-top { gap: 14px; }
+  .cta-cell { font-size: 0.62rem; letter-spacing: 0.1em; }
+  .menu-btn { font-size: 0.62rem; }
+}
