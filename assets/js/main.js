@@ -499,7 +499,7 @@
           r: 0.5 + Math.random() * 1.5,
           tw: Math.random() * Math.PI * 2,
           ts: 0.3 + Math.random() * 1.1,
-          gold: Math.random() < 0.16,
+          gold: Math.random() < 0.3,
           brand: Math.random() < 0.03
         });
       }
@@ -568,7 +568,7 @@
           kx.fill();
         } else {
           kx.fillStyle = s.gold
-            ? 'rgba(150,190,240,' + (al * 0.85) + ')'
+            ? 'rgba(110,226,224,' + (al * 0.9) + ')'
             : 'rgba(236,242,250,' + al + ')';
           kx.beginPath();
           kx.arc(px, py, s.r * scale, 0, 6.2832);

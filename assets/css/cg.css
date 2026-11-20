@@ -197,3 +197,31 @@ html { background: #050A18; }
   .cta-cell { font-size: 0.62rem; letter-spacing: 0.1em; }
   .menu-btn { font-size: 0.62rem; }
 }
+
+/* ---------- 20/11: κεντραρισμένο hero, νούμερα, πακέτο ---------- */
+.hero-center .wrap { align-items: center; text-align: center; }
+.hero-center h1 { max-width: 17ch; margin-left: auto; margin-right: auto; font-size: clamp(2.4rem, 6.3vw, 5.7rem); }
+.hero-center .kicker-line { max-width: none; }
+.hero-center .hero-cta { justify-content: center; }
+html.space h1, html.space h2 { text-shadow: 0 0 28px rgba(150, 232, 236, 0.3), 0 0 2px rgba(255, 255, 255, 0.4); }
+.facts { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(18px, 3vw, 48px); margin-top: clamp(40px, 7vh, 80px); padding-top: clamp(26px, 4vh, 40px); border-top: 1px solid var(--hair); }
+.fact b { display: block; font-size: clamp(2.2rem, 4.6vw, 4rem); font-weight: 800; letter-spacing: -0.045em; line-height: 1; color: var(--display); }
+.fact span { display: block; margin-top: 12px; font-size: 0.6875rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--soft); line-height: 1.6; }
+@media (max-width: 700px) { .facts { grid-template-columns: 1fr; } }
+.pack .wrap { padding-top: clamp(48px, 7vh, 90px); padding-bottom: clamp(48px, 7vh, 90px); }
+.pack-head { max-width: 62ch; margin-bottom: clamp(30px, 5vh, 56px); }
+.pack-head h2 { max-width: 18ch; }
+.pack-head .lede { margin-top: clamp(18px, 3vh, 30px); }
+.pack-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(16px, 2vw, 28px); }
+.part { padding: clamp(22px, 2.4vw, 32px); border-radius: 14px; background: rgba(232, 238, 247, 0.05); box-shadow: inset 0 0 0 1px rgba(232, 238, 247, 0.12); display: flex; flex-direction: column; gap: 14px; min-width: 0; }
+.part h3 { font-size: 1.45rem; letter-spacing: -0.03em; color: var(--display); }
+.part p { color: var(--soft); max-width: none; line-height: 1.55; }
+.part ul { list-style: none; padding: 0; margin: 4px 0 0; display: grid; gap: 10px; }
+.part li { position: relative; padding-left: 24px; line-height: 1.5; }
+.part li::before { content: ''; position: absolute; left: 0; top: 0.58em; width: 9px; height: 9px; border-radius: 50%; background: #7FE0E2; box-shadow: 0 0 14px rgba(127, 224, 226, 0.8); }
+.part.rev { background: rgba(127, 224, 226, 0.09); box-shadow: inset 0 0 0 1px rgba(127, 224, 226, 0.42), 0 0 60px -22px rgba(127, 224, 226, 0.5); }
+.part .big { font-size: clamp(2.8rem, 5vw, 4.2rem); font-weight: 800; letter-spacing: -0.045em; line-height: 1; color: var(--display); }
+.part .big small { display: block; margin-top: 10px; font-family: var(--mono); font-size: 0.6875rem; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--soft); }
+.pack-cta { margin-top: clamp(28px, 4.5vh, 48px); }
+@media (max-width: 900px) { .pack-grid { grid-template-columns: 1fr; } }
+@media (min-width: 901px) { .facts { max-width: 62%; } .fact b { font-size: clamp(2rem, 3.4vw, 3.1rem); } }

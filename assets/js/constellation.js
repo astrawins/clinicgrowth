@@ -70,21 +70,21 @@
     } else {
       var gl = g.createRadialGradient(24, 24, 0, 24, 24, 24);
       gl.addColorStop(0, 'rgba(248,251,255,1)');
-      gl.addColorStop(0.18, 'rgba(232,242,255,0.85)');
-      gl.addColorStop(0.45, 'rgba(170,200,240,0.18)');
-      gl.addColorStop(1, 'rgba(170,200,240,0)');
+      gl.addColorStop(0.18, 'rgba(214,250,252,0.85)');
+      gl.addColorStop(0.45, 'rgba(110,222,226,0.22)');
+      gl.addColorStop(1, 'rgba(110,222,226,0)');
       g.fillStyle = gl; g.fillRect(0, 0, s, s);
     }
     return c;
   }
-  var STAR_PATH = 'M12 0C12.9 7.4 16.6 11.1 24 12c-7.4.9-11.1 4.6-12 12-.9-7.4-4.6-11.1-12-12 7.4-.9 11.1-4.6 12-12Z';
+  var STAR_PATH = 'M10.3 2.5h3.4v7.8h7.8v3.4h-7.8v7.8h-3.4v-7.8H2.5v-3.4h7.8z'; /* clinicgrowth: σταυρός αντί για το τετράκτινο αστέρι της astra */
   function glint(night) {
     var s = 64, c = document.createElement('canvas'); c.width = c.height = s;
     var g = c.getContext('2d');
     var p = new Path2D(STAR_PATH);
     g.translate(8, 8); g.scale(2, 2);
     if (!night) { g.shadowColor = 'rgba(20,40,70,0.4)'; g.shadowBlur = 8; g.shadowOffsetY = 3; }
-    else { g.shadowColor = 'rgba(214,230,255,0.9)'; g.shadowBlur = 10; }
+    else { g.shadowColor = 'rgba(120,230,232,0.95)'; g.shadowBlur = 10; }
     g.fillStyle = '#FFFFFF'; g.fill(p);
     return c;
   }
