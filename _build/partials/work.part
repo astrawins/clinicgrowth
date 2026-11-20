@@ -1,0 +1,466 @@
+    <section class="work shell" id="erga">
+      <div class="wrap">
+        <div class="work-head">
+          <h2>Μερικές από τις δουλειές μας.</h2>
+          <p class="lede">Κάθε μία ολόκληρη, σε υπολογιστή και κινητό, όπως τη βλέπει ο ασθενής. Κυλήστε με τα βέλη ή με το δάχτυλο· περάστε το ποντίκι ή κρατήστε πατημένο πάνω της για να κατέβει μέχρι κάτω· πατήστε την για να την ανοίξετε.</p>
+        </div>
+        <div class="carousel" id="sites-carousel">
+          <div class="car-track" tabindex="0" aria-label="Δουλειές μας, κυλήστε οριζόντια">
+          <a class="site big" href="https://kmyrillas.gr/" target="_blank" rel="noopener">
+            <span class="shots">
+              <span class="browser">
+                <span class="bar" aria-hidden="true"><i></i><i></i><i></i><b>kmyrillas.gr</b></span>
+                <span class="screen"><img src="/assets/img/work/myrillas-1200.webp" alt="Η αρχική σελίδα του kmyrillas.gr σε υπολογιστή" width="1200" loading="lazy" decoding="async"></span>
+              </span>
+              <span class="phone">
+                <span class="notch" aria-hidden="true"></span>
+                <span class="screen"><img src="/assets/img/work/myrillas-m.webp" alt="Η αρχική σελίδα του kmyrillas.gr σε κινητό" width="520" loading="lazy" decoding="async"></span>
+              </span>
+            </span>
+            <span class="site-name">Δρ. Κ. Μυρίλλας</span>
+            <span class="site-spec mono">Μαιευτήρας-Γυναικολόγος · Βύρωνας</span>
+          </a>
+          <a class="site big" href="https://lvriathens.gr/" target="_blank" rel="noopener">
+            <span class="shots">
+              <span class="browser">
+                <span class="bar" aria-hidden="true"><i></i><i></i><i></i><b>lvriathens.gr</b></span>
+                <span class="screen"><img src="/assets/img/work/lvri-1200.webp" alt="Η αρχική σελίδα του lvriathens.gr σε υπολογιστή" width="1200" loading="lazy" decoding="async"></span>
+              </span>
+              <span class="phone">
+                <span class="notch" aria-hidden="true"></span>
+                <span class="screen"><img src="/assets/img/work/lvri-m.webp" alt="Η αρχική σελίδα του lvriathens.gr σε κινητό" width="520" loading="lazy" decoding="async"></span>
+              </span>
+            </span>
+            <span class="site-name">LVRI Athens</span>
+            <span class="site-spec mono">Κοσμητική Γυναικολογία · Αθήνα</span>
+          </a>
+          <a class="site big" href="https://01dentalclinic.gr" target="_blank" rel="noopener">
+            <span class="shots">
+              <span class="browser">
+                <span class="bar" aria-hidden="true"><i></i><i></i><i></i><b>01dentalclinic.gr</b></span>
+                <span class="screen"><img src="/assets/img/work/01dental-1200.webp" alt="Η αρχική σελίδα του 01dentalclinic.gr σε υπολογιστή" width="1200" loading="lazy" decoding="async"></span>
+              </span>
+              <span class="phone">
+                <span class="notch" aria-hidden="true"></span>
+                <span class="screen"><img src="/assets/img/work/01dental-m.webp" alt="Η αρχική σελίδα του 01dentalclinic.gr σε κινητό" width="520" loading="lazy" decoding="async"></span>
+              </span>
+            </span>
+            <span class="site-name">01 Dental Clinic</span>
+            <span class="site-spec mono">Οδοντιατρείο · Βούλα</span>
+          </a>
+          <a class="site big" href="https://dentalharmonyclinic.gr" target="_blank" rel="noopener">
+            <span class="shots">
+              <span class="browser">
+                <span class="bar" aria-hidden="true"><i></i><i></i><i></i><b>dentalharmonyclinic.gr</b></span>
+                <span class="screen"><img src="/assets/img/work/dentalharmony-1200.webp" alt="Η αρχική σελίδα του dentalharmonyclinic.gr σε υπολογιστή" width="1200" loading="lazy" decoding="async"></span>
+              </span>
+              <span class="phone">
+                <span class="notch" aria-hidden="true"></span>
+                <span class="screen"><img src="/assets/img/work/dentalharmony-m.webp" alt="Η αρχική σελίδα του dentalharmonyclinic.gr σε κινητό" width="520" loading="lazy" decoding="async"></span>
+              </span>
+            </span>
+            <span class="site-name">Δρ. Μ. Δήμου</span>
+            <span class="site-spec mono">Οδοντίατρος · Σίνδος</span>
+          </a>
+          <a class="site big" href="https://drmichaelrotas.gr/" target="_blank" rel="noopener">
+            <span class="shots">
+              <span class="browser">
+                <span class="bar" aria-hidden="true"><i></i><i></i><i></i><b>drmichaelrotas.gr</b></span>
+                <span class="screen"><img src="/assets/img/work/rotas-1200.webp" alt="Η αρχική σελίδα του drmichaelrotas.gr σε υπολογιστή" width="1200" loading="lazy" decoding="async"></span>
+              </span>
+              <span class="phone">
+                <span class="notch" aria-hidden="true"></span>
+                <span class="screen"><img src="/assets/img/work/rotas-m.webp" alt="Η αρχική σελίδα του drmichaelrotas.gr σε κινητό" width="520" loading="lazy" decoding="async"></span>
+              </span>
+            </span>
+            <span class="site-name">Δρ. Μ. Ρώτας</span>
+            <span class="site-spec mono">Μαιευτήρας-Γυναικολόγος · Αθήνα</span>
+          </a>
+          <a class="site big" href="https://dentall.gr" target="_blank" rel="noopener">
+            <span class="shots">
+              <span class="browser">
+                <span class="bar" aria-hidden="true"><i></i><i></i><i></i><b>dentall.gr</b></span>
+                <span class="screen"><img src="/assets/img/work/dentall-1200.webp" alt="Η αρχική σελίδα του dentall.gr σε υπολογιστή" width="1200" loading="lazy" decoding="async"></span>
+              </span>
+              <span class="phone">
+                <span class="notch" aria-hidden="true"></span>
+                <span class="screen"><img src="/assets/img/work/dentall-m.webp" alt="Η αρχική σελίδα του dentall.gr σε κινητό" width="520" loading="lazy" decoding="async"></span>
+              </span>
+            </span>
+            <span class="site-name">DENTALL</span>
+            <span class="site-spec mono">Οδοντιατρείο · Γαλάτσι</span>
+          </a>
+          <a class="site big" href="https://bnl.gr/" target="_blank" rel="noopener">
+            <span class="shots">
+              <span class="browser">
+                <span class="bar" aria-hidden="true"><i></i><i></i><i></i><b>bnl.gr</b></span>
+                <span class="screen"><img src="/assets/img/work/bnl-1200.webp" alt="Η αρχική σελίδα του bnl.gr σε υπολογιστή" width="1200" loading="lazy" decoding="async"></span>
+              </span>
+              <span class="phone">
+                <span class="notch" aria-hidden="true"></span>
+                <span class="screen"><img src="/assets/img/work/bnl-m.webp" alt="Η αρχική σελίδα του bnl.gr σε κινητό" width="520" loading="lazy" decoding="async"></span>
+              </span>
+            </span>
+            <span class="site-name">BNL · Μ. Μάμμη</span>
+            <span class="site-spec mono">Κέντρο Αισθητικής · Κως</span>
+          </a>
+          <a class="site big" href="https://thebeautylabsitia.gr/" target="_blank" rel="noopener">
+            <span class="shots">
+              <span class="browser">
+                <span class="bar" aria-hidden="true"><i></i><i></i><i></i><b>thebeautylabsitia.gr</b></span>
+                <span class="screen"><img src="/assets/img/work/beautylab-1200.webp" alt="Η αρχική σελίδα του thebeautylabsitia.gr σε υπολογιστή" width="1200" loading="lazy" decoding="async"></span>
+              </span>
+              <span class="phone">
+                <span class="notch" aria-hidden="true"></span>
+                <span class="screen"><img src="/assets/img/work/beautylab-m.webp" alt="Η αρχική σελίδα του thebeautylabsitia.gr σε κινητό" width="520" loading="lazy" decoding="async"></span>
+              </span>
+            </span>
+            <span class="site-name">Beauty Lab by Elena Spyridaki</span>
+            <span class="site-spec mono">Ινστιτούτο Αισθητικής · Σητεία</span>
+          </a>
+          <a class="site big" href="https://drmountzouridi.gr" target="_blank" rel="noopener">
+            <span class="shots">
+              <span class="browser">
+                <span class="bar" aria-hidden="true"><i></i><i></i><i></i><b>drmountzouridi.gr</b></span>
+                <span class="screen"><img src="/assets/img/work/mountzouridi-1200.webp" alt="Η αρχική σελίδα του drmountzouridi.gr σε υπολογιστή" width="1200" loading="lazy" decoding="async"></span>
+              </span>
+              <span class="phone">
+                <span class="notch" aria-hidden="true"></span>
+                <span class="screen"><img src="/assets/img/work/mountzouridi-m.webp" alt="Η αρχική σελίδα του drmountzouridi.gr σε κινητό" width="520" loading="lazy" decoding="async"></span>
+              </span>
+            </span>
+            <span class="site-name">Δρ. Α. Μουντζουρίδη</span>
+            <span class="site-spec mono">Γενικός &amp; Οικογενειακός Ιατρός · Πολίχνη</span>
+          </a>
+          <a class="site big" href="https://kardiologos-orestiada.gr" target="_blank" rel="noopener">
+            <span class="shots">
+              <span class="browser">
+                <span class="bar" aria-hidden="true"><i></i><i></i><i></i><b>kardiologos-orestiada.gr</b></span>
+                <span class="screen"><img src="/assets/img/work/alexoudis-1200.webp" alt="Η αρχική σελίδα του kardiologos-orestiada.gr σε υπολογιστή" width="1200" loading="lazy" decoding="async"></span>
+              </span>
+              <span class="phone">
+                <span class="notch" aria-hidden="true"></span>
+                <span class="screen"><img src="/assets/img/work/alexoudis-m.webp" alt="Η αρχική σελίδα του kardiologos-orestiada.gr σε κινητό" width="520" loading="lazy" decoding="async"></span>
+              </span>
+            </span>
+            <span class="site-name">Α. Αλεξούδης</span>
+            <span class="site-spec mono">Καρδιολόγος · Ορεστιάδα</span>
+          </a>
+          <a class="site big" href="https://www.dporthopedics.gr" target="_blank" rel="noopener">
+            <span class="shots">
+              <span class="browser">
+                <span class="bar" aria-hidden="true"><i></i><i></i><i></i><b>dporthopedics.gr</b></span>
+                <span class="screen"><img src="/assets/img/work/dportho-1200.webp" alt="Η αρχική σελίδα του dporthopedics.gr σε υπολογιστή" width="1200" loading="lazy" decoding="async"></span>
+              </span>
+              <span class="phone">
+                <span class="notch" aria-hidden="true"></span>
+                <span class="screen"><img src="/assets/img/work/dportho-m.webp" alt="Η αρχική σελίδα του dporthopedics.gr σε κινητό" width="520" loading="lazy" decoding="async"></span>
+              </span>
+            </span>
+            <span class="site-name">Δρ. Α. Πατούσης</span>
+            <span class="site-spec mono">Ορθοπαιδικός · Θεσσαλονίκη</span>
+          </a>
+          <a class="site big" href="https://www.meniakaranasiou.gr" target="_blank" rel="noopener">
+            <span class="shots">
+              <span class="browser">
+                <span class="bar" aria-hidden="true"><i></i><i></i><i></i><b>meniakaranasiou.gr</b></span>
+                <span class="screen"><img src="/assets/img/work/karanasiou-1200.webp" alt="Η αρχική σελίδα του meniakaranasiou.gr σε υπολογιστή" width="1200" loading="lazy" decoding="async"></span>
+              </span>
+              <span class="phone">
+                <span class="notch" aria-hidden="true"></span>
+                <span class="screen"><img src="/assets/img/work/karanasiou-m.webp" alt="Η αρχική σελίδα του meniakaranasiou.gr σε κινητό" width="520" loading="lazy" decoding="async"></span>
+              </span>
+            </span>
+            <span class="site-name">Μ. Καρανάσιου</span>
+            <span class="site-spec mono">Διαιτολόγος · Online</span>
+          </a>
+          <a class="site big" href="https://www.psychoptia.com/" target="_blank" rel="noopener">
+            <span class="shots">
+              <span class="browser">
+                <span class="bar" aria-hidden="true"><i></i><i></i><i></i><b>psychoptia.com</b></span>
+                <span class="screen"><img src="/assets/img/work/psychoptia-1200.webp" alt="Η αρχική σελίδα του psychoptia.com σε υπολογιστή" width="1200" loading="lazy" decoding="async"></span>
+              </span>
+              <span class="phone">
+                <span class="notch" aria-hidden="true"></span>
+                <span class="screen"><img src="/assets/img/work/psychoptia-m.webp" alt="Η αρχική σελίδα του psychoptia.com σε κινητό" width="520" loading="lazy" decoding="async"></span>
+              </span>
+            </span>
+            <span class="site-name">Χ. Σταματοπούλου</span>
+            <span class="site-spec mono">Ψυχολόγος, MSc · Ηλιούπολη</span>
+          </a>
+          <a class="site big" href="https://biolabs.gr/" target="_blank" rel="noopener">
+            <span class="shots">
+              <span class="browser">
+                <span class="bar" aria-hidden="true"><i></i><i></i><i></i><b>biolabs.gr</b></span>
+                <span class="screen"><img src="/assets/img/work/biolab-1200.webp" alt="Η αρχική σελίδα του biolabs.gr σε υπολογιστή" width="1200" loading="lazy" decoding="async"></span>
+              </span>
+              <span class="phone">
+                <span class="notch" aria-hidden="true"></span>
+                <span class="screen"><img src="/assets/img/work/biolab-m.webp" alt="Η αρχική σελίδα του biolabs.gr σε κινητό" width="520" loading="lazy" decoding="async"></span>
+              </span>
+            </span>
+            <span class="site-name">BIOLAB</span>
+            <span class="site-spec mono">Μικροβιολογικό Εργαστήριο · Σέρρες</span>
+          </a>
+          <a class="site big" href="https://droikonomidis.gr" target="_blank" rel="noopener">
+            <span class="shots">
+              <span class="browser">
+                <span class="bar" aria-hidden="true"><i></i><i></i><i></i><b>droikonomidis.gr</b></span>
+                <span class="screen"><img src="/assets/img/work/oikonomidis-1200.webp" alt="Η αρχική σελίδα του droikonomidis.gr σε υπολογιστή" width="1200" loading="lazy" decoding="async"></span>
+              </span>
+              <span class="phone">
+                <span class="notch" aria-hidden="true"></span>
+                <span class="screen"><img src="/assets/img/work/oikonomidis-m.webp" alt="Η αρχική σελίδα του droikonomidis.gr σε κινητό" width="520" loading="lazy" decoding="async"></span>
+              </span>
+            </span>
+            <span class="site-name">Δρ. Α. Οικονομίδης</span>
+            <span class="site-spec mono">Ορθοπαιδικός · Θεσσαλονίκη</span>
+          </a>
+          <a class="site big" href="https://www.ensofootclinic.gr/" target="_blank" rel="noopener">
+            <span class="shots">
+              <span class="browser">
+                <span class="bar" aria-hidden="true"><i></i><i></i><i></i><b>ensofootclinic.gr</b></span>
+                <span class="screen"><img src="/assets/img/work/enso-1200.webp" alt="Η αρχική σελίδα του ensofootclinic.gr σε υπολογιστή" width="1200" loading="lazy" decoding="async"></span>
+              </span>
+              <span class="phone">
+                <span class="notch" aria-hidden="true"></span>
+                <span class="screen"><img src="/assets/img/work/enso-m.webp" alt="Η αρχική σελίδα του ensofootclinic.gr σε κινητό" width="520" loading="lazy" decoding="async"></span>
+              </span>
+            </span>
+            <span class="site-name">Ensō Foot Clinic</span>
+            <span class="site-spec mono">Ποδολόγος · Θεσσαλονίκη &amp; Αθήνα</span>
+          </a>
+          <a class="site big" href="https://drpeitsidis.gr/" target="_blank" rel="noopener">
+            <span class="shots">
+              <span class="browser">
+                <span class="bar" aria-hidden="true"><i></i><i></i><i></i><b>drpeitsidis.gr</b></span>
+                <span class="screen"><img src="/assets/img/work/peitsidis-1200.webp" alt="Η αρχική σελίδα του drpeitsidis.gr σε υπολογιστή" width="1200" loading="lazy" decoding="async"></span>
+              </span>
+              <span class="phone">
+                <span class="notch" aria-hidden="true"></span>
+                <span class="screen"><img src="/assets/img/work/peitsidis-m.webp" alt="Η αρχική σελίδα του drpeitsidis.gr σε κινητό" width="520" loading="lazy" decoding="async"></span>
+              </span>
+            </span>
+            <span class="site-name">Δρ. Ν. Πεϊτσίδης</span>
+            <span class="site-spec mono">Μαιευτήρας-Γυναικολόγος · Θεσσαλονίκη</span>
+          </a>
+          <a class="site big" href="https://drtheodoulidis.gr/" target="_blank" rel="noopener">
+            <span class="shots">
+              <span class="browser">
+                <span class="bar" aria-hidden="true"><i></i><i></i><i></i><b>drtheodoulidis.gr</b></span>
+                <span class="screen"><img src="/assets/img/work/theodoulidis-1200.webp" alt="Η αρχική σελίδα του drtheodoulidis.gr σε υπολογιστή" width="1200" loading="lazy" decoding="async"></span>
+              </span>
+              <span class="phone">
+                <span class="notch" aria-hidden="true"></span>
+                <span class="screen"><img src="/assets/img/work/theodoulidis-m.webp" alt="Η αρχική σελίδα του drtheodoulidis.gr σε κινητό" width="520" loading="lazy" decoding="async"></span>
+              </span>
+            </span>
+            <span class="site-name">Δρ. Β. &amp; Ι. Θεοδουλίδης</span>
+            <span class="site-spec mono">Μαιευτήρες-Γυναικολόγοι · Θεσσαλονίκη</span>
+          </a>
+          <a class="site big" href="https://gplasticsurgery.gr" target="_blank" rel="noopener">
+            <span class="shots">
+              <span class="browser">
+                <span class="bar" aria-hidden="true"><i></i><i></i><i></i><b>gplasticsurgery.gr</b></span>
+                <span class="screen"><img src="/assets/img/work/gplastic-1200.webp" alt="Η αρχική σελίδα του gplasticsurgery.gr σε υπολογιστή" width="1200" loading="lazy" decoding="async"></span>
+              </span>
+              <span class="phone">
+                <span class="notch" aria-hidden="true"></span>
+                <span class="screen"><img src="/assets/img/work/gplastic-m.webp" alt="Η αρχική σελίδα του gplasticsurgery.gr σε κινητό" width="520" loading="lazy" decoding="async"></span>
+              </span>
+            </span>
+            <span class="site-name">Δρ. Γ. Πανταζή</span>
+            <span class="site-spec mono">Πλαστικός Χειρουργός · Εύοσμος</span>
+          </a>
+          <a class="site big" href="https://www.smilecreationspeny.gr" target="_blank" rel="noopener">
+            <span class="shots">
+              <span class="browser">
+                <span class="bar" aria-hidden="true"><i></i><i></i><i></i><b>smilecreationspeny.gr</b></span>
+                <span class="screen"><img src="/assets/img/work/smilecreations-1200.webp" alt="Η αρχική σελίδα του smilecreationspeny.gr σε υπολογιστή" width="1200" loading="lazy" decoding="async"></span>
+              </span>
+              <span class="phone">
+                <span class="notch" aria-hidden="true"></span>
+                <span class="screen"><img src="/assets/img/work/smilecreations-m.webp" alt="Η αρχική σελίδα του smilecreationspeny.gr σε κινητό" width="520" loading="lazy" decoding="async"></span>
+              </span>
+            </span>
+            <span class="site-name">Π. Αρβανιτίδου</span>
+            <span class="site-spec mono">Οδοντίατρος · Ωραιόκαστρο</span>
+          </a>
+          <a class="site big" href="https://drvasilikifalaina.gr" target="_blank" rel="noopener">
+            <span class="shots">
+              <span class="browser">
+                <span class="bar" aria-hidden="true"><i></i><i></i><i></i><b>drvasilikifalaina.gr</b></span>
+                <span class="screen"><img src="/assets/img/work/falaina-1200.webp" alt="Η αρχική σελίδα του drvasilikifalaina.gr σε υπολογιστή" width="1200" loading="lazy" decoding="async"></span>
+              </span>
+              <span class="phone">
+                <span class="notch" aria-hidden="true"></span>
+                <span class="screen"><img src="/assets/img/work/falaina-m.webp" alt="Η αρχική σελίδα του drvasilikifalaina.gr σε κινητό" width="520" loading="lazy" decoding="async"></span>
+              </span>
+            </span>
+            <span class="site-name">Δρ. Β. Φαλαΐνα</span>
+            <span class="site-spec mono">Παιδίατρος Νεογνολόγος · Μαρούσι</span>
+          </a>
+          <a class="site big" href="https://epafipsychology.gr" target="_blank" rel="noopener">
+            <span class="shots">
+              <span class="browser">
+                <span class="bar" aria-hidden="true"><i></i><i></i><i></i><b>epafipsychology.gr</b></span>
+                <span class="screen"><img src="/assets/img/work/epafi-1200.webp" alt="Η αρχική σελίδα του epafipsychology.gr σε υπολογιστή" width="1200" loading="lazy" decoding="async"></span>
+              </span>
+              <span class="phone">
+                <span class="notch" aria-hidden="true"></span>
+                <span class="screen"><img src="/assets/img/work/epafi-m.webp" alt="Η αρχική σελίδα του epafipsychology.gr σε κινητό" width="520" loading="lazy" decoding="async"></span>
+              </span>
+            </span>
+            <span class="site-name">Γ. Σαρακίνη</span>
+            <span class="site-spec mono">Ψυχολόγος, MSc · Ζάκυνθος</span>
+          </a>
+          <a class="site big" href="https://memoryandspeech.com" target="_blank" rel="noopener">
+            <span class="shots">
+              <span class="browser">
+                <span class="bar" aria-hidden="true"><i></i><i></i><i></i><b>memoryandspeech.com</b></span>
+                <span class="screen"><img src="/assets/img/work/memoryspeech-1200.webp" alt="Η αρχική σελίδα του memoryandspeech.com σε υπολογιστή" width="1200" loading="lazy" decoding="async"></span>
+              </span>
+              <span class="phone">
+                <span class="notch" aria-hidden="true"></span>
+                <span class="screen"><img src="/assets/img/work/memoryspeech-m.webp" alt="Η αρχική σελίδα του memoryandspeech.com σε κινητό" width="520" loading="lazy" decoding="async"></span>
+              </span>
+            </span>
+            <span class="site-name">Δρ. Κ. Κωνσταντόπουλος</span>
+            <span class="site-spec mono">Λογοθεραπεία · Νέα Μάκρη</span>
+          </a>
+          <a class="site big" href="https://www.careloft.gr" target="_blank" rel="noopener">
+            <span class="shots">
+              <span class="browser">
+                <span class="bar" aria-hidden="true"><i></i><i></i><i></i><b>careloft.gr</b></span>
+                <span class="screen"><img src="/assets/img/work/careloft-1200.webp" alt="Η αρχική σελίδα του careloft.gr σε υπολογιστή" width="1200" loading="lazy" decoding="async"></span>
+              </span>
+              <span class="phone">
+                <span class="notch" aria-hidden="true"></span>
+                <span class="screen"><img src="/assets/img/work/careloft-m.webp" alt="Η αρχική σελίδα του careloft.gr σε κινητό" width="520" loading="lazy" decoding="async"></span>
+              </span>
+            </span>
+            <span class="site-name">Δρ Π. Σιαπέρας</span>
+            <span class="site-spec mono">Ψυχολόγος · Αγία Παρασκευή</span>
+          </a>
+          <a class="site big" href="https://menelaoslambropoulos.gr" target="_blank" rel="noopener">
+            <span class="shots">
+              <span class="browser">
+                <span class="bar" aria-hidden="true"><i></i><i></i><i></i><b>menelaoslambropoulos.gr</b></span>
+                <span class="screen"><img src="/assets/img/work/lambropoulos-1200.webp" alt="Η αρχική σελίδα του menelaoslambropoulos.gr σε υπολογιστή" width="1200" loading="lazy" decoding="async"></span>
+              </span>
+              <span class="phone">
+                <span class="notch" aria-hidden="true"></span>
+                <span class="screen"><img src="/assets/img/work/lambropoulos-m.webp" alt="Η αρχική σελίδα του menelaoslambropoulos.gr σε κινητό" width="520" loading="lazy" decoding="async"></span>
+              </span>
+            </span>
+            <span class="site-name">Δρ. Μ. Λαμπρόπουλος</span>
+            <span class="site-spec mono">Μαιευτήρας-Γυναικολόγος · Θεσσαλονίκη</span>
+          </a>
+          <a class="site big" href="https://www.gynaikologos-koumplis.com" target="_blank" rel="noopener">
+            <span class="shots">
+              <span class="browser">
+                <span class="bar" aria-hidden="true"><i></i><i></i><i></i><b>gynaikologos-koumplis.com</b></span>
+                <span class="screen"><img src="/assets/img/work/koumplis-1200.webp" alt="Η αρχική σελίδα του gynaikologos-koumplis.com σε υπολογιστή" width="1200" loading="lazy" decoding="async"></span>
+              </span>
+              <span class="phone">
+                <span class="notch" aria-hidden="true"></span>
+                <span class="screen"><img src="/assets/img/work/koumplis-m.webp" alt="Η αρχική σελίδα του gynaikologos-koumplis.com σε κινητό" width="520" loading="lazy" decoding="async"></span>
+              </span>
+            </span>
+            <span class="site-name">Δρ. Μ. Κουμπλής</span>
+            <span class="site-spec mono">Μαιευτήρας-Γυναικολόγος · Θεσσαλονίκη</span>
+          </a>
+          <a class="site big" href="https://drmantikos.gr" target="_blank" rel="noopener">
+            <span class="shots">
+              <span class="browser">
+                <span class="bar" aria-hidden="true"><i></i><i></i><i></i><b>drmantikos.gr</b></span>
+                <span class="screen"><img src="/assets/img/work/mantikos-1200.webp" alt="Η αρχική σελίδα του drmantikos.gr σε υπολογιστή" width="1200" loading="lazy" decoding="async"></span>
+              </span>
+              <span class="phone">
+                <span class="notch" aria-hidden="true"></span>
+                <span class="screen"><img src="/assets/img/work/mantikos-m.webp" alt="Η αρχική σελίδα του drmantikos.gr σε κινητό" width="520" loading="lazy" decoding="async"></span>
+              </span>
+            </span>
+            <span class="site-name">Δρ. Κ. Μαντικός</span>
+            <span class="site-spec mono">Γενικός Ιατρός · Αθήνα</span>
+          </a>
+          <a class="site big" href="https://matsoukatidis.gr" target="_blank" rel="noopener">
+            <span class="shots">
+              <span class="browser">
+                <span class="bar" aria-hidden="true"><i></i><i></i><i></i><b>matsoukatidis.gr</b></span>
+                <span class="screen"><img src="/assets/img/work/matsoukatidis-1200.webp" alt="Η αρχική σελίδα του matsoukatidis.gr σε υπολογιστή" width="1200" loading="lazy" decoding="async"></span>
+              </span>
+              <span class="phone">
+                <span class="notch" aria-hidden="true"></span>
+                <span class="screen"><img src="/assets/img/work/matsoukatidis-m.webp" alt="Η αρχική σελίδα του matsoukatidis.gr σε κινητό" width="520" loading="lazy" decoding="async"></span>
+              </span>
+            </span>
+            <span class="site-name">Π. Ματσουκατίδης</span>
+            <span class="site-spec mono">Μαιευτήρας-Γυναικολόγος · Δράμα</span>
+          </a>
+          <a class="site big" href="https://kalliopihealthsupport.gr" target="_blank" rel="noopener">
+            <span class="shots">
+              <span class="browser">
+                <span class="bar" aria-hidden="true"><i></i><i></i><i></i><b>kalliopihealthsupport.gr</b></span>
+                <span class="screen"><img src="/assets/img/work/kalliopi-1200.webp" alt="Η αρχική σελίδα του kalliopihealthsupport.gr σε υπολογιστή" width="1200" loading="lazy" decoding="async"></span>
+              </span>
+              <span class="phone">
+                <span class="notch" aria-hidden="true"></span>
+                <span class="screen"><img src="/assets/img/work/kalliopi-m.webp" alt="Η αρχική σελίδα του kalliopihealthsupport.gr σε κινητό" width="520" loading="lazy" decoding="async"></span>
+              </span>
+            </span>
+            <span class="site-name">Κ. Κολοβού</span>
+            <span class="site-spec mono">Νοσηλευτική Υποστήριξη · Γαλάτσι</span>
+          </a>
+          <a class="site big" href="https://georgiostsirakopoulos.gr" target="_blank" rel="noopener">
+            <span class="shots">
+              <span class="browser">
+                <span class="bar" aria-hidden="true"><i></i><i></i><i></i><b>georgiostsirakopoulos.gr</b></span>
+                <span class="screen"><img src="/assets/img/work/tsirakopoulos-1200.webp" alt="Η αρχική σελίδα του georgiostsirakopoulos.gr σε υπολογιστή" width="1200" loading="lazy" decoding="async"></span>
+              </span>
+              <span class="phone">
+                <span class="notch" aria-hidden="true"></span>
+                <span class="screen"><img src="/assets/img/work/tsirakopoulos-m.webp" alt="Η αρχική σελίδα του georgiostsirakopoulos.gr σε κινητό" width="520" loading="lazy" decoding="async"></span>
+              </span>
+            </span>
+            <span class="site-name">Γ. Τσιρακόπουλος</span>
+            <span class="site-spec mono">Μαιευτήρας-Γυναικολόγος · Αθήνα</span>
+          </a>
+          <a class="site big" href="https://www.kourmpetimentalhealth.gr" target="_blank" rel="noopener">
+            <span class="shots">
+              <span class="browser">
+                <span class="bar" aria-hidden="true"><i></i><i></i><i></i><b>kourmpetimentalhealth.gr</b></span>
+                <span class="screen"><img src="/assets/img/work/kourmpeti-1200.webp" alt="Η αρχική σελίδα του kourmpetimentalhealth.gr σε υπολογιστή" width="1200" loading="lazy" decoding="async"></span>
+              </span>
+              <span class="phone">
+                <span class="notch" aria-hidden="true"></span>
+                <span class="screen"><img src="/assets/img/work/kourmpeti-m.webp" alt="Η αρχική σελίδα του kourmpetimentalhealth.gr σε κινητό" width="520" loading="lazy" decoding="async"></span>
+              </span>
+            </span>
+            <span class="site-name">Γ. Κουρμπέτη</span>
+            <span class="site-spec mono">Ψυχολόγος, MSc · Θεσσαλονίκη</span>
+          </a>
+          <a class="site big" href="https://orthopedic-skiathos.gr" target="_blank" rel="noopener">
+            <span class="shots">
+              <span class="browser">
+                <span class="bar" aria-hidden="true"><i></i><i></i><i></i><b>orthopedic-skiathos.gr</b></span>
+                <span class="screen"><img src="/assets/img/work/kontomanis-1200.webp" alt="Η αρχική σελίδα του orthopedic-skiathos.gr σε υπολογιστή" width="1200" loading="lazy" decoding="async"></span>
+              </span>
+              <span class="phone">
+                <span class="notch" aria-hidden="true"></span>
+                <span class="screen"><img src="/assets/img/work/kontomanis-m.webp" alt="Η αρχική σελίδα του orthopedic-skiathos.gr σε κινητό" width="520" loading="lazy" decoding="async"></span>
+              </span>
+            </span>
+            <span class="site-name">Δρ. Ι. Κοντομάνης</span>
+            <span class="site-spec mono">Ορθοπαιδικός · Σκιάθος</span>
+          </a>
+          </div>
+          <div class="car-nav">
+            <button type="button" class="car-btn" data-car="-1" aria-label="Προηγούμενη">←</button>
+            <span class="car-count mono"><b>1</b> / 32</span>
+            <button type="button" class="car-btn" data-car="1" aria-label="Επόμενη">→</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
