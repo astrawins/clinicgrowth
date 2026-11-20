@@ -1,0 +1,204 @@
+/* clinicgrowth — δική της ταυτότητα (20/11/2026), ίδια με τη landing /system/:
+   ανοιχτό γαλάζιο, μπλε κουμπιά, Geologica. Φορτώνεται ΜΕΤΑ τα main.css + cg.css και ακυρώνει
+   τη νύχτα / τα αστέρια της astramarketing.gr από τα οποία ξεκίνησε το site. */
+
+/* ---------- Tokens ---------- */
+:root, html.space, html.night-ink, html.skyfade, html.skyfade.space {
+  --sky: #E6F0FD;
+  --sky-2: #D5E5FB;
+  --paper: #FFFFFF;
+  --line: #BFD3F0;
+  --blue: #1352E8;
+  --blue-dk: #0C3DB4;
+  --star: #F5A524;
+
+  --bg: #E6F0FD;
+  --white: #FFFFFF;
+  --display: #0A0F1A;
+  --ink: #0A0F1A;
+  --soft: #3B4658;
+  --hair: #BFD3F0;
+  --bronze: #1352E8;
+  --bronze-text: #0C3DB4;
+  --ring: #BFD3F0;
+  --logo-shadow: none;
+  --sans: 'Geologica', system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif;
+  --mono: 'Geologica', system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif;
+  --header-h: 72px;
+  color-scheme: light;
+}
+
+/* ---------- Τέλος στη νύχτα ---------- */
+html, html.space, html.skyfade, html.skyfade.space { background: var(--bg); }
+html.space body, html.skyfade.space body, body { background: var(--bg); color: var(--ink); font-family: var(--sans); font-size: 17px; line-height: 1.55; }
+#spacefield, #cx, #skygrad, .starfield, .loader { display: none !important; }
+html.space .statement, html.space .protocol, html.space .clients, html.space .services-head { opacity: 1; }
+h1, h2, h3, html.space h1, html.space h2 { color: var(--ink); text-shadow: none; font-family: var(--sans); font-stretch: normal; font-weight: 700; letter-spacing: -0.03em; line-height: 1.08; text-wrap: balance; }
+html.cx .hero h1, html.cx.cx-landed .hero h1 { opacity: 1; filter: none; animation: none; }
+h1 { font-size: clamp(2.3rem, 5vw, 4.1rem); }
+h2 { font-size: clamp(1.9rem, 3.6vw, 3rem); }
+.lede { font-size: clamp(1.05rem, 1.35vw, 1.22rem); line-height: 1.6; color: var(--soft); }
+::selection { background: var(--blue); color: #fff; }
+:focus-visible { outline: 3px solid var(--blue); outline-offset: 3px; border-radius: 6px; }
+.wrap { max-width: 1200px; }
+.shell { padding-left: clamp(18px, 4vw, 48px); padding-right: clamp(18px, 4vw, 48px); }
+:root { --gutter: clamp(18px, 4vw, 48px); }
+
+/* Μικρές ετικέτες: όχι πια κεφαλαία mono */
+.mono, .nav-cells a, .cta-cell, .btn, .btn-ink, .frame-bottom .cell, .frame-bottom .fine, .cta-float, .menu-btn,
+.site-spec, .r-spec, .feature-kicker, .proof-tag, .proof-fine, .car-count, .rating .mono, .field label, .hero .kicker-line {
+  font-family: var(--sans); text-transform: none; letter-spacing: 0;
+}
+.site-spec, .r-spec, .proof-tag, .proof-fine, .car-count { font-size: 0.82rem; line-height: 1.45; }
+.feature-kicker { display: inline-block; font-size: 0.84rem; font-weight: 600; color: var(--blue-dk); background: var(--paper); border: 1px solid var(--line); border-radius: 999px; padding: 6px 14px; margin-bottom: 18px; }
+.proof-tag b { font-weight: 700; }
+
+/* ---------- Header ---------- */
+.frame-top { position: sticky; top: 0; z-index: 50; height: var(--header-h); background: color-mix(in srgb, var(--bg) 88%, transparent); -webkit-backdrop-filter: saturate(1.4) blur(10px); backdrop-filter: saturate(1.4) blur(10px); border-bottom: 1px solid color-mix(in srgb, var(--line) 60%, transparent); }
+.wordmark { color: var(--ink); font-family: var(--sans); font-weight: 700; font-size: 1.28rem; letter-spacing: -0.035em; text-decoration: none; }
+.wordmark .mark { height: 26px; filter: none; }
+.nav-cells a { font-size: 0.95rem; font-weight: 500; color: var(--soft); }
+.nav-cells a:hover { color: var(--ink); }
+.cta-cell { font-size: 0.95rem; font-weight: 600; color: #fff; background: var(--blue); padding: 10px 18px; border-radius: 12px; box-shadow: 0 8px 18px -10px rgba(19, 82, 232, 0.75); transition: background 150ms ease; }
+.cta-cell:hover { color: #fff; background: var(--blue-dk); }
+.menu-btn { font-size: 0.95rem; font-weight: 500; }
+@media (max-width: 767px) {
+  .frame-top { position: sticky; }
+  .nav-cells.open { top: var(--header-h); background: var(--bg); border-bottom: 1px solid var(--line); box-shadow: 0 24px 40px -28px rgba(10, 15, 26, 0.35); }
+  .nav-cells.open a { font-size: 1.05rem; color: var(--ink); }
+  .wordmark { font-size: 1.12rem; }
+  .cta-cell { font-size: 0.86rem; padding: 9px 13px; letter-spacing: 0; }
+  .menu-btn { font-size: 0.9rem; }
+}
+
+/* ---------- Κουμπιά ---------- */
+.btn, .btn-ink { display: inline-flex; align-items: center; justify-content: center; gap: 10px; padding: 16px 28px; border-radius: 14px; background: var(--blue); color: #fff; font-size: 1.05rem; font-weight: 600;
+  box-shadow: 0 10px 24px -10px rgba(19, 82, 232, 0.75), inset 0 1px 0 rgba(255, 255, 255, 0.18); transition: transform 150ms ease, background 150ms ease; }
+.btn:hover, .btn-ink:hover { background: var(--blue-dk); color: #fff; }
+.btn-ghost { background: var(--paper); color: var(--ink); box-shadow: inset 0 0 0 1px var(--line); }
+.btn-ghost:hover { background: var(--paper); color: var(--blue-dk); box-shadow: inset 0 0 0 1.5px var(--blue); }
+
+/* ---------- Hero ---------- */
+.hero { height: auto; min-height: 0; display: block; overflow: visible; }
+.hero .wrap { display: grid; grid-template-columns: minmax(0, 1.08fr) minmax(0, 0.92fr); gap: clamp(28px, 5vw, 72px); align-items: center; padding-top: clamp(36px, 7vh, 84px); padding-bottom: clamp(44px, 8vh, 96px); }
+.hero h1 { margin-top: 0; max-width: 15ch; font-size: clamp(2.3rem, 5vw, 4.1rem); }
+.hero .lede { margin-top: clamp(16px, 2.4vh, 24px); max-width: 46ch; }
+.hero .hero-cta { margin-top: clamp(22px, 3.4vh, 34px); padding-bottom: 0; }
+.hero-note { margin-top: 14px; font-size: 0.92rem; color: var(--soft); }
+.hl { background: linear-gradient(#9CC2FF, #9CC2FF) 0 88% / 100% 0.3em no-repeat; -webkit-box-decoration-break: clone; box-decoration-break: clone; padding-inline: 2px; }
+
+/* το «παράθυρο αναζήτησης» του hero: πραγματικό αποτέλεσμα πελάτη (ίδιο με την ενότητα SEO & GEO) */
+.serp { background: var(--paper); border: 1px solid var(--line); border-radius: 24px; padding: clamp(18px, 2.2vw, 26px); box-shadow: 0 30px 60px -34px rgba(10, 15, 26, 0.45); display: grid; gap: 12px; }
+.serp-q { display: flex; align-items: center; gap: 10px; border: 1px solid var(--line); border-radius: 999px; padding: 11px 16px; font-size: 1rem; font-weight: 500; }
+.serp-q svg { flex: none; color: var(--soft); }
+.serp-row { display: grid; grid-template-columns: 34px minmax(0, 1fr); gap: 12px; align-items: center; padding: 13px 14px; border-radius: 14px; background: var(--sky); }
+.serp-row .pos { width: 34px; height: 34px; border-radius: 50%; display: grid; place-items: center; font-weight: 700; background: var(--paper); border: 1px solid var(--line); color: var(--soft); }
+.serp-row b { display: block; font-weight: 600; line-height: 1.3; }
+.serp-row span.sub { display: block; font-size: 0.86rem; color: var(--soft); line-height: 1.4; }
+.serp-row.you { background: var(--blue); color: #fff; }
+.serp-row.you .pos { background: #fff; border-color: #fff; color: var(--blue); }
+.serp-row.you span.sub { color: rgba(255, 255, 255, 0.88); }
+.serp-row.dim { opacity: 0.62; }
+.serp-row .bar { display: block; height: 10px; border-radius: 6px; background: var(--sky-2); }
+.serp-row .bar + .bar { margin-top: 7px; width: 62%; }
+.serp-rev { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; border-top: 1px dashed var(--line); padding-top: 14px; margin-top: 2px; font-size: 0.95rem; }
+.serp-rev .stars { color: var(--star); letter-spacing: 0.1em; font-size: 1.05rem; }
+.serp-rev b { font-weight: 700; }
+.serp-fine { font-size: 0.8rem; color: var(--soft); }
+@media (max-width: 900px) { .hero .wrap { grid-template-columns: 1fr; } .hero h1 { max-width: 18ch; } }
+
+/* ---------- Νούμερα + «ένας κλάδος» ---------- */
+.facts { background: var(--paper); border-block: 1px solid var(--line); }
+.facts .wrap { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(16px, 3vw, 40px); padding-top: clamp(22px, 3.4vh, 34px); padding-bottom: clamp(22px, 3.4vh, 34px); }
+.fact b { display: block; font-size: clamp(1.7rem, 3.2vw, 2.5rem); font-weight: 700; letter-spacing: -0.03em; line-height: 1.1; }
+.fact span { display: block; margin-top: 4px; color: var(--soft); font-size: 0.98rem; line-height: 1.4; }
+@media (max-width: 640px) { .facts .wrap { grid-template-columns: 1fr; gap: 16px; } .fact { display: grid; grid-template-columns: 5.6rem minmax(0, 1fr); align-items: baseline; gap: 12px; } .fact span { margin-top: 0; } }
+.statement .wrap { padding-top: clamp(52px, 9vh, 104px); padding-bottom: clamp(40px, 7vh, 80px); }
+.statement h2 { max-width: 18ch; }
+.statement .lede { max-width: 62ch; }
+
+/* ---------- Το πακέτο ---------- */
+.pack .wrap { padding-top: clamp(40px, 7vh, 80px); padding-bottom: clamp(52px, 9vh, 104px); }
+.pack-head { max-width: 62ch; margin-bottom: clamp(24px, 4vh, 44px); }
+.pack-head .lede { margin-top: clamp(14px, 2.2vh, 22px); }
+.pack-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1.12fr); gap: 18px; align-items: stretch; }
+.part { background: var(--paper); border: 1px solid var(--line); border-radius: 22px; padding: clamp(22px, 2.4vw, 30px); display: flex; flex-direction: column; gap: 12px; min-width: 0; }
+.part h3 { font-size: 1.4rem; letter-spacing: -0.025em; }
+.part p { color: var(--soft); max-width: none; }
+.part ul { list-style: none; padding: 0; margin: 4px 0 0; display: grid; gap: 9px; }
+.part li { position: relative; padding-left: 26px; line-height: 1.45; }
+.part li::before { content: ''; position: absolute; left: 2px; top: 0.34em; width: 12px; height: 7px; border-left: 2.4px solid var(--blue); border-bottom: 2.4px solid var(--blue); transform: rotate(-45deg); }
+.part.rev { background: var(--blue); border-color: var(--blue); color: #fff; }
+.part.rev h3 { color: #fff; }
+.part.rev p { color: rgba(255, 255, 255, 0.9); }
+.part.rev li::before { border-color: #fff; }
+.part .big { font-size: clamp(2.6rem, 5vw, 3.9rem); font-weight: 700; letter-spacing: -0.04em; line-height: 1; }
+.part .big small { display: block; margin-top: 8px; font-size: 1rem; font-weight: 500; letter-spacing: 0; line-height: 1.35; color: rgba(255, 255, 255, 0.9); }
+.sms { margin-top: auto; background: #fff; color: var(--ink); border-radius: 16px 16px 16px 4px; padding: 14px 16px; font-size: 0.95rem; line-height: 1.45; }
+.sms i { display: block; font-style: normal; font-size: 0.8rem; color: var(--soft); margin-bottom: 4px; }
+.sms .stars { color: var(--star); letter-spacing: 0.1em; }
+.pack-cta { margin-top: clamp(24px, 4vh, 40px); display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
+.pack-cta span { color: var(--soft); font-size: 0.95rem; }
+@media (max-width: 980px) { .pack-grid { grid-template-columns: 1fr 1fr; } .part.rev { grid-column: 1 / -1; } }
+@media (max-width: 640px) { .pack-grid { grid-template-columns: 1fr; } }
+
+/* ---------- Δουλειές ---------- */
+.work { background: var(--paper); border-block: 1px solid var(--line); }
+.site:hover .browser, .site:hover .phone { box-shadow: 0 26px 50px -26px rgba(10, 15, 26, 0.55); }
+.browser, .phone { box-shadow: 0 18px 40px -26px rgba(10, 15, 26, 0.5); }
+.site-name { font-weight: 600; }
+.car-btn { background: var(--paper); border-color: var(--line); color: var(--ink); }
+.car-btn:hover { background: var(--blue); border-color: var(--blue); color: #fff; }
+
+/* ---------- Online κράτηση / SEO & GEO: ίδιο περιεχόμενο, νέα χρώματα ---------- */
+.feature-list li::before { background: var(--blue); box-shadow: none; }
+.proof { background: var(--paper); border-block: 1px solid var(--line); }
+.proof-shot { background: var(--paper); border: 1px solid var(--line); box-shadow: 0 18px 40px -28px rgba(10, 15, 26, 0.45); }
+
+/* ---------- Κριτικές ---------- */
+.rating { background: var(--paper); border: 1px solid var(--line); border-radius: 999px; padding: 9px 16px; }
+.rating:hover { border-color: var(--blue); }
+.rating .stars { color: var(--star); }
+.rating .mono { font-size: 0.92rem; font-weight: 500; }
+.review { background: var(--paper); box-shadow: none; border: 1px solid var(--line); border-radius: 18px; }
+.r-name { font-weight: 600; }
+
+/* ---------- Κλείσιμο ---------- */
+.close-flood { margin-top: 0; }
+.close-flood .wrap { padding-top: clamp(40px, 7vh, 80px); padding-bottom: clamp(56px, 9vh, 110px); }
+.close-flood .wrap > div { background: var(--blue); color: #fff; border-radius: 28px; padding: clamp(32px, 6vw, 72px); position: relative; overflow: hidden; }
+.close-flood h2 { color: #fff; max-width: 16ch; font-size: clamp(2rem, 4.4vw, 3.4rem); }
+.close-flood .lede { color: rgba(255, 255, 255, 0.9); margin-top: clamp(14px, 2.2vh, 22px); }
+.close-flood .btn { background: #fff; color: var(--blue-dk); box-shadow: none; }
+.close-flood .btn:hover { background: var(--sky); color: var(--blue-dk); }
+
+/* ---------- Μόνιμο CTA + footer ---------- */
+.cta-float, html.night-ink .cta-float { background: var(--blue); color: #fff; font-size: 0.98rem; font-weight: 600; box-shadow: 0 16px 34px -14px rgba(19, 82, 232, 0.8); }
+.cta-float:hover, html.night-ink .cta-float:hover { background: var(--blue-dk); color: #fff; }
+.frame-bottom { border-top: 1px solid var(--line); background: var(--bg); }
+.frame-bottom .cell { font-size: 0.92rem; font-weight: 500; }
+.frame-bottom .fine { font-size: 0.82rem; }
+
+/* ---------- Υπόλοιπες σελίδες (κλήση, φόρμες, νομικά, 404) ---------- */
+.page-head h1 { font-size: clamp(2.2rem, 4.6vw, 3.6rem); max-width: 18ch; }
+.prose h2 { font-size: 1.45rem; }
+.field input, .field textarea { color: var(--ink); }
+html .fld input, html .fld select, html .fld textarea { background: var(--paper); border-color: var(--line); color: var(--ink); }
+html .fld input:focus, html .fld select:focus, html .fld textarea:focus { border-color: var(--blue); background: var(--paper); }
+html .drop { border-color: var(--line); background: var(--paper); }
+html .files li { background: var(--sky-2); }
+.notfound .mono { color: var(--blue-dk); }
+
+@media (prefers-reduced-motion: reduce) { .rev-track { animation: none; } }
+
+/* ---------- Διορθώσεις ευθυγράμμισης / κληρονομημένων !important ---------- */
+.mono, .nav-cells a, .cta-cell, .btn, .btn-ink, .frame-bottom .cell, .field label, .menu-btn { letter-spacing: 0 !important; }
+.nav-cells a, .menu-btn, .frame-bottom .cell, .mono { font-weight: 500 !important; }
+.feature-kicker, .proof-tag b { font-weight: 600 !important; }
+:root { --inset: max(0px, calc((100vw - 2 * var(--gutter) - 1200px) / 2)); --edge: calc(var(--gutter) + var(--inset)); }
+.frame-top { padding-left: var(--edge); padding-right: var(--edge); }
+.frame-bottom .cells, .frame-bottom .fine { padding-left: var(--edge); padding-right: var(--edge); }
+.work .wrap > .work-head, .reviews .wrap > .reviews-head { padding-left: var(--inset); padding-right: var(--inset); max-width: none; margin-left: 0; margin-right: 0; }
+.work-head h2, .work-head .lede { max-width: 60ch; }
+.car-track { padding-left: var(--inset); padding-right: var(--inset); scroll-padding-left: var(--inset); }
+.car-nav { padding-left: var(--inset); padding-right: var(--inset); }
